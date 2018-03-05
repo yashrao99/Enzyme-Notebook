@@ -1,0 +1,344 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F752F9FB204CE91F0037B698 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F752F9FA204CE91F0037B698 /* AppDelegate.swift */; };
+		F752F9FD204CE91F0037B698 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F752F9FC204CE91F0037B698 /* ViewController.swift */; };
+		F752FA00204CE91F0037B698 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F752F9FE204CE91F0037B698 /* Main.storyboard */; };
+		F752FA03204CE91F0037B698 /* Enzyme_Notebook.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F752FA01204CE91F0037B698 /* Enzyme_Notebook.xcdatamodeld */; };
+		F752FA05204CE91F0037B698 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F752FA04204CE91F0037B698 /* Assets.xcassets */; };
+		F752FA08204CE91F0037B698 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F752FA06204CE91F0037B698 /* LaunchScreen.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		F752F9F7204CE91F0037B698 /* Enzyme Notebook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Enzyme Notebook.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F752F9FA204CE91F0037B698 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F752F9FC204CE91F0037B698 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F752F9FF204CE91F0037B698 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F752FA02204CE91F0037B698 /* Enzyme_Notebook.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Enzyme_Notebook.xcdatamodel; sourceTree = "<group>"; };
+		F752FA04204CE91F0037B698 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F752FA07204CE91F0037B698 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F752FA09204CE91F0037B698 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F752F9F4204CE91F0037B698 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F752F9EE204CE91F0037B698 = {
+			isa = PBXGroup;
+			children = (
+				F752F9F9204CE91F0037B698 /* Enzyme Notebook */,
+				F752F9F8204CE91F0037B698 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F752F9F8204CE91F0037B698 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F752F9F7204CE91F0037B698 /* Enzyme Notebook.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F752F9F9204CE91F0037B698 /* Enzyme Notebook */ = {
+			isa = PBXGroup;
+			children = (
+				F752F9FA204CE91F0037B698 /* AppDelegate.swift */,
+				F752F9FC204CE91F0037B698 /* ViewController.swift */,
+				F752F9FE204CE91F0037B698 /* Main.storyboard */,
+				F752FA04204CE91F0037B698 /* Assets.xcassets */,
+				F752FA06204CE91F0037B698 /* LaunchScreen.storyboard */,
+				F752FA09204CE91F0037B698 /* Info.plist */,
+				F752FA01204CE91F0037B698 /* Enzyme_Notebook.xcdatamodeld */,
+			);
+			path = "Enzyme Notebook";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F752F9F6204CE91F0037B698 /* Enzyme Notebook */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F752FA0C204CE91F0037B698 /* Build configuration list for PBXNativeTarget "Enzyme Notebook" */;
+			buildPhases = (
+				F752F9F3204CE91F0037B698 /* Sources */,
+				F752F9F4204CE91F0037B698 /* Frameworks */,
+				F752F9F5204CE91F0037B698 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Enzyme Notebook";
+			productName = "Enzyme Notebook";
+			productReference = F752F9F7204CE91F0037B698 /* Enzyme Notebook.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F752F9EF204CE91F0037B698 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0920;
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = com.YashasRao99;
+				TargetAttributes = {
+					F752F9F6204CE91F0037B698 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = F752F9F2204CE91F0037B698 /* Build configuration list for PBXProject "Enzyme Notebook" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F752F9EE204CE91F0037B698;
+			productRefGroup = F752F9F8204CE91F0037B698 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F752F9F6204CE91F0037B698 /* Enzyme Notebook */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F752F9F5204CE91F0037B698 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F752FA08204CE91F0037B698 /* LaunchScreen.storyboard in Resources */,
+				F752FA05204CE91F0037B698 /* Assets.xcassets in Resources */,
+				F752FA00204CE91F0037B698 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F752F9F3204CE91F0037B698 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F752F9FD204CE91F0037B698 /* ViewController.swift in Sources */,
+				F752FA03204CE91F0037B698 /* Enzyme_Notebook.xcdatamodeld in Sources */,
+				F752F9FB204CE91F0037B698 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		F752F9FE204CE91F0037B698 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F752F9FF204CE91F0037B698 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		F752FA06204CE91F0037B698 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F752FA07204CE91F0037B698 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F752FA0A204CE91F0037B698 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F752FA0B204CE91F0037B698 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F752FA0D204CE91F0037B698 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = L3WCZURK57;
+				INFOPLIST_FILE = "Enzyme Notebook/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.YashasRao99.Enzyme-Notebook";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F752FA0E204CE91F0037B698 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = L3WCZURK57;
+				INFOPLIST_FILE = "Enzyme Notebook/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.YashasRao99.Enzyme-Notebook";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F752F9F2204CE91F0037B698 /* Build configuration list for PBXProject "Enzyme Notebook" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F752FA0A204CE91F0037B698 /* Debug */,
+				F752FA0B204CE91F0037B698 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F752FA0C204CE91F0037B698 /* Build configuration list for PBXNativeTarget "Enzyme Notebook" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F752FA0D204CE91F0037B698 /* Debug */,
+				F752FA0E204CE91F0037B698 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		F752FA01204CE91F0037B698 /* Enzyme_Notebook.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F752FA02204CE91F0037B698 /* Enzyme_Notebook.xcdatamodel */,
+			);
+			currentVersion = F752FA02204CE91F0037B698 /* Enzyme_Notebook.xcdatamodel */;
+			path = Enzyme_Notebook.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = F752F9EF204CE91F0037B698 /* Project object */;
+}
