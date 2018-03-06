@@ -7,23 +7,39 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AC7A08388784232BD55EEB7E /* Pods_Enzyme_Notebook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAA3E72A12F82558B5C923CE /* Pods_Enzyme_Notebook.framework */; };
 		F752F9FB204CE91F0037B698 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F752F9FA204CE91F0037B698 /* AppDelegate.swift */; };
-		F752F9FD204CE91F0037B698 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F752F9FC204CE91F0037B698 /* ViewController.swift */; };
+		F752F9FD204CE91F0037B698 /* ExperimentHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F752F9FC204CE91F0037B698 /* ExperimentHomeViewController.swift */; };
 		F752FA00204CE91F0037B698 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F752F9FE204CE91F0037B698 /* Main.storyboard */; };
 		F752FA03204CE91F0037B698 /* Enzyme_Notebook.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F752FA01204CE91F0037B698 /* Enzyme_Notebook.xcdatamodeld */; };
 		F752FA05204CE91F0037B698 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F752FA04204CE91F0037B698 /* Assets.xcassets */; };
 		F752FA08204CE91F0037B698 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F752FA06204CE91F0037B698 /* LaunchScreen.storyboard */; };
+		F752FA10204CED680037B698 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F752FA0F204CED680037B698 /* GoogleService-Info.plist */; };
+		F752FA12204CEE450037B698 /* CustomAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F752FA11204CEE450037B698 /* CustomAuthViewController.swift */; };
+		F752FA14204D06A00037B698 /* CalendarNewExperimentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F752FA13204D06A00037B698 /* CalendarNewExperimentViewController.swift */; };
+		F752FA15204D1C050037B698 /* JTAppleCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F752FA16204D1C050037B698 /* JTAppleCalendar.framework */; };
+		F752FA18204D2B330037B698 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F752FA17204D2B330037B698 /* CustomCell.swift */; };
+		F752FA1A204E5FB90037B698 /* NewExperimentalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F752FA19204E5FB90037B698 /* NewExperimentalViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4BDA9443337F9BAFC109CA5D /* Pods-Enzyme Notebook.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Enzyme Notebook.release.xcconfig"; path = "Pods/Target Support Files/Pods-Enzyme Notebook/Pods-Enzyme Notebook.release.xcconfig"; sourceTree = "<group>"; };
+		73A1D40CEBD5DD07EB50AAF3 /* Pods-Enzyme Notebook.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Enzyme Notebook.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Enzyme Notebook/Pods-Enzyme Notebook.debug.xcconfig"; sourceTree = "<group>"; };
+		BAA3E72A12F82558B5C923CE /* Pods_Enzyme_Notebook.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Enzyme_Notebook.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F752F9F7204CE91F0037B698 /* Enzyme Notebook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Enzyme Notebook.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F752F9FA204CE91F0037B698 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F752F9FC204CE91F0037B698 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F752F9FC204CE91F0037B698 /* ExperimentHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperimentHomeViewController.swift; sourceTree = "<group>"; };
 		F752F9FF204CE91F0037B698 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F752FA02204CE91F0037B698 /* Enzyme_Notebook.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Enzyme_Notebook.xcdatamodel; sourceTree = "<group>"; };
 		F752FA04204CE91F0037B698 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F752FA07204CE91F0037B698 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F752FA09204CE91F0037B698 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F752FA0F204CED680037B698 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F752FA11204CEE450037B698 /* CustomAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAuthViewController.swift; sourceTree = "<group>"; };
+		F752FA13204D06A00037B698 /* CalendarNewExperimentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarNewExperimentViewController.swift; sourceTree = "<group>"; };
+		F752FA16204D1C050037B698 /* JTAppleCalendar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = JTAppleCalendar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F752FA17204D2B330037B698 /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
+		F752FA19204E5FB90037B698 /* NewExperimentalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewExperimentalViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +47,39 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F752FA15204D1C050037B698 /* JTAppleCalendar.framework in Frameworks */,
+				AC7A08388784232BD55EEB7E /* Pods_Enzyme_Notebook.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		65DD9CFFC1AB04CD3FD67247 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F752FA16204D1C050037B698 /* JTAppleCalendar.framework */,
+				BAA3E72A12F82558B5C923CE /* Pods_Enzyme_Notebook.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		94E9E87C02BEDA9C9A5BAFCC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				73A1D40CEBD5DD07EB50AAF3 /* Pods-Enzyme Notebook.debug.xcconfig */,
+				4BDA9443337F9BAFC109CA5D /* Pods-Enzyme Notebook.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		F752F9EE204CE91F0037B698 = {
 			isa = PBXGroup;
 			children = (
 				F752F9F9204CE91F0037B698 /* Enzyme Notebook */,
 				F752F9F8204CE91F0037B698 /* Products */,
+				94E9E87C02BEDA9C9A5BAFCC /* Pods */,
+				65DD9CFFC1AB04CD3FD67247 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -57,11 +95,16 @@
 			isa = PBXGroup;
 			children = (
 				F752F9FA204CE91F0037B698 /* AppDelegate.swift */,
-				F752F9FC204CE91F0037B698 /* ViewController.swift */,
+				F752FA11204CEE450037B698 /* CustomAuthViewController.swift */,
+				F752F9FC204CE91F0037B698 /* ExperimentHomeViewController.swift */,
+				F752FA13204D06A00037B698 /* CalendarNewExperimentViewController.swift */,
+				F752FA19204E5FB90037B698 /* NewExperimentalViewController.swift */,
+				F752FA17204D2B330037B698 /* CustomCell.swift */,
 				F752F9FE204CE91F0037B698 /* Main.storyboard */,
 				F752FA04204CE91F0037B698 /* Assets.xcassets */,
 				F752FA06204CE91F0037B698 /* LaunchScreen.storyboard */,
 				F752FA09204CE91F0037B698 /* Info.plist */,
+				F752FA0F204CED680037B698 /* GoogleService-Info.plist */,
 				F752FA01204CE91F0037B698 /* Enzyme_Notebook.xcdatamodeld */,
 			);
 			path = "Enzyme Notebook";
@@ -74,9 +117,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F752FA0C204CE91F0037B698 /* Build configuration list for PBXNativeTarget "Enzyme Notebook" */;
 			buildPhases = (
+				E8FF6F14293C2E1F7ABE17A8 /* [CP] Check Pods Manifest.lock */,
 				F752F9F3204CE91F0037B698 /* Sources */,
 				F752F9F4204CE91F0037B698 /* Frameworks */,
 				F752F9F5204CE91F0037B698 /* Resources */,
+				852A45D45CE26753AD83375A /* [CP] Embed Pods Frameworks */,
+				20B941F04E4FD5947D7CE7E8 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -127,6 +173,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F752FA08204CE91F0037B698 /* LaunchScreen.storyboard in Resources */,
+				F752FA10204CED680037B698 /* GoogleService-Info.plist in Resources */,
 				F752FA05204CE91F0037B698 /* Assets.xcassets in Resources */,
 				F752FA00204CE91F0037B698 /* Main.storyboard in Resources */,
 			);
@@ -134,13 +181,122 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		20B941F04E4FD5947D7CE7E8 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Enzyme Notebook/Pods-Enzyme Notebook-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebaseAuthUI.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebaseFacebookAuthUI.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebaseGoogleAuthUI.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebasePhoneAuthUI.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebaseTwitterAuthUI.bundle",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
+				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework/TwitterKitResources.bundle",
+				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework/TwitterShareExtensionUIResources.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseAuthUI.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseFacebookAuthUI.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseGoogleAuthUI.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebasePhoneAuthUI.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseTwitterAuthUI.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TwitterKitResources.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TwitterShareExtensionUIResources.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Enzyme Notebook/Pods-Enzyme Notebook-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		852A45D45CE26753AD83375A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Enzyme Notebook/Pods-Enzyme Notebook-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/JTAppleCalendar/JTAppleCalendar.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${PODS_ROOT}/TwitterCore/iOS/TwitterCore.framework",
+				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-ProtoRPC/ProtoRPC.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-RxLibrary/RxLibrary.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JTAppleCalendar.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TwitterCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TwitterKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtoRPC.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxLibrary.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Enzyme Notebook/Pods-Enzyme Notebook-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E8FF6F14293C2E1F7ABE17A8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Enzyme Notebook-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		F752F9F3204CE91F0037B698 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F752F9FD204CE91F0037B698 /* ViewController.swift in Sources */,
+				F752F9FD204CE91F0037B698 /* ExperimentHomeViewController.swift in Sources */,
+				F752FA1A204E5FB90037B698 /* NewExperimentalViewController.swift in Sources */,
+				F752FA14204D06A00037B698 /* CalendarNewExperimentViewController.swift in Sources */,
+				F752FA12204CEE450037B698 /* CustomAuthViewController.swift in Sources */,
 				F752FA03204CE91F0037B698 /* Enzyme_Notebook.xcdatamodeld in Sources */,
+				F752FA18204D2B330037B698 /* CustomCell.swift in Sources */,
 				F752F9FB204CE91F0037B698 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -276,6 +432,7 @@
 		};
 		F752FA0D204CE91F0037B698 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 73A1D40CEBD5DD07EB50AAF3 /* Pods-Enzyme Notebook.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -291,6 +448,7 @@
 		};
 		F752FA0E204CE91F0037B698 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4BDA9443337F9BAFC109CA5D /* Pods-Enzyme Notebook.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

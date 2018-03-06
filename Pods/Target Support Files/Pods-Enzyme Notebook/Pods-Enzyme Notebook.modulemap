@@ -1,0 +1,6 @@
+framework module Pods_Enzyme_Notebook {
+  umbrella header "Pods-Enzyme Notebook-umbrella.h"
+
+  export *
+  module * { export * }
+}
