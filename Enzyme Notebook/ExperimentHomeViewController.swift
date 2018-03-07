@@ -26,12 +26,13 @@ class ExperimentHomeViewController: UIViewController, AuthUIDelegate, UINavigati
     
     
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
         configureAuth()
         configureUI()
         configureDatabase()
+        
+        
     }
     
     func configureAuth() {
@@ -46,7 +47,7 @@ class ExperimentHomeViewController: UIViewController, AuthUIDelegate, UINavigati
                     self.user = activeUser
                     let name = user!.email!.components(separatedBy: "@")[0]
                     self.displayName = name
-                    
+                    self.ref.child("users").child(activeUser.uid).setValue(["Display Name": "\(name)", "Email": "\(activeUser.email!)", "Provider" : "\(activeUser.providerID)"])
                 }
             } else {
                 self.loginSession()
@@ -70,7 +71,6 @@ class ExperimentHomeViewController: UIViewController, AuthUIDelegate, UINavigati
             self.experiments.append(snapshot)
         }
     }
-
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -104,7 +104,7 @@ class ExperimentHomeViewController: UIViewController, AuthUIDelegate, UINavigati
         if segue.identifier == "newExperiment" {
             let vc = segue.destination as! NewExperimentalViewController
             vc.navigationItem.title = "New Experiment"
-            //vc.tabBarController?.navigationItem.title = "New Experiment"
+            vc.user = self.user
         }
     }
 

@@ -40,5 +40,7 @@ class CustomAuthViewController: FUIAuthPickerViewController, FUIAuthDelegate {
         view.insertSubview(loginLabel, at: 1)
         
         self.navigationItem.leftBarButtonItem = nil
+        
+        
     }
 }

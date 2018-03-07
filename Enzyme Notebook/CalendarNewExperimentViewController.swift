@@ -39,10 +39,13 @@ class CalendarNewExperimentViewController : UIViewController {
     
     //IBACTION
     
+    //Cleaner way to pass back data using popViewController
+    
     @IBAction func backToExp(_ sender: Any) {
-        
-        performSegue(withIdentifier: "backToExperiment", sender: nil)
-
+        self.navigationController?.popViewController(animated: true)
+        let previousVC = self.navigationController?.viewControllers.last as! NewExperimentalViewController
+        previousVC.endDateTextField.text = self.endDateTextField.text
+        previousVC.startDateTextField.text = self.startTextField.text
     }
     
     //CONVENIENCE FUNCTIONS
@@ -83,10 +86,8 @@ class CalendarNewExperimentViewController : UIViewController {
     func setupViewsOfCalendar(from visibleDates: DateSegmentInfo) {
         
         let date = visibleDates.monthDates.first!.date
-        
         self.formatter.dateFormat = "yyyy"
         self.year.text = self.formatter.string(from: date)
-        
         self.formatter.dateFormat = "MMMM"
         self.month.text = self.formatter.string(from: date)
     }
@@ -95,21 +96,6 @@ class CalendarNewExperimentViewController : UIViewController {
         let alertView = UIAlertController(title: "", message: error, preferredStyle: .alert)
         alertView.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
         controller.present(alertView, animated: true, completion: nil)
-    }
-    
-    //PUSH DATA BACK TO NEWEXPVC
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "backToExperiment" {
-            if let vc = segue.destination as? NewExperimentalViewController {
-                let startText = self.startTextField.text as! String
-                vc.startDate = startText
-                let endText = self.endDateTextField.text as! String
-                vc.endDate = endText
-                
-                
-            }
-        }
     }
 }
 
@@ -143,6 +129,7 @@ extension CalendarNewExperimentViewController: JTAppleCalendarViewDataSource {
     }
     
 }
+
 
 extension CalendarNewExperimentViewController: JTAppleCalendarViewDelegate {
     
