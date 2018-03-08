@@ -20,6 +20,9 @@
 		F752FA15204D1C050037B698 /* JTAppleCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F752FA16204D1C050037B698 /* JTAppleCalendar.framework */; };
 		F752FA18204D2B330037B698 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F752FA17204D2B330037B698 /* CustomCell.swift */; };
 		F752FA1A204E5FB90037B698 /* NewExperimentalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F752FA19204E5FB90037B698 /* NewExperimentalViewController.swift */; };
+		F7BC748A2050A5C500F6D135 /* FirebaseClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7BC74892050A5C500F6D135 /* FirebaseClasses.swift */; };
+		F7BC748F2050D41100F6D135 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7BC748E2050D41100F6D135 /* EventViewController.swift */; };
+		F7BC7491205123D000F6D135 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7BC7490205123D000F6D135 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +43,9 @@
 		F752FA16204D1C050037B698 /* JTAppleCalendar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = JTAppleCalendar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F752FA17204D2B330037B698 /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		F752FA19204E5FB90037B698 /* NewExperimentalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewExperimentalViewController.swift; sourceTree = "<group>"; };
+		F7BC74892050A5C500F6D135 /* FirebaseClasses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseClasses.swift; sourceTree = "<group>"; };
+		F7BC748E2050D41100F6D135 /* EventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
+		F7BC7490205123D000F6D135 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,9 +103,11 @@
 				F752F9FA204CE91F0037B698 /* AppDelegate.swift */,
 				F752FA11204CEE450037B698 /* CustomAuthViewController.swift */,
 				F752F9FC204CE91F0037B698 /* ExperimentHomeViewController.swift */,
-				F752FA13204D06A00037B698 /* CalendarNewExperimentViewController.swift */,
+				F7BC7488204FABF200F6D135 /* Calendar */,
 				F752FA19204E5FB90037B698 /* NewExperimentalViewController.swift */,
-				F752FA17204D2B330037B698 /* CustomCell.swift */,
+				F7BC748E2050D41100F6D135 /* EventViewController.swift */,
+				F7BC7490205123D000F6D135 /* DetailViewController.swift */,
+				F7BC748D2050D3EA00F6D135 /* Model */,
 				F752F9FE204CE91F0037B698 /* Main.storyboard */,
 				F752FA04204CE91F0037B698 /* Assets.xcassets */,
 				F752FA06204CE91F0037B698 /* LaunchScreen.storyboard */,
@@ -108,6 +116,23 @@
 				F752FA01204CE91F0037B698 /* Enzyme_Notebook.xcdatamodeld */,
 			);
 			path = "Enzyme Notebook";
+			sourceTree = "<group>";
+		};
+		F7BC7488204FABF200F6D135 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				F752FA13204D06A00037B698 /* CalendarNewExperimentViewController.swift */,
+				F752FA17204D2B330037B698 /* CustomCell.swift */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
+		F7BC748D2050D3EA00F6D135 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F7BC74892050A5C500F6D135 /* FirebaseClasses.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -296,8 +321,11 @@
 				F752FA14204D06A00037B698 /* CalendarNewExperimentViewController.swift in Sources */,
 				F752FA12204CEE450037B698 /* CustomAuthViewController.swift in Sources */,
 				F752FA03204CE91F0037B698 /* Enzyme_Notebook.xcdatamodeld in Sources */,
+				F7BC748F2050D41100F6D135 /* EventViewController.swift in Sources */,
 				F752FA18204D2B330037B698 /* CustomCell.swift in Sources */,
+				F7BC7491205123D000F6D135 /* DetailViewController.swift in Sources */,
 				F752F9FB204CE91F0037B698 /* AppDelegate.swift in Sources */,
+				F7BC748A2050A5C500F6D135 /* FirebaseClasses.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

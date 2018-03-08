@@ -62,7 +62,13 @@ class NewExperimentalViewController: UIViewController, UITextViewDelegate {
     }
     
     @IBAction func saveExperimentPressed(_ sender: Any) {
-        ref.child("users").child((user?.uid)!).child("Experiment").setValue(["Title": "\(titleTextField.text!)", "startDate": "\(startDateTextField.text!)", "endDate" : "\(endDateTextField.text!)", "Protocol" : "\(protocolTextField.text!)"])
+        
+        let creationDate = Date()
+        
+        //Put the experiment data per user with unique ID onto Firebase to call in tableView
+        if let user = Auth.auth().currentUser {
+            ref.child("Experiment").child((user.uid)).childByAutoId().setValue(["Title": "\(titleTextField.text!)", "startDate": "\(startDateTextField.text!)", "endDate" : "\(endDateTextField.text!)", "Protocol" : "\(protocolTextField.text!)", "creationDate": "\(creationDate)"])
+        }
         self.navigationController?.popToRootViewController(animated: true)
     }
     
@@ -75,6 +81,8 @@ class NewExperimentalViewController: UIViewController, UITextViewDelegate {
         endDateTextField.text = endDate ?? ""
         startDateTextField.isEnabled = false
         endDateTextField.isEnabled = false
+        startDateTextField.textAlignment = .center
+        endDateTextField.textAlignment = .center
         
         //Nav Bar
         self.navigationItem.hidesBackButton = true
@@ -83,7 +91,6 @@ class NewExperimentalViewController: UIViewController, UITextViewDelegate {
         protocolTextField.delegate = self
         protocolTextField.text = genericText
         protocolTextField.textColor = UIColor.gray
-        protocolTextField.alpha = 0.5
         
         //Save Experiment Button
         confirmExpButton.isHidden = true
@@ -101,13 +108,11 @@ class NewExperimentalViewController: UIViewController, UITextViewDelegate {
         }
     }
     
-    
     //FIREBASE FUNCTIONS
     
     func configureDatabase() {
         ref = Database.database().reference()
     }
-    
     
     //TextView Delegate Methods
     

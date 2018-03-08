@@ -34,13 +34,11 @@ class CustomAuthViewController: FUIAuthPickerViewController, FUIAuthDelegate {
         loginLabel.text = "Your Experimental Notebook"
         loginLabel.textAlignment = .center
         loginLabel.textColor = UIColor.white
-        loginLabel.font = UIFont(name: "Papyrus", size: 28.0)
+        loginLabel.font = UIFont(name: "ChalkboardSE-Regular", size: 28.0)
         
         view.insertSubview(imageViewBackground, at: 0)
         view.insertSubview(loginLabel, at: 1)
         
         self.navigationItem.leftBarButtonItem = nil
-        
-        
     }
 }
