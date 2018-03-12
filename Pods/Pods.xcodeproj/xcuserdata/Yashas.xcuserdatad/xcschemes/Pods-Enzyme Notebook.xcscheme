@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "085839E4329DD92C7F54D227B3B46FBA"
+               BlueprintIdentifier = "09D43F1CCB9A7988B3502AE24C0D08CB"
                BuildableName = "Pods_Enzyme_Notebook.framework"
                BlueprintName = "Pods-Enzyme Notebook"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -47,7 +47,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "085839E4329DD92C7F54D227B3B46FBA"
+            BlueprintIdentifier = "09D43F1CCB9A7988B3502AE24C0D08CB"
             BuildableName = "Pods_Enzyme_Notebook.framework"
             BlueprintName = "Pods-Enzyme Notebook"
             ReferencedContainer = "container:Pods.xcodeproj">

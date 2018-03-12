@@ -23,6 +23,10 @@
 		F7BC748A2050A5C500F6D135 /* FirebaseClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7BC74892050A5C500F6D135 /* FirebaseClasses.swift */; };
 		F7BC748F2050D41100F6D135 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7BC748E2050D41100F6D135 /* EventViewController.swift */; };
 		F7BC7491205123D000F6D135 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7BC7490205123D000F6D135 /* DetailViewController.swift */; };
+		F7BC74932051EE3D00F6D135 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7BC74922051EE3D00F6D135 /* Constants.swift */; };
+		F7BC74952053154300F6D135 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7BC74942053154300F6D135 /* CollectionViewCell.swift */; };
+		F7F915BE205612340035BB1E /* IQKeyboardManagerSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7F915BF205612340035BB1E /* IQKeyboardManagerSwift.framework */; };
+		F7F915C120561D2A0035BB1E /* CacheExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F915C020561D2A0035BB1E /* CacheExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +50,10 @@
 		F7BC74892050A5C500F6D135 /* FirebaseClasses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseClasses.swift; sourceTree = "<group>"; };
 		F7BC748E2050D41100F6D135 /* EventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
 		F7BC7490205123D000F6D135 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		F7BC74922051EE3D00F6D135 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		F7BC74942053154300F6D135 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		F7F915BF205612340035BB1E /* IQKeyboardManagerSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = IQKeyboardManagerSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F7F915C020561D2A0035BB1E /* CacheExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7F915BE205612340035BB1E /* IQKeyboardManagerSwift.framework in Frameworks */,
 				F752FA15204D1C050037B698 /* JTAppleCalendar.framework in Frameworks */,
 				AC7A08388784232BD55EEB7E /* Pods_Enzyme_Notebook.framework in Frameworks */,
 			);
@@ -64,6 +73,7 @@
 		65DD9CFFC1AB04CD3FD67247 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F7F915BF205612340035BB1E /* IQKeyboardManagerSwift.framework */,
 				F752FA16204D1C050037B698 /* JTAppleCalendar.framework */,
 				BAA3E72A12F82558B5C923CE /* Pods_Enzyme_Notebook.framework */,
 			);
@@ -104,9 +114,12 @@
 				F752FA11204CEE450037B698 /* CustomAuthViewController.swift */,
 				F752F9FC204CE91F0037B698 /* ExperimentHomeViewController.swift */,
 				F7BC7488204FABF200F6D135 /* Calendar */,
+				F7BC74922051EE3D00F6D135 /* Constants.swift */,
 				F752FA19204E5FB90037B698 /* NewExperimentalViewController.swift */,
 				F7BC748E2050D41100F6D135 /* EventViewController.swift */,
+				F7F915C020561D2A0035BB1E /* CacheExtension.swift */,
 				F7BC7490205123D000F6D135 /* DetailViewController.swift */,
+				F7BC74942053154300F6D135 /* CollectionViewCell.swift */,
 				F7BC748D2050D3EA00F6D135 /* Model */,
 				F752F9FE204CE91F0037B698 /* Main.storyboard */,
 				F752FA04204CE91F0037B698 /* Assets.xcassets */,
@@ -253,6 +266,7 @@
 				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/JTAppleCalendar/JTAppleCalendar.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
@@ -274,6 +288,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JTAppleCalendar.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
@@ -316,7 +331,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7F915C120561D2A0035BB1E /* CacheExtension.swift in Sources */,
 				F752F9FD204CE91F0037B698 /* ExperimentHomeViewController.swift in Sources */,
+				F7BC74932051EE3D00F6D135 /* Constants.swift in Sources */,
+				F7BC74952053154300F6D135 /* CollectionViewCell.swift in Sources */,
 				F752FA1A204E5FB90037B698 /* NewExperimentalViewController.swift in Sources */,
 				F752FA14204D06A00037B698 /* CalendarNewExperimentViewController.swift in Sources */,
 				F752FA12204CEE450037B698 /* CustomAuthViewController.swift in Sources */,

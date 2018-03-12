@@ -26,6 +26,7 @@ class ExperimentHomeViewController: UIViewController, AuthUIDelegate, UINavigati
     var ref: DatabaseReference!
     var experiments : [ExperimentStruct]! = []
     var arrayForDeletion : [DataSnapshot]! = []
+    var arrayOfAutoKeys: [String]! = []
     var isSingedIn: Bool! = false
     
     //OVERRIDE FUNCTIONS
@@ -121,6 +122,7 @@ class ExperimentHomeViewController: UIViewController, AuthUIDelegate, UINavigati
         _refHandle = ref.child("Experiment").child(userID!).queryOrdered(byChild: childAutoID).observe(.childAdded, with: { (snapshot) in
             
             self.arrayForDeletion.append(snapshot)
+            self.arrayOfAutoKeys.append(snapshot.key)
             let expDict = snapshot.value as! [String:AnyObject]
             let experiment = ExperimentStruct(dictionary: expDict)
             self.experiments.append(experiment!)
@@ -163,6 +165,8 @@ class ExperimentHomeViewController: UIViewController, AuthUIDelegate, UINavigati
             vc.endDate = expSnap.endDate
             vc.navigationItem.title = "Events"
             vc.tabBarController?.tabBar.isHidden = true
+            vc.expTitle = expSnap.title
+            vc.autoKey = arrayOfAutoKeys[row]
         }
     }
     

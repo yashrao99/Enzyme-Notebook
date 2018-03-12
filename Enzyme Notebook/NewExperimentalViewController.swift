@@ -12,7 +12,7 @@ import Firebase
 import FirebaseAuthUI
 
 
-class NewExperimentalViewController: UIViewController, UITextViewDelegate {
+class NewExperimentalViewController: UIViewController {
     
     //OUTLETS
     
@@ -22,14 +22,16 @@ class NewExperimentalViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var endDateTextField: UITextField!
     @IBOutlet weak var protocolTextField: UITextView!
     @IBOutlet weak var confirmExpButton: UIButton!
+    @IBOutlet var dismissKeyboardRecognizer: UITapGestureRecognizer!
+
     
     //VARIABLES
     
     var startDate: String!
     var endDate: String!
-    var genericText: String! = "List out your general protocol.\n You will fill in the details later!\n Example:\n Grow E.coli cultures for 24 hours at 37° C.\n Add IPTG for induction and reduce temperature to 18°C for 12 hours.\n Spin down cells at 3000x rpm for 30 minutes.\n Add 30 mL of Lysis buffer and sonicate at 30% amplitude 3 times.\n Ultracentrifuge at 33,000 rpm and pool supernatant.\n Inject supernatant into FPLC with Ni-NTA column at 2 mL/min.\n Elute with HisB buffer with 500 mm imidazole.\n Analyze elute using gel electrophoresis (SDS-Page)."
     var ref: DatabaseReference!
     var user: User?
+    var keyboardOnScreen = false
     
     //OVERRIDE FUNCTIONS
 
@@ -43,6 +45,10 @@ class NewExperimentalViewController: UIViewController, UITextViewDelegate {
         configureCancel()
         configureDatabase()
         }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+    }
     
     //IB ACTIONS
     
@@ -84,24 +90,39 @@ class NewExperimentalViewController: UIViewController, UITextViewDelegate {
         startDateTextField.textAlignment = .center
         endDateTextField.textAlignment = .center
         
+        titleTextField.delegate = self
+        titleTextField.textColor = UIColor.gray
+        titleTextField.text = Constants.textViewText.titleText
+        
         //Nav Bar
         self.navigationItem.hidesBackButton = true
         
         //UITextView
         protocolTextField.delegate = self
-        protocolTextField.text = genericText
+        protocolTextField.text = Constants.textViewText.protocolTextView
         protocolTextField.textColor = UIColor.gray
         
         //Save Experiment Button
         confirmExpButton.isHidden = true
         
+        //Dismiss TextField by touch
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tap))
+        view.addGestureRecognizer(tapGesture)
+        
+    }
+    //Dismiss keyboard for editable textField/View
+    @objc func tap(gesture: UITapGestureRecognizer) {
+        titleTextField.resignFirstResponder()
+        protocolTextField.resignFirstResponder()
     }
     
+    //Send you back to the root nav controller
     func configureCancel() {
         let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelPressed))
         navigationItem.leftBarButtonItem = cancelButton
     }
     
+    //Will allow to save experiment once necessary requirements are met
     func showButton() {
         if startDateTextField.text != "" && endDateTextField.text != "" && titleTextField.text != "" {
             confirmExpButton.isHidden = false
@@ -113,17 +134,24 @@ class NewExperimentalViewController: UIViewController, UITextViewDelegate {
     func configureDatabase() {
         ref = Database.database().reference()
     }
+}
+
+extension NewExperimentalViewController: UITextViewDelegate {
     
     //TextView Delegate Methods
     
     func textViewDidBeginEditing(_ textView: UITextView) {
-        textView.text = ""
-        textView.textColor = UIColor.black
+        if textView.text == Constants.textViewText.protocolTextView {
+            textView.text = ""
+            textView.textColor = UIColor.black
+        } else {
+            textView.textColor = UIColor.black
+        }
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
-            textView.text = genericText
+            textView.text = Constants.textViewText.protocolTextView
             textView.textColor = UIColor.lightGray
         }
         if !textView.text.isEmpty {
@@ -131,4 +159,42 @@ class NewExperimentalViewController: UIViewController, UITextViewDelegate {
         }
     }
     
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n" {
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
+    }
 }
+
+extension NewExperimentalViewController: UITextFieldDelegate {
+    
+    //Text Field Delegate Methods
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField.text == Constants.textViewText.titleText {
+            textField.text = ""
+            textField.textColor = UIColor.black
+        } else {
+            textField.textColor = UIColor.black
+        }
+    }
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if (textField.text?.isEmpty)! {
+            textField.text = Constants.textViewText.titleText
+            textField.textColor = UIColor.gray
+        }
+        if !(textField.text?.isEmpty)! {
+            showButton()
+        }
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        titleTextField.resignFirstResponder()
+        return true
+    }
+}
+
+
+
+

@@ -27,3 +27,7 @@ struct ExperimentStruct {
         self.startDate = dictionary["startDate"] as! String
     }
 }
+
+struct EventStruct {
+    
+}
