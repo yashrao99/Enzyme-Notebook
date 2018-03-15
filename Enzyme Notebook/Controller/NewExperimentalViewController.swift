@@ -59,6 +59,7 @@ class NewExperimentalViewController: UIViewController {
     @IBAction func cancelPressed(_ sender: Any) {
         var cancelAlert = UIAlertController(title: "Cancel Experiment", message: "All data will be lost", preferredStyle: .alert)
         cancelAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action:UIAlertAction!) in
+            self.navigationController?.viewControllers.remove(at: 1)
             self.navigationController?.popToRootViewController(animated: true)
             }))
         cancelAlert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (action: UIAlertAction!) in
@@ -70,11 +71,13 @@ class NewExperimentalViewController: UIViewController {
     @IBAction func saveExperimentPressed(_ sender: Any) {
         
         let creationDate = Date()
-        
+        let newDate = creationDate.string(with: "MMM dd, yyyy")
+
         //Put the experiment data per user with unique ID onto Firebase to call in tableView
         if let user = Auth.auth().currentUser {
-            ref.child("Experiment").child((user.uid)).childByAutoId().setValue(["Title": "\(titleTextField.text!)", "startDate": "\(startDateTextField.text!)", "endDate" : "\(endDateTextField.text!)", "Protocol" : "\(protocolTextField.text!)", "creationDate": "\(creationDate)"])
+            ref.child("Experiment").child((user.uid)).childByAutoId().setValue(["Title": "\(titleTextField.text!)", "startDate": "\(startDateTextField.text!)", "endDate" : "\(endDateTextField.text!)", "Protocol" : "\(protocolTextField.text!)", "creationDate": "\(newDate)"])
         }
+        self.navigationController?.viewControllers.remove(at: 1)
         self.navigationController?.popToRootViewController(animated: true)
     }
     
@@ -96,6 +99,7 @@ class NewExperimentalViewController: UIViewController {
         
         //Nav Bar
         self.navigationItem.hidesBackButton = true
+        self.tabBarController?.tabBar.isHidden = true
         
         //UITextView
         protocolTextField.delegate = self
@@ -159,13 +163,13 @@ extension NewExperimentalViewController: UITextViewDelegate {
         }
     }
     
-    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        if text == "\n" {
-            textView.resignFirstResponder()
-            return false
-        }
-        return true
-    }
+//    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+//        if text == "\n" {
+ //           textView.resignFirstResponder()
+  //          return false
+  //      }
+   //     return true
+  //  }
 }
 
 extension NewExperimentalViewController: UITextFieldDelegate {
@@ -194,6 +198,8 @@ extension NewExperimentalViewController: UITextFieldDelegate {
         return true
     }
 }
+
+
 
 
 

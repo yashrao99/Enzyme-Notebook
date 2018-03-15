@@ -16,6 +16,7 @@ class ExperimentHomeViewController: UIViewController, AuthUIDelegate, UINavigati
     //OUTLETS
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet var mainView: UIView!
     
     //VARIABLES
     
@@ -28,6 +29,8 @@ class ExperimentHomeViewController: UIViewController, AuthUIDelegate, UINavigati
     var arrayForDeletion : [DataSnapshot]! = []
     var arrayOfAutoKeys: [String]! = []
     var isSingedIn: Bool! = false
+    
+    var imageArray = ["dogimg","elon","expIcon","icon1","ndg","rick1","rickmort","img2"]
     
     //OVERRIDE FUNCTIONS
     
@@ -108,8 +111,14 @@ class ExperimentHomeViewController: UIViewController, AuthUIDelegate, UINavigati
         self.tableView.dataSource = self
         self.tableView.delegate = self
         self.tableView.estimatedRowHeight = 150.0
+        self.tableView.backgroundColor = UIColor.clear
         
         self.tabBarController?.tabBar.isHidden = false
+        
+        let backgroundImg = UIImageView(frame: UIScreen.main.bounds)
+        backgroundImg.image = UIImage(named: "portal")
+        backgroundImg.contentMode = .scaleAspectFill
+        self.view.insertSubview(backgroundImg, at: 0)
     }
    
     func loadCalls() {
@@ -178,16 +187,28 @@ extension ExperimentHomeViewController : UITableViewDelegate, UITableViewDataSou
         return experiments.count
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell: UITableViewCell! = tableView.dequeueReusableCell(withIdentifier: "experimentCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "experimentCell", for: indexPath) as! ExperimentHomeCell
+        
+        cell.cellView.layer.cornerRadius = cell.cellView.frame.height / 2
+        cell.photoView.layer.cornerRadius = cell.photoView.frame.height / 2
+        cell.photoView.layer.masksToBounds = true
+        
+        let randomIndex = Int(arc4random_uniform(UInt32(imageArray.count)))
         
         //Fill in TableView cell with info
         let expSnapshot = experiments[indexPath.row]
-        cell.textLabel?.text = expSnapshot.title
-        cell.detailTextLabel?.isHidden = true
-        cell.imageView?.image = UIImage(named: "expIcon")
-        cell.imageView?.contentMode = .scaleAspectFill
+        cell.titleLabel.text = "Experiment Title: " + expSnapshot.title
+        cell.creationLabel.text = "Created on: " + expSnapshot.creationDate
+        cell.photoView.image = UIImage(named: imageArray[randomIndex])
+        cell.imageView?.contentMode = .scaleAspectFit
+        cell.backgroundColor = UIColor.clear
+        cell.layer.backgroundColor = UIColor.clear.cgColor
         
         return cell
     }
@@ -215,8 +236,6 @@ extension ExperimentHomeViewController : UITableViewDelegate, UITableViewDataSou
         performSegue(withIdentifier: "toEvents", sender: indexPath)
     }
     
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
-    }
+
 }
 

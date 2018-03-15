@@ -20,14 +20,26 @@ struct ExperimentStruct {
     
     init?(dictionary: [String:AnyObject]) {
         
-        self.typedProtocol = dictionary["Protocol"] as! String
-        self.title = dictionary["Title"] as! String
-        self.creationDate = dictionary["creationDate"] as! String
-        self.endDate = dictionary["endDate"] as! String
-        self.startDate = dictionary["startDate"] as! String
+        self.typedProtocol = dictionary["Protocol"] as? String ?? ""
+        self.title = dictionary["Title"] as? String ?? ""
+        self.creationDate = dictionary["creationDate"] as? String ?? ""
+        self.endDate = dictionary["endDate"] as? String ?? ""
+        self.startDate = dictionary["startDate"] as? String ?? ""
     }
 }
 
 struct EventStruct {
     
+    var taskTitle = ""
+    var whatUDid = ""
+    var observations = ""
+    var creationDate = ""
+    
+    init?(dictionary: [String:AnyObject]) {
+        
+        self.whatUDid = dictionary["Experimental"] as? String ?? ""
+        self.taskTitle = dictionary["Title"] as? String ?? ""
+        self.observations = dictionary["Observations"] as? String ?? ""
+        self.creationDate = dictionary["creationDate"] as? String ?? ""
+    }
 }

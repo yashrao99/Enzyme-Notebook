@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		AC7A08388784232BD55EEB7E /* Pods_Enzyme_Notebook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAA3E72A12F82558B5C923CE /* Pods_Enzyme_Notebook.framework */; };
+		F74A8A7B2058737A009870DB /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74A8A7A2058737A009870DB /* EventCell.swift */; };
 		F752F9FB204CE91F0037B698 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F752F9FA204CE91F0037B698 /* AppDelegate.swift */; };
 		F752F9FD204CE91F0037B698 /* ExperimentHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F752F9FC204CE91F0037B698 /* ExperimentHomeViewController.swift */; };
 		F752FA00204CE91F0037B698 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F752F9FE204CE91F0037B698 /* Main.storyboard */; };
@@ -27,12 +28,14 @@
 		F7BC74952053154300F6D135 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7BC74942053154300F6D135 /* CollectionViewCell.swift */; };
 		F7F915BE205612340035BB1E /* IQKeyboardManagerSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7F915BF205612340035BB1E /* IQKeyboardManagerSwift.framework */; };
 		F7F915C120561D2A0035BB1E /* CacheExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F915C020561D2A0035BB1E /* CacheExtension.swift */; };
+		F7F915C42057A2A20035BB1E /* ExperimentHomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F915C32057A2A20035BB1E /* ExperimentHomeCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4BDA9443337F9BAFC109CA5D /* Pods-Enzyme Notebook.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Enzyme Notebook.release.xcconfig"; path = "Pods/Target Support Files/Pods-Enzyme Notebook/Pods-Enzyme Notebook.release.xcconfig"; sourceTree = "<group>"; };
 		73A1D40CEBD5DD07EB50AAF3 /* Pods-Enzyme Notebook.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Enzyme Notebook.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Enzyme Notebook/Pods-Enzyme Notebook.debug.xcconfig"; sourceTree = "<group>"; };
 		BAA3E72A12F82558B5C923CE /* Pods_Enzyme_Notebook.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Enzyme_Notebook.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F74A8A7A2058737A009870DB /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
 		F752F9F7204CE91F0037B698 /* Enzyme Notebook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Enzyme Notebook.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F752F9FA204CE91F0037B698 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F752F9FC204CE91F0037B698 /* ExperimentHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperimentHomeViewController.swift; sourceTree = "<group>"; };
@@ -54,6 +57,7 @@
 		F7BC74942053154300F6D135 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		F7F915BF205612340035BB1E /* IQKeyboardManagerSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = IQKeyboardManagerSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7F915C020561D2A0035BB1E /* CacheExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheExtension.swift; sourceTree = "<group>"; };
+		F7F915C32057A2A20035BB1E /* ExperimentHomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperimentHomeCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,15 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				F752F9FA204CE91F0037B698 /* AppDelegate.swift */,
-				F752FA11204CEE450037B698 /* CustomAuthViewController.swift */,
-				F752F9FC204CE91F0037B698 /* ExperimentHomeViewController.swift */,
-				F7BC7488204FABF200F6D135 /* Calendar */,
-				F7BC74922051EE3D00F6D135 /* Constants.swift */,
-				F752FA19204E5FB90037B698 /* NewExperimentalViewController.swift */,
-				F7BC748E2050D41100F6D135 /* EventViewController.swift */,
-				F7F915C020561D2A0035BB1E /* CacheExtension.swift */,
-				F7BC7490205123D000F6D135 /* DetailViewController.swift */,
-				F7BC74942053154300F6D135 /* CollectionViewCell.swift */,
+				F7F915C220579DC00035BB1E /* Controller */,
 				F7BC748D2050D3EA00F6D135 /* Model */,
 				F752F9FE204CE91F0037B698 /* Main.storyboard */,
 				F752FA04204CE91F0037B698 /* Assets.xcassets */,
@@ -131,21 +127,39 @@
 			path = "Enzyme Notebook";
 			sourceTree = "<group>";
 		};
-		F7BC7488204FABF200F6D135 /* Calendar */ = {
+		F7BC7488204FABF200F6D135 /* Custom Cells */ = {
 			isa = PBXGroup;
 			children = (
-				F752FA13204D06A00037B698 /* CalendarNewExperimentViewController.swift */,
+				F7BC74942053154300F6D135 /* CollectionViewCell.swift */,
 				F752FA17204D2B330037B698 /* CustomCell.swift */,
+				F7F915C32057A2A20035BB1E /* ExperimentHomeCell.swift */,
+				F74A8A7A2058737A009870DB /* EventCell.swift */,
 			);
-			path = Calendar;
+			path = "Custom Cells";
 			sourceTree = "<group>";
 		};
 		F7BC748D2050D3EA00F6D135 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				F7BC74892050A5C500F6D135 /* FirebaseClasses.swift */,
+				F7BC74922051EE3D00F6D135 /* Constants.swift */,
+				F7F915C020561D2A0035BB1E /* CacheExtension.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		F7F915C220579DC00035BB1E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				F752FA11204CEE450037B698 /* CustomAuthViewController.swift */,
+				F752F9FC204CE91F0037B698 /* ExperimentHomeViewController.swift */,
+				F752FA19204E5FB90037B698 /* NewExperimentalViewController.swift */,
+				F7BC748E2050D41100F6D135 /* EventViewController.swift */,
+				F752FA13204D06A00037B698 /* CalendarNewExperimentViewController.swift */,
+				F7BC7490205123D000F6D135 /* DetailViewController.swift */,
+				F7BC7488204FABF200F6D135 /* Custom Cells */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -338,9 +352,11 @@
 				F752FA1A204E5FB90037B698 /* NewExperimentalViewController.swift in Sources */,
 				F752FA14204D06A00037B698 /* CalendarNewExperimentViewController.swift in Sources */,
 				F752FA12204CEE450037B698 /* CustomAuthViewController.swift in Sources */,
+				F74A8A7B2058737A009870DB /* EventCell.swift in Sources */,
 				F752FA03204CE91F0037B698 /* Enzyme_Notebook.xcdatamodeld in Sources */,
 				F7BC748F2050D41100F6D135 /* EventViewController.swift in Sources */,
 				F752FA18204D2B330037B698 /* CustomCell.swift in Sources */,
+				F7F915C42057A2A20035BB1E /* ExperimentHomeCell.swift in Sources */,
 				F7BC7491205123D000F6D135 /* DetailViewController.swift in Sources */,
 				F752F9FB204CE91F0037B698 /* AppDelegate.swift in Sources */,
 				F7BC748A2050A5C500F6D135 /* FirebaseClasses.swift in Sources */,

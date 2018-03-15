@@ -13,7 +13,7 @@ struct Constants {
     
     struct textViewText {
         
-        static let protocolTextView = "List out your general protocol.\n You will fill in the details later!\n Example:\n Grow E.coli cultures for 24 hours at 37° C.\n Add IPTG for induction and reduce temperature to 18°C for 12 hours.\n Spin down cells at 3000x rpm for 30 minutes.\n Add 30 mL of Lysis buffer and sonicate at 30% amplitude 3 times.\n Ultracentrifuge at 33,000 rpm and pool supernatant.\n Inject supernatant into FPLC with Ni-NTA column at 2 mL/min.\n Elute with HisB buffer with 500 mm imidazole.\n Analyze elute using gel electrophoresis (SDS-Page)."
+        static let protocolTextView = "List out your general protocol.\n You will fill in the details later!\n Example:\n Grow E.coli cultures for 24 hours at 37° C.\n Spin down cells at 3000x rpm for 30 minutes.\n Add 30 mL of Lysis buffer and sonicate at 30% amplitude 3 times.\n Ultracentrifuge at 33,000 rpm and pool supernatant.\n Inject supernatant into FPLC with Ni-NTA column at 2 mL/min.\n Elute with HisB buffer with 500 mm imidazole.\n Analyze elute using gel electrophoresis (SDS-Page)."
         
         static let detailTextView1 = "List out the details of what you did. Example:\n\n I added 25.0g of CaCl2, 40 g NaCL to 950 mL of Nano-pure water.\n I then added 50 mL of 500 mM TRIS pH 7.5 to bring the total volume to 1 mL.\n I checked the pH and added 1 mL of 1M HCL to bring the pH down to 6.5. (TAKE PICTURE OF PH PROBE)"
         
@@ -23,6 +23,17 @@ struct Constants {
         
         static let titleText = "Please name your experiment"
         
-        static let detailText = "Please name the task you are completing today"
+        static let detailText = "Title of protocol task"
+        
+        static let notificationTxt = "Please set the text for your reminder"
+    }
+}
+
+
+extension Date {
+    func string(with format: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = format
+        return dateFormatter.string(from: self)
     }
 }
