@@ -11,5 +11,8 @@ import UIKit
 
 class EventCell : UITableViewCell {
     
-    
+    @IBOutlet weak var photoView: UIImageView!
+    @IBOutlet weak var expLabel: UILabel!
+    @IBOutlet weak var creationLabel: UILabel!
+    @IBOutlet weak var cellView: UIView!
 }

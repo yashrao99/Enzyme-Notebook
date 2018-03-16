@@ -30,7 +30,7 @@ class ExperimentHomeViewController: UIViewController, AuthUIDelegate, UINavigati
     var arrayOfAutoKeys: [String]! = []
     var isSingedIn: Bool! = false
     
-    var imageArray = ["dogimg","elon","expIcon","icon1","ndg","rick1","rickmort","img2"]
+    var imageArray = ["elon","expIcon","icon1","ndg","rick1","rickmort"]
     
     //OVERRIDE FUNCTIONS
     
@@ -106,7 +106,8 @@ class ExperimentHomeViewController: UIViewController, AuthUIDelegate, UINavigati
         let leftbutton = UIBarButtonItem(title: "Sign Out", style: .plain, target: self, action: #selector(signOut))
         self.navigationItem.leftBarButtonItem = leftbutton
         
-        self.navigationItem.title = "Home"
+        self.navigationItem.title = "Enzymatic"
+        
         
         self.tableView.dataSource = self
         self.tableView.delegate = self
@@ -203,7 +204,7 @@ extension ExperimentHomeViewController : UITableViewDelegate, UITableViewDataSou
         
         //Fill in TableView cell with info
         let expSnapshot = experiments[indexPath.row]
-        cell.titleLabel.text = "Experiment Title: " + expSnapshot.title
+        cell.titleLabel.text = "Experiment: " + expSnapshot.title
         cell.creationLabel.text = "Created on: " + expSnapshot.creationDate
         cell.photoView.image = UIImage(named: imageArray[randomIndex])
         cell.imageView?.contentMode = .scaleAspectFit

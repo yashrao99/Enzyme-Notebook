@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		AC7A08388784232BD55EEB7E /* Pods_Enzyme_Notebook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAA3E72A12F82558B5C923CE /* Pods_Enzyme_Notebook.framework */; };
 		F74A8A7B2058737A009870DB /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74A8A7A2058737A009870DB /* EventCell.swift */; };
+		F74A8A7D205A3A19009870DB /* get_schwifty__a_rick_and_morty_font_by_jonizaak-dajw4u8.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F74A8A7C205A3A15009870DB /* get_schwifty__a_rick_and_morty_font_by_jonizaak-dajw4u8.ttf */; };
 		F752F9FB204CE91F0037B698 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F752F9FA204CE91F0037B698 /* AppDelegate.swift */; };
 		F752F9FD204CE91F0037B698 /* ExperimentHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F752F9FC204CE91F0037B698 /* ExperimentHomeViewController.swift */; };
 		F752FA00204CE91F0037B698 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F752F9FE204CE91F0037B698 /* Main.storyboard */; };
@@ -36,6 +37,7 @@
 		73A1D40CEBD5DD07EB50AAF3 /* Pods-Enzyme Notebook.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Enzyme Notebook.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Enzyme Notebook/Pods-Enzyme Notebook.debug.xcconfig"; sourceTree = "<group>"; };
 		BAA3E72A12F82558B5C923CE /* Pods_Enzyme_Notebook.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Enzyme_Notebook.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F74A8A7A2058737A009870DB /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
+		F74A8A7C205A3A15009870DB /* get_schwifty__a_rick_and_morty_font_by_jonizaak-dajw4u8.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "get_schwifty__a_rick_and_morty_font_by_jonizaak-dajw4u8.ttf"; sourceTree = "<group>"; };
 		F752F9F7204CE91F0037B698 /* Enzyme Notebook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Enzyme Notebook.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F752F9FA204CE91F0037B698 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F752F9FC204CE91F0037B698 /* ExperimentHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperimentHomeViewController.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 				F7BC748D2050D3EA00F6D135 /* Model */,
 				F752F9FE204CE91F0037B698 /* Main.storyboard */,
 				F752FA04204CE91F0037B698 /* Assets.xcassets */,
+				F74A8A7C205A3A15009870DB /* get_schwifty__a_rick_and_morty_font_by_jonizaak-dajw4u8.ttf */,
 				F752FA06204CE91F0037B698 /* LaunchScreen.storyboard */,
 				F752FA09204CE91F0037B698 /* Info.plist */,
 				F752FA0F204CED680037B698 /* GoogleService-Info.plist */,
@@ -225,6 +228,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F752FA08204CE91F0037B698 /* LaunchScreen.storyboard in Resources */,
+				F74A8A7D205A3A19009870DB /* get_schwifty__a_rick_and_morty_font_by_jonizaak-dajw4u8.ttf in Resources */,
 				F752FA10204CED680037B698 /* GoogleService-Info.plist in Resources */,
 				F752FA05204CE91F0037B698 /* Assets.xcassets in Resources */,
 				F752FA00204CE91F0037B698 /* Main.storyboard in Resources */,

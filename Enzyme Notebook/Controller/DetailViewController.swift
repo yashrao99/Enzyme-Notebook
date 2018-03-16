@@ -13,6 +13,7 @@ import UserNotifications
 
 class DetailViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    //OUTLETS
     @IBOutlet weak var photoCollection: UICollectionView!
     @IBOutlet weak var confirmButton: UIButton!
     @IBOutlet weak var observationTextView: UITextView!
@@ -27,6 +28,7 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
     @IBOutlet weak var setNotifButton: UIButton!
     @IBOutlet weak var notificationText: UITextField!
     
+    //GENERAL VARIABLES
     var storageRef: StorageReference!
     var experimentTitle: String!
     var dbRef: DatabaseReference!
@@ -35,20 +37,26 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
     var autoKey: String!
     var imageCache = NSCache<NSString,UIImage>()
     var photoKeys : [String] = []
-
+    var test: String!
+    
+    //DATA PASSED FROM SPECIFIC CELL
+    var cellTitle: String!
+    var cellWhatUDid: String!
+    var cellObservations: String!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpNotifications()
         configureUI()
         configureStorage()
-        configureCancel()
         configureCollectionView()
-    }
+        configureButton()
+        }
     
     override func viewWillAppear(_ animated: Bool) {
         DispatchQueue.main.async {
             self.arrayURL.removeAll()
-            self.photoCollection.reloadData()
+            self.downloadImagesAtStart()
             }
         }
     
@@ -60,9 +68,8 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
         if let user = Auth.auth().currentUser {
             let keyPath = Database.database().reference().child("Experiment").child((user.uid)).child(self.autoKey).child(self.titleText.text!)
             keyPath.updateChildValues(["Title": self.titleText.text, "Experimental" : self.whatDidUDoText.text, "Observations" : self.observationTextView.text, "creationDate" : "\(newDate)"])
-        }
+        }        
         self.navigationController?.popViewController(animated: true)
-        let previousVC = self.navigationController?.viewControllers.last as! EventViewController
     }
     
     @IBAction func openCameraButton(_ sender: AnyObject) {
@@ -79,23 +86,31 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
     }
 
     @IBAction func cancelPressed(_ sender: Any) {
-        var cancelAlert = UIAlertController(title: "Cancel Experimental Event", message: "All data will be lost", preferredStyle: .alert)
-        cancelAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action:UIAlertAction!) in
-
-            if let user = Auth.auth().currentUser {
-                if self.photoCollection.numberOfItems(inSection: 0) != 0 {
-                    let databaseRef = self.dbRef.child("Experiment").child(user.uid).child(self.autoKey).child(self.titleText.text!)
-                    databaseRef.removeValue()
-                }
-            }
+        
+        if self.titleText.text == "" || (self.titleText.text?.isEmpty)! {
             self.navigationController?.popViewController(animated: true)
-        }))
-        cancelAlert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (action: UIAlertAction!) in
-            self.dismiss(animated: true, completion: nil)
-        }))
-        self.present(cancelAlert, animated: true, completion: nil)
+        } else {
+            var cancelAlert = UIAlertController(title: "Cancel Experimental Event", message: "All data will be lost", preferredStyle: .alert)
+            cancelAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action:UIAlertAction!) in
+                
+                if let user = Auth.auth().currentUser {
+                    
+                    let databaseRef = Database.database().reference().child("Experiment").child(user.uid).child(self.autoKey)
+                    print(databaseRef)
+                    if let title = self.titleText.text {
+                        print(title)
+                        databaseRef.child(title).removeValue()
+                    }
+                }
+                self.navigationController?.popViewController(animated: true)
+            }))
+            cancelAlert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (action: UIAlertAction!) in
+                self.dismiss(animated: true, completion: nil)
+            }))
+            self.present(cancelAlert, animated: true, completion: nil)
+        }
     }
-    
+ 
     @IBAction func setNotification(_ sender: Any) {
         
         let hrsInt : Int? = Int(hrsField.text!) ?? 0
@@ -123,30 +138,6 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
         }
     }
 
-    func configureUI() {
-        
-        observationTextView.text = Constants.textViewText.detailTextView2
-        whatDidUDoText.text = Constants.textViewText.detailTextView1
-        observationTextView.textColor = UIColor.gray
-        whatDidUDoText.textColor = UIColor.gray
-        observationTextView.delegate = self
-        whatDidUDoText.delegate = self
-        titleText.delegate = self
-        titleText.text = Constants.textViewText.detailText
-        titleText.textColor = UIColor.gray
-        titleText.textAlignment = .center
-        notificationText.delegate = self
-        notificationText.textColor = UIColor.gray
-        notificationText.text = Constants.textViewText.notificationTxt
-        
-        setNotifButton.backgroundColor = UIColor.red
-        
-        let cameraButton = UIBarButtonItem(barButtonSystemItem: .camera, target: self, action: #selector(openCameraButton))
-        self.navigationItem.rightBarButtonItem = cameraButton
-        cameraButton.isEnabled = false
-        self.navigationItem.title = "Details"
-    }
-    
     func setUpNotifications() {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { (success, error) in
             
@@ -195,12 +186,13 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
         storageRef = Storage.storage().reference()
     }
 
-
     func uploadPhotoToFirebase(photoData: Data) {
     
         if let user = Auth.auth().currentUser {
+            print(self.experimentTitle)
             let imagePath = "ExpPhotos/" + user.uid + "/" + self.experimentTitle + "/\(Double(Date.timeIntervalSinceReferenceDate * 1000)).jpg"
             let metadata = StorageMetadata()
+            self.confirmButton.isEnabled = false
             metadata.contentType = "image/jpeg"
             storageRef!.child(imagePath).putData(photoData, metadata: metadata) { (metadata, error) in
             if let error = error {
@@ -212,16 +204,14 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
                 let photoKey = databaseRef.key
                 self.photoKeys.append(photoKey)
                 databaseRef.setValue(["photoURL":downloadURL], withCompletionBlock: { (error, snapshot) in
-                    self.confirmButton.isEnabled = false
                     if error != nil {
                         print("Error :\(error)")
                     } else {
                         print("Completed")
-                        self.confirmButton.isEnabled = true
                 }
             })
-            self.arrayURL.removeAll()
-            self.downloadImagesAtStart()
+            self.confirmButton.isEnabled = true
+            //self.arrayURL.removeAll()
             }
         }
     }
@@ -230,7 +220,6 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
     
         if let user = Auth.auth().currentUser{
         
-            self.arrayURL.removeAll()
             if self.titleText.text != "" {
                 Database.database().reference().child("Experiment").child(user.uid).child(self.autoKey).child(self.titleText.text!).observe(.childAdded, with: { (snapshot) in
                     if snapshot.exists() {
@@ -254,10 +243,78 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
             }
         }
     }
-    
+ /*
     func configureCancel() {
-       let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelPressed))
-        navigationItem.leftBarButtonItem = cancelButton
+        if sentCancel != nil {
+            let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelPressed))
+            navigationItem.leftBarButtonItem = cancelButton
+        }
+    }
+   */
+    func configureButton() {
+        if titleText.text == nil || (titleText.text?.isEmpty)! {
+            confirmButton.isEnabled = false
+        } else {
+            confirmButton.isEnabled = true
+        }
+    }
+    
+    func configureUI() {
+        
+        observationTextView.text = Constants.textViewText.detailTextView2
+        whatDidUDoText.text = Constants.textViewText.detailTextView1
+        titleText.placeholder = Constants.textViewText.detailText
+        notificationText.placeholder = Constants.textViewText.notificationTxt
+        
+        whatDidUDoText.textColor = UIColor.lightGray
+        observationTextView.textColor = UIColor.lightGray
+        
+        observationTextView.delegate = self
+        whatDidUDoText.delegate = self
+        titleText.delegate = self
+        notificationText.delegate = self
+        
+        titleText.textAlignment = .center
+        
+        observationTextView.layer.borderColor = UIColor(red:0.21, green:0.79, blue:0.87, alpha:1.0).cgColor
+        observationTextView.layer.borderWidth = 2.3
+        observationTextView.layer.cornerRadius = 15
+        whatDidUDoText.layer.borderColor = UIColor(red:0.21, green:0.79, blue:0.87, alpha:1.0).cgColor
+        whatDidUDoText.layer.borderWidth = 2.3
+        whatDidUDoText.layer.cornerRadius = 15
+        /*
+        titleText.layer.borderColor = UIColor(red:0.21, green:0.79, blue:0.87, alpha:1.0).cgColor
+        titleText.layer.borderWidth = 2.3
+        titleText.layer.cornerRadius = 15
+        notificationText.layer.borderColor = UIColor(red:0.21, green:0.79, blue:0.87, alpha:1.0).cgColor
+        notificationText.layer.borderWidth = 2.3
+        notificationText.layer.cornerRadius = 15
+        */
+        setNotifButton.backgroundColor = UIColor.red
+        
+        let cameraButton = UIBarButtonItem(barButtonSystemItem: .camera, target: self, action: #selector(openCameraButton))
+        self.navigationItem.rightBarButtonItem = cameraButton
+        cameraButton.isEnabled = false
+        self.navigationItem.title = "Details"
+        
+        if cellTitle != nil {
+            titleText.text = cellTitle
+            titleText.textColor = UIColor.black
+            self.navigationItem.rightBarButtonItem?.isEnabled = true
+        }
+        if cellObservations != nil {
+            observationTextView.text = cellObservations
+            observationTextView.textColor = UIColor.black
+        }
+        if cellWhatUDid != nil {
+            whatDidUDoText.text = cellWhatUDid
+            whatDidUDoText.textColor = UIColor.black
+        }
+        
+        if test != nil {
+            let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelPressed))
+            navigationItem.leftBarButtonItem = cancelButton
+        }
     }
 }
 
@@ -269,9 +326,17 @@ extension DetailViewController : UITextViewDelegate {
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
-        if textView.text.isEmpty {
-            textView.text = Constants.textViewText.genericText
-            textView.textColor = UIColor.gray
+        if textView == whatDidUDoText {
+            if textView.text.isEmpty {
+                textView.text = "Describe what you did!!"
+                textView.textColor = UIColor.gray
+            }
+        }
+        if textView == observationTextView {
+            if textView.text.isEmpty {
+                textView.text = "List any observations you may have had!!"
+                textView.textColor = UIColor.gray
+            }
         }
     }
 }
@@ -284,11 +349,26 @@ extension DetailViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.arrayURL.count
+        if self.arrayURL.count == 0 {
+            return 3
+        } else {
+         return self.arrayURL.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = photoCollection.dequeueReusableCell(withReuseIdentifier: "photoCell", for: indexPath) as! CollectionViewCell
+        
+        if self.arrayURL.count == 0 {
+            cell.noPhotoLabel.isHidden = false
+            cell.activityIndicator.isHidden = true
+            return cell
+        } else {
+            cell.noPhotoLabel.isHidden = true
+        }
+        
+        print(self.arrayURL.count)
+        
         cell.imageView.image = nil
         cell.activityIndicator.startAnimating()
         var stringURL = arrayURL[indexPath.row]
@@ -326,28 +406,31 @@ extension DetailViewController: UITextFieldDelegate {
             textField.textColor = UIColor.black
         } else {
             textField.textColor = UIColor.black
-        }
+            }
         
         if textField == notificationText {
-            if textField.text == Constants.textViewText.notificationTxt {
                 textField.text = ""
                 textField.textColor = UIColor.black
-            }
         }
     }
     func textFieldDidEndEditing(_ textField: UITextField) {
-        if (textField.text?.isEmpty)! {
-            textField.text = Constants.textViewText.titleText
-            textField.textColor = UIColor.gray
-        }
-        if !(textField.text?.isEmpty)! {
-            self.navigationItem.rightBarButtonItem?.isEnabled = true
-        }
         
+        if textField == titleText {
+            if (textField.text?.isEmpty)! {
+                textField.text = Constants.textViewText.detailText
+                textField.textColor = UIColor.gray
+            }
+            if !(textField.text?.isEmpty)! {
+                self.navigationItem.rightBarButtonItem?.isEnabled = true
+            }
+        }
+
         if textField == notificationText {
             if (textField.text?.isEmpty)! {
                 textField.text = Constants.textViewText.notificationTxt
+                textField.textColor = UIColor.gray
             }
         }
+        configureButton()
     }
 }
