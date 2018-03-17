@@ -50,9 +50,34 @@ class ExperimentHomeViewController: UIViewController, AuthUIDelegate, UINavigati
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        //Pack info for child VC (newExperiment)
+        if segue.identifier == "newExperiment" {
+            let vc = segue.destination as! NewExperimentalViewController
+            vc.navigationItem.title = "New Experiment"
+            vc.user = self.user
+            vc.tabBarController?.tabBar.isHidden = true
+        }
+        
+        if segue.identifier == "toEvents" {
+            let vc = segue.destination as! EventViewController
+            let row = (sender as! IndexPath).row
+            let expSnap = experiments[row]
+            vc.expProtocol = expSnap.typedProtocol
+            vc.startDate = expSnap.startDate
+            vc.endDate = expSnap.endDate
+            vc.navigationItem.title = "Events"
+            vc.tabBarController?.tabBar.isHidden = true
+            vc.expTitle = expSnap.title
+            vc.autoKey = arrayOfAutoKeys[row]
+        }
+    }
+    
     //CONVENIENCE FUNCTIONS
     
     func configureAuth() {
+        //Set up the FirebaseAuth, only allow access if authenticated
         
         let provider: [FUIAuthProvider] = [FUIGoogleAuth()]
         FUIAuth.defaultAuthUI()?.providers = provider
@@ -155,31 +180,6 @@ class ExperimentHomeViewController: UIViewController, AuthUIDelegate, UINavigati
     @objc func startNewExperiment() {
         performSegue(withIdentifier: "newExperiment", sender: nil)
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        //Pack info for child VC (newExperiment)
-        if segue.identifier == "newExperiment" {
-            let vc = segue.destination as! NewExperimentalViewController
-            vc.navigationItem.title = "New Experiment"
-            vc.user = self.user
-            vc.tabBarController?.tabBar.isHidden = true
-        }
-        
-        if segue.identifier == "toEvents" {
-            let vc = segue.destination as! EventViewController
-            let row = (sender as! IndexPath).row
-            let expSnap = experiments[row]
-            vc.expProtocol = expSnap.typedProtocol
-            vc.startDate = expSnap.startDate
-            vc.endDate = expSnap.endDate
-            vc.navigationItem.title = "Events"
-            vc.tabBarController?.tabBar.isHidden = true
-            vc.expTitle = expSnap.title
-            vc.autoKey = arrayOfAutoKeys[row]
-        }
-    }
-    
 }
 
 extension ExperimentHomeViewController : UITableViewDelegate, UITableViewDataSource {
@@ -236,7 +236,5 @@ extension ExperimentHomeViewController : UITableViewDelegate, UITableViewDataSou
         self.tableView.deselectRow(at: indexPath, animated: true)
         performSegue(withIdentifier: "toEvents", sender: indexPath)
     }
-    
-
 }
 

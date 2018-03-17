@@ -36,7 +36,6 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
     fileprivate var _refHandle: DatabaseHandle!
     var autoKey: String!
     var imageCache = NSCache<NSString,UIImage>()
-    var photoKeys : [String] = []
     var test: String!
     
     //DATA PASSED FROM SPECIFIC CELL
@@ -51,15 +50,9 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
         configureStorage()
         configureCollectionView()
         configureButton()
+        downloadPreviousImages()
         }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        DispatchQueue.main.async {
-            self.arrayURL.removeAll()
-            self.downloadImagesAtStart()
-            }
-        }
-    
+        
     @IBAction func buttonPressed(_ sender: Any) {
         
         let creationDate = Date()
@@ -87,8 +80,10 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
 
     @IBAction func cancelPressed(_ sender: Any) {
         
-        if self.titleText.text == "" || (self.titleText.text?.isEmpty)! {
+        if (self.titleText.text?.isEmpty)! || self.titleText.text == nil {
+            self.titleText.text = "Empty"
             self.navigationController?.popViewController(animated: true)
+
         } else {
             var cancelAlert = UIAlertController(title: "Cancel Experimental Event", message: "All data will be lost", preferredStyle: .alert)
             cancelAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action:UIAlertAction!) in
@@ -96,9 +91,7 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
                 if let user = Auth.auth().currentUser {
                     
                     let databaseRef = Database.database().reference().child("Experiment").child(user.uid).child(self.autoKey)
-                    print(databaseRef)
                     if let title = self.titleText.text {
-                        print(title)
                         databaseRef.child(title).removeValue()
                     }
                 }
@@ -177,7 +170,10 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
         
         if let chosenImage = info[UIImagePickerControllerOriginalImage] as? UIImage, let photoData = UIImageJPEGRepresentation(chosenImage, 0.8) {
             uploadPhotoToFirebase(photoData: photoData)
-            self.arrayURL.removeAll()
+        }
+        
+        if arrayURL.count == 0 {
+            self.downloadNewImages()
         }
         dismiss(animated: true, completion: nil)
     }
@@ -189,7 +185,6 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
     func uploadPhotoToFirebase(photoData: Data) {
     
         if let user = Auth.auth().currentUser {
-            print(self.experimentTitle)
             let imagePath = "ExpPhotos/" + user.uid + "/" + self.experimentTitle + "/\(Double(Date.timeIntervalSinceReferenceDate * 1000)).jpg"
             let metadata = StorageMetadata()
             self.confirmButton.isEnabled = false
@@ -201,8 +196,6 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
             }
             let downloadURL = metadata?.downloadURL()?.absoluteString
                 let databaseRef = Database.database().reference().child("Experiment").child(user.uid).child(self.autoKey).child(self.titleText.text!).childByAutoId()
-                let photoKey = databaseRef.key
-                self.photoKeys.append(photoKey)
                 databaseRef.setValue(["photoURL":downloadURL], withCompletionBlock: { (error, snapshot) in
                     if error != nil {
                         print("Error :\(error)")
@@ -211,27 +204,47 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
                 }
             })
             self.confirmButton.isEnabled = true
-            //self.arrayURL.removeAll()
+            }
+        }
+    }
+    
+    func downloadPreviousImages() {
+        
+        self.arrayURL.removeAll()
+        
+        if let user = Auth.auth().currentUser {
+            
+            if self.cellTitle != nil {
+                Database.database().reference().child("Experiment").child(user.uid).child(self.autoKey).child(self.titleText.text!).observe(.childAdded, with: { (snapshot) in
+                    if snapshot.exists() {
+                        if let snapDict = snapshot.value as? [String:AnyObject] {
+                            let photoUrl = snapDict["photoURL"] as! String
+                            
+                            DispatchQueue.main.async {
+                                self.arrayURL.append(photoUrl)
+                                print("DOWNLOAD PREVIOUS IMAGES: ", self.arrayURL.count)
+                                self.photoCollection.reloadData()
+                            }
+                        }
+                    }
+                })
             }
         }
     }
 
-    func downloadImagesAtStart() {
-    
+    func downloadNewImages() {
+        self.arrayURL.removeAll()
         if let user = Auth.auth().currentUser{
         
             if self.titleText.text != "" {
                 Database.database().reference().child("Experiment").child(user.uid).child(self.autoKey).child(self.titleText.text!).observe(.childAdded, with: { (snapshot) in
                     if snapshot.exists() {
-                        print(snapshot)
-                        for snap in snapshot.children.allObjects {
-                            let id = snap as! DataSnapshot
-                            let snapVal = snapshot.value as! [String:AnyObject]
+                        if let snapVal = snapshot.value as? [String:AnyObject] {
                             let url = snapVal["photoURL"] as! String
                             
                             DispatchQueue.main.async {
                                 self.arrayURL.append(url)
-                                print(self.arrayURL.count)
+                                print("DOWNLOAD NEW IMAGES: ", self.arrayURL.count)
                                 self.photoCollection.reloadData()
                             }
                         }
@@ -241,6 +254,12 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
                 })
                 
             }
+        }
+    }
+    
+    deinit {
+        if let user = Auth.auth().currentUser {
+            Database.database().reference().child("Experiment").child(user.uid).child(self.autoKey).child(self.titleText.text!).removeAllObservers()
         }
     }
  /*
@@ -282,14 +301,7 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
         whatDidUDoText.layer.borderColor = UIColor(red:0.21, green:0.79, blue:0.87, alpha:1.0).cgColor
         whatDidUDoText.layer.borderWidth = 2.3
         whatDidUDoText.layer.cornerRadius = 15
-        /*
-        titleText.layer.borderColor = UIColor(red:0.21, green:0.79, blue:0.87, alpha:1.0).cgColor
-        titleText.layer.borderWidth = 2.3
-        titleText.layer.cornerRadius = 15
-        notificationText.layer.borderColor = UIColor(red:0.21, green:0.79, blue:0.87, alpha:1.0).cgColor
-        notificationText.layer.borderWidth = 2.3
-        notificationText.layer.cornerRadius = 15
-        */
+
         setNotifButton.backgroundColor = UIColor.red
         
         let cameraButton = UIBarButtonItem(barButtonSystemItem: .camera, target: self, action: #selector(openCameraButton))
@@ -314,6 +326,7 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
         if test != nil {
             let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelPressed))
             navigationItem.leftBarButtonItem = cancelButton
+            //cancelButton.isEnabled = false
         }
     }
 }
@@ -338,6 +351,45 @@ extension DetailViewController : UITextViewDelegate {
                 textView.textColor = UIColor.gray
             }
         }
+    }
+}
+
+extension DetailViewController: UITextFieldDelegate {
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        
+        if textField.text == Constants.textViewText.detailText {
+            textField.text = ""
+            textField.textColor = UIColor.black
+        } else {
+            textField.textColor = UIColor.black
+        }
+        
+        if textField == notificationText {
+            textField.text = ""
+            textField.textColor = UIColor.black
+        }
+    }
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        
+        if textField == titleText {
+            if (textField.text?.isEmpty)! {
+                textField.text = Constants.textViewText.detailText
+                textField.textColor = UIColor.gray
+            }
+            if !(textField.text?.isEmpty)! {
+                self.navigationItem.rightBarButtonItem?.isEnabled = true
+                //self.navigationItem.leftBarButtonItem?.isEnabled = true
+            }
+        }
+        
+        if textField == notificationText {
+            if (textField.text?.isEmpty)! {
+                textField.text = Constants.textViewText.notificationTxt
+                textField.textColor = UIColor.gray
+            }
+        }
+        configureButton()
     }
 }
 
@@ -367,8 +419,6 @@ extension DetailViewController: UICollectionViewDelegate, UICollectionViewDataSo
             cell.noPhotoLabel.isHidden = true
         }
         
-        print(self.arrayURL.count)
-        
         cell.imageView.image = nil
         cell.activityIndicator.startAnimating()
         var stringURL = arrayURL[indexPath.row]
@@ -397,40 +447,3 @@ extension DetailViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
 }
 
-extension DetailViewController: UITextFieldDelegate {
-    
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        
-        if textField.text == Constants.textViewText.detailText {
-            textField.text = ""
-            textField.textColor = UIColor.black
-        } else {
-            textField.textColor = UIColor.black
-            }
-        
-        if textField == notificationText {
-                textField.text = ""
-                textField.textColor = UIColor.black
-        }
-    }
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        
-        if textField == titleText {
-            if (textField.text?.isEmpty)! {
-                textField.text = Constants.textViewText.detailText
-                textField.textColor = UIColor.gray
-            }
-            if !(textField.text?.isEmpty)! {
-                self.navigationItem.rightBarButtonItem?.isEnabled = true
-            }
-        }
-
-        if textField == notificationText {
-            if (textField.text?.isEmpty)! {
-                textField.text = Constants.textViewText.notificationTxt
-                textField.textColor = UIColor.gray
-            }
-        }
-        configureButton()
-    }
-}

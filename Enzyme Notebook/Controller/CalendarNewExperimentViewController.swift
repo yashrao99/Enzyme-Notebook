@@ -46,6 +46,11 @@ class CalendarNewExperimentViewController : UIViewController {
         let previousVC = self.navigationController?.viewControllers.last as! NewExperimentalViewController
         previousVC.endDateTextField.text = self.endDateTextField.text
         previousVC.startDateTextField.text = self.startTextField.text
+        previousVC.startDateTextField.isHidden = false
+        previousVC.endDateTextField.isHidden = false
+        previousVC.startDateTextField.isEnabled = false
+        previousVC.endDateTextField.isEnabled = false
+
     }
     
     //CONVENIENCE FUNCTIONS

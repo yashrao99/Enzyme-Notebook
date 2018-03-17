@@ -88,8 +88,8 @@ class NewExperimentalViewController: UIViewController {
         //Text Fields
         startDateTextField.text = startDate ?? ""
         endDateTextField.text = endDate ?? ""
-        startDateTextField.isEnabled = false
-        endDateTextField.isEnabled = false
+        startDateTextField.isHidden = true
+        endDateTextField.isHidden = true
         startDateTextField.textAlignment = .center
         endDateTextField.textAlignment = .center
         

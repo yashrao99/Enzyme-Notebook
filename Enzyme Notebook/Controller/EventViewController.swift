@@ -12,6 +12,7 @@ import Firebase
 
 class EventViewController : UIViewController {
     
+    //OUTLETS
     @IBOutlet weak var startLabel: UILabel!
     @IBOutlet weak var endLabel: UILabel!
     @IBOutlet weak var edLabel: UILabel!
@@ -19,6 +20,7 @@ class EventViewController : UIViewController {
     @IBOutlet weak var protocolTextField: UITextView!
     @IBOutlet weak var eventTableView: UITableView!
     
+    //VARIABLES
     var expProtocol: String!
     var startDate: String!
     var endDate: String!
@@ -27,12 +29,13 @@ class EventViewController : UIViewController {
     var autoKeyForPics: String!
     var dbRef: DatabaseReference!
     fileprivate var _refHandle: DatabaseHandle!
+    fileprivate var _refHandle2: DatabaseHandle!
     var eventArray : [EventStruct] = []
     var pbTitle: String!
     var pbWhatUDid: String!
     var pbObsv: String!
     
-    
+    //OVERRIDE FUNCTIONS
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
@@ -40,13 +43,31 @@ class EventViewController : UIViewController {
         loadCalls()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toDetailVC" {
+            let vc = segue.destination as! DetailViewController
+            vc.experimentTitle = self.expTitle
+            vc.tabBarController?.tabBar.isHidden = true
+            vc.autoKey = self.autoKey
+            vc.test = "ABCD"
+        }
+        
+        if segue.identifier == "resendDetail" {
+            if let indexPath = eventTableView.indexPathForSelectedRow {
+                let vc = segue.destination as! DetailViewController
+                let selectedRow = indexPath.row
+                let info = eventArray[indexPath.row]
+                vc.cellWhatUDid = info.whatUDid
+                vc.cellObservations = info.observations
+                vc.cellTitle = info.taskTitle
+                vc.autoKey = self.autoKey
+                vc.experimentTitle = self.expTitle
+                vc.navigationItem.leftBarButtonItem?.isEnabled = false
+            }
+        }
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-    }
+    //CONVENIENCE FUNCTIONS
     
     func configureUI() {
         
@@ -55,7 +76,7 @@ class EventViewController : UIViewController {
         setLabelAttributes(alignment: .center, textColor: .white, text: "Start:", label: startLabel)
         setLabelAttributes(alignment: .center, textColor: .white, text: "End:", label: endLabel)
 
-        protocolTextField.text = "Your protocol for reference: \n \n" + expProtocol
+        protocolTextField.text = self.expProtocol
         protocolTextField.textAlignment = .center
         protocolTextField.delegate = self
         protocolTextField.textColor = UIColor(red:0.98, green:0.79, blue:0.30, alpha:1.0)
@@ -85,51 +106,54 @@ class EventViewController : UIViewController {
     }
     
    func loadCalls() {
+    
+    //The first handle takes care of detailVCs without any images
+    
         self.eventArray.removeAll()
         if let user = Auth.auth().currentUser {
            _refHandle = dbRef.child("Experiment").child(user.uid).child(self.autoKey).observe(.childAdded, with: {(snapshot) in
 
             if let snapVal = snapshot.value as? [String:AnyObject] {
-                let event = EventStruct(dictionary: snapVal)
-                self.eventArray.append(event!)
-                self.eventTableView.insertRows(at: [IndexPath(row: self.eventArray.count-1, section: 0)], with: .automatic)
-
-                DispatchQueue.main.async {
-                    self.eventTableView.reloadData()
+                    let title = snapVal["Title"] as? String
+                    if title == "" || title == nil {
+                        return
+                } else {
+                        let event = EventStruct(dictionary: snapVal)
+                        self.eventArray.insert(event!, at: 0)
+                        
+                        DispatchQueue.main.async {
+                            self.eventTableView.reloadData()
+                        }
+                    }
                 }
-            }
-        })
-      }
-   }
+           })
+            
+            //This second handle takes care of detailVCs with images, since the child gets created with the image and requires the new cell to have proper info
+            
+            _refHandle2 = dbRef.child("Experiment").child(user.uid).child(self.autoKey).observe(.childChanged, with: {(snapshot) in
+                
+                if let snapVal = snapshot.value as? [String:AnyObject] {
+                    let event = EventStruct(dictionary: snapVal)
+                    for item in self.eventArray {
+                        if event?.taskTitle == item.taskTitle {
+                            let index = self.eventArray.index(where: {_ in event?.taskTitle == item.taskTitle})
+                            self.eventArray.remove(at: index!)
+                        }
+                    }
+                    self.eventArray.insert(event!, at: 0)
+                    //self.eventTableView.insertRows(at: [IndexPath(row: self.eventArray.count-1, section: 0)], with: .automatic)
+
+                    DispatchQueue.main.async {
+                        self.eventTableView.reloadData()
+                    }
+                }
+            })
+        }
+    }
 
     deinit {
         if let user = Auth.auth().currentUser{
             dbRef.child("Experiment").child(user.uid).child(self.autoKey).removeAllObservers()
-        }
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toDetailVC" {
-            let vc = segue.destination as! DetailViewController
-            vc.experimentTitle = self.expTitle
-            vc.tabBarController?.tabBar.isHidden = true
-            vc.autoKey = self.autoKey
-            vc.test = "ABCD"
-        }
-        
-        if segue.identifier == "resendDetail" {
-            if let indexPath = eventTableView.indexPathForSelectedRow {
-                let vc = segue.destination as! DetailViewController
-                let selectedRow = indexPath.row
-                let info = eventArray[indexPath.row]
-                print(info.whatUDid)
-                vc.cellWhatUDid = info.whatUDid
-                vc.cellObservations = info.observations
-                vc.cellTitle = info.taskTitle
-                vc.autoKey = self.autoKey
-                vc.experimentTitle = self.expTitle
-                vc.navigationItem.leftBarButtonItem?.isEnabled = false
-            }
         }
     }
     
@@ -152,6 +176,7 @@ extension EventViewController: UITextViewDelegate {
 }
 
 extension EventViewController : UITableViewDelegate, UITableViewDataSource {
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return eventArray.count
