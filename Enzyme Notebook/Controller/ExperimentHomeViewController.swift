@@ -30,7 +30,7 @@ class ExperimentHomeViewController: UIViewController, AuthUIDelegate, UINavigati
     var arrayOfAutoKeys: [String]! = []
     var isSingedIn: Bool! = false
     
-    var imageArray = ["elon","expIcon","icon1","ndg","rick1","rickmort"]
+    var imageArray = ["mortface", "mortface2", "morty3"]
     
     //OVERRIDE FUNCTIONS
     

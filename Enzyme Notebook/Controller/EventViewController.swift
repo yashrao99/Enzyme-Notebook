@@ -177,7 +177,6 @@ extension EventViewController: UITextViewDelegate {
 
 extension EventViewController : UITableViewDelegate, UITableViewDataSource {
     
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return eventArray.count
     }

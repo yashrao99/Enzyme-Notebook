@@ -1,5 +1,5 @@
 //
-//  FirebaseClasses.swift
+//  CustomStructs.swift
 //  Enzyme Notebook
 //
 //  Created by Yash Rao on 3/7/18.
@@ -41,5 +41,27 @@ struct EventStruct {
         self.taskTitle = dictionary["Title"] as? String ?? ""
         self.observations = dictionary["Observations"] as? String ?? ""
         self.creationDate = dictionary["creationDate"] as? String ?? ""
+    }
+}
+
+struct GoogleSearchStruct {
+    
+    var urlLink = ""
+    var htmlSnippet = ""
+    var fixedHTMLText = ""
+    var title = ""
+    
+    init?(dictionary: [String:AnyObject]) {
+        
+        self.urlLink = dictionary["link"] as? String ?? ""
+        self.htmlSnippet = dictionary["snippet"] as? String ?? ""
+        self.fixedHTMLText = GoogleSearchStruct.removeHTMLtags(htmlSnippet)
+        self.title = dictionary["title"] as? String ?? ""
+    }
+    
+    static func removeHTMLtags(_ htmlSnippet: String) -> String {
+       let htmlRemoved = htmlSnippet.replacingOccurrences(of: "<[^>]+>", with: "", options:String.CompareOptions.regularExpression , range: nil)
+        
+        return htmlRemoved
     }
 }

@@ -14,6 +14,7 @@ import UserNotifications
 class DetailViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     //OUTLETS
+    
     @IBOutlet weak var photoCollection: UICollectionView!
     @IBOutlet weak var confirmButton: UIButton!
     @IBOutlet weak var observationTextView: UITextView!
@@ -29,6 +30,7 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
     @IBOutlet weak var notificationText: UITextField!
     
     //GENERAL VARIABLES
+    
     var storageRef: StorageReference!
     var experimentTitle: String!
     var dbRef: DatabaseReference!
@@ -39,9 +41,12 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
     var test: String!
     
     //DATA PASSED FROM SPECIFIC CELL
+    
     var cellTitle: String!
     var cellWhatUDid: String!
     var cellObservations: String!
+    
+    //OVERRIDE FUNCTIONS
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,6 +57,19 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
         configureButton()
         downloadPreviousImages()
         }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "viewImage" {
+            let vc = segue.destination as! ImageViewerViewController
+            let indexPaths = self.photoCollection.indexPathsForSelectedItems
+            let indexPath = indexPaths![0] as IndexPath
+            let selectedURL = arrayURL[(indexPath.row)]
+            vc.urlForPic = selectedURL
+
+        }
+    }
+    
+    //IBACTIONS
         
     @IBAction func buttonPressed(_ sender: Any) {
         
@@ -85,6 +103,7 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
             self.navigationController?.popViewController(animated: true)
 
         } else {
+            
             var cancelAlert = UIAlertController(title: "Cancel Experimental Event", message: "All data will be lost", preferredStyle: .alert)
             cancelAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action:UIAlertAction!) in
                 
@@ -262,14 +281,7 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
             Database.database().reference().child("Experiment").child(user.uid).child(self.autoKey).child(self.titleText.text!).removeAllObservers()
         }
     }
- /*
-    func configureCancel() {
-        if sentCancel != nil {
-            let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelPressed))
-            navigationItem.leftBarButtonItem = cancelButton
-        }
-    }
-   */
+
     func configureButton() {
         if titleText.text == nil || (titleText.text?.isEmpty)! {
             confirmButton.isEnabled = false
@@ -334,8 +346,14 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
 extension DetailViewController : UITextViewDelegate {
     
     func textViewDidBeginEditing(_ textView: UITextView) {
-        textView.text = ""
-        textView.textColor = UIColor.black
+        if textView == whatDidUDoText || textView == observationTextView {
+            if textView.text == nil || textView.text.isEmpty || textView.text == Constants.textViewText.detailTextView1 || textView.text == Constants.textViewText.detailTextView2 {
+                textView.text = ""
+                textView.textColor = UIColor.black
+            } else {
+                textView.textColor = UIColor.black
+            }
+        }
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
@@ -398,6 +416,7 @@ extension DetailViewController: UICollectionViewDelegate, UICollectionViewDataSo
     func configureCollectionView() {
         photoCollection.dataSource = self
         photoCollection.delegate = self
+        photoCollection.allowsMultipleSelection = false
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -425,6 +444,11 @@ extension DetailViewController: UICollectionViewDelegate, UICollectionViewDataSo
         cell.imageView.loadImageUsingCacheWithURLString(urlString: stringURL)
         cell.activityIndicator.stopAnimating()
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "viewImage", sender: nil)
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

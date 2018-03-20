@@ -27,6 +27,20 @@ struct Constants {
         
         static let notificationTxt = "Please set the text for your reminder"
     }
+    
+    struct GoogleSearchAPI {
+        
+        static let scheme = "https"
+        
+        static let host = "www.googleapis.com"
+        
+        static let path = "/customsearch/v1"
+        
+        static let apiKey = "AIzaSyD7v4PDxQVdbDQhZox7jt68cTrES3LoI1w"
+        
+        static let searchID = "015141508682215523477:yao-46doccy"
+    }
+    
 }
 
 

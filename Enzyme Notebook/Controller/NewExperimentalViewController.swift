@@ -161,15 +161,8 @@ extension NewExperimentalViewController: UITextViewDelegate {
         if !textView.text.isEmpty {
             showButton()
         }
+        textView.resignFirstResponder()
     }
-    
-//    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-//        if text == "\n" {
- //           textView.resignFirstResponder()
-  //          return false
-  //      }
-   //     return true
-  //  }
 }
 
 extension NewExperimentalViewController: UITextFieldDelegate {
