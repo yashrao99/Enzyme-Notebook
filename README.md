@@ -80,16 +80,14 @@ This app is hosted on FireBase. The general structure of the database can be sho
 <img width="760" alt="screen shot 2018-03-20 at 10 56 27 pm" src="https://user-images.githubusercontent.com/32831099/37696180-0c48afe4-2c92-11e8-87ca-8d2380e1f300.png">
 
 child('Experiment') - holds all the different userIDs
+
 child(userID) - gives each experiment created by a single user an autoKey to be used for differentiation
+
 child(autoKey) - gives the details of the selected experiment (title, protocol, startDate, endDate).
                  Also contains title for each detailCell instantiated within the experiment (detailVC)
+                 
 child(detailTitle) "Overnight cultures" in this example - contains title of the task, observation text, descriptionText
                    Also contains another autoKey which is generated for each picture uploaded to Firebase. This autoKey is
                    stores the downloadURL for the imageData in order to populate the collectionView.
 
 The pictures are stored separately in Firebase storage, since it is recommended that files > 1 MB aren't kept in the Real-Time database.
-
-
-is that each user is granted a unique user ID. Each experiment that a specific user creates is generated a random autoKey. Each experiment, and therefore unique autoKey, is represented by a cell in the tableView in the ExperimentalHomeViewController (the home VC). Within each experiment, the 
-
-
