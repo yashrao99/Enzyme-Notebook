@@ -962,17 +962,23 @@ Reminder</string>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Frt-wl-c9S">
+                                                    <rect key="frame" x="161" y="89" width="20" height="20"/>
+                                                </activityIndicatorView>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="Frt-wl-c9S" firstAttribute="centerY" secondItem="5ct-DN-43b" secondAttribute="centerY" id="3h2-Tk-HnD"/>
                                                 <constraint firstItem="9ic-F5-nUF" firstAttribute="leading" secondItem="5ct-DN-43b" secondAttribute="leading" constant="6" id="AJj-Pg-ZLV"/>
                                                 <constraint firstAttribute="trailing" secondItem="9ic-F5-nUF" secondAttribute="trailing" constant="6" id="Mmd-0I-InU"/>
                                                 <constraint firstItem="hPN-hp-PXF" firstAttribute="leading" secondItem="5ct-DN-43b" secondAttribute="leading" constant="6" id="O47-Jc-ynv"/>
                                                 <constraint firstAttribute="bottom" secondItem="9ic-F5-nUF" secondAttribute="bottom" constant="10.5" id="eLI-QN-wuA"/>
+                                                <constraint firstItem="Frt-wl-c9S" firstAttribute="centerX" secondItem="5ct-DN-43b" secondAttribute="centerX" id="kno-MD-4Ao"/>
                                                 <constraint firstAttribute="trailing" secondItem="hPN-hp-PXF" secondAttribute="trailing" constant="6" id="p5F-ZP-RUo"/>
                                                 <constraint firstItem="hPN-hp-PXF" firstAttribute="top" secondItem="5ct-DN-43b" secondAttribute="top" constant="11" id="r2G-w6-CTf"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="activityIndicator" destination="Frt-wl-c9S" id="vDB-VM-dnh"/>
                                             <outlet property="urlDescription" destination="9ic-F5-nUF" id="K2u-wN-hy0"/>
                                             <outlet property="urlLabel" destination="hPN-hp-PXF" id="TAs-8S-N2t"/>
                                         </connections>
@@ -1006,9 +1012,13 @@ Reminder</string>
                                     <action selector="googleSearch" destination="75X-75-aTW" eventType="touchUpInside" id="hfO-nA-y9Q"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="WgO-pD-7d3">
+                                <rect key="frame" x="177" y="323" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="WgO-pD-7d3" firstAttribute="centerX" secondItem="t5N-5d-q2b" secondAttribute="centerX" id="EHG-sO-IJo"/>
                             <constraint firstItem="T26-W9-2UX" firstAttribute="bottom" secondItem="S1z-fB-AVh" secondAttribute="top" id="Equ-nw-w3L"/>
                             <constraint firstItem="xbV-C7-xdP" firstAttribute="top" secondItem="O3z-BG-PY5" secondAttribute="bottom" constant="32" id="IFG-TM-p2L"/>
                             <constraint firstItem="xbV-C7-xdP" firstAttribute="trailing" secondItem="t5N-5d-q2b" secondAttribute="trailingMargin" id="Iue-fW-CHd"/>
@@ -1019,12 +1029,14 @@ Reminder</string>
                             <constraint firstItem="T26-W9-2UX" firstAttribute="trailing" secondItem="xbV-C7-xdP" secondAttribute="trailing" id="dCn-xQ-ICl"/>
                             <constraint firstItem="tkk-st-UV3" firstAttribute="top" secondItem="xbV-C7-xdP" secondAttribute="bottom" constant="20" id="dNN-3A-H0x"/>
                             <constraint firstItem="xbV-C7-xdP" firstAttribute="trailing" secondItem="tkk-st-UV3" secondAttribute="trailing" id="emF-Qw-fdD"/>
+                            <constraint firstItem="WgO-pD-7d3" firstAttribute="centerY" secondItem="t5N-5d-q2b" secondAttribute="centerY" id="gW1-32-ici"/>
                             <constraint firstItem="O3z-BG-PY5" firstAttribute="trailing" secondItem="t5N-5d-q2b" secondAttribute="trailingMargin" id="irQ-UF-qu5"/>
                             <constraint firstItem="O3z-BG-PY5" firstAttribute="leading" secondItem="t5N-5d-q2b" secondAttribute="leadingMargin" id="o01-OT-fKy"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="JSw-uT-iTv"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="WgO-pD-7d3" id="vGq-gr-COS"/>
                         <outlet property="resultTableView" destination="T26-W9-2UX" id="6na-Lz-VcW"/>
                         <outlet property="searchGoogle" destination="tkk-st-UV3" id="dYb-Tp-wyn"/>
                         <outlet property="searchTextField" destination="xbV-C7-xdP" id="AmT-SY-eJ0"/>

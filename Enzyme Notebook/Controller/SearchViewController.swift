@@ -15,6 +15,7 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var searchGoogle: UIButton!
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var resultTableView: UITableView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var searchArray: [GoogleSearchStruct] = []
     private var cellExpanded: Bool = false
@@ -42,6 +43,9 @@ class SearchViewController: UIViewController {
         
         self.navigationItem.title = "Research"
         
+        self.activityIndicator.isHidden = true
+        self.activityIndicator.color = UIColor.white
+        
     }
     
     @IBAction func googleSearch() {
@@ -50,17 +54,28 @@ class SearchViewController: UIViewController {
         
         let builtURL =  MasterNetwork.sharedInstance().buildURL(parameters)
         
-        MasterNetwork.sharedInstance().googleSearch(builtURL) { success, searchResults, error in
-            if success {
-                self.searchArray = searchResults!
-                
-                DispatchQueue.main.async {
-                    self.resultTableView.reloadData()
+        self.activityIndicator.isHidden = false
+        self.activityIndicator.startAnimating()
+        if MasterNetwork.sharedInstance().isInternetAvailable() {
+            MasterNetwork.sharedInstance().googleSearch(builtURL) { success, searchResults, error in
+                if success {
+                    self.searchArray = searchResults!
+                    
+                    DispatchQueue.main.async {
+                        self.activityIndicator.stopAnimating()
+                        self.activityIndicator.isHidden = true
+                        self.resultTableView.reloadData()
+                    }
+                } else {
+                    self.activityIndicator.stopAnimating()
+                    self.activityIndicator.isHidden = true
+                    MasterNetwork.sharedInstance().alertError(self, error: "There is an error with your request. Please try again")
                 }
-            } else {
-                print("This is a no go")
             }
+        } else {
+            MasterNetwork.sharedInstance().alertError(self, error: "No internet connection available - Please try again when connected")
         }
+
     }
 }
 
@@ -95,12 +110,13 @@ extension SearchViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "resultCell", for: indexPath) as! SearchCell
-        
+        cell.activityIndicator.startAnimating()
         let info = searchArray[indexPath.row]
         cell.urlLabel.text = info.title
         cell.urlDescription.text = info.htmlSnippet
         cell.backgroundColor? = UIColor.lightGray
-        
+        cell.activityIndicator.stopAnimating()
+        cell.activityIndicator.isHidden = true
         return cell
     }
     

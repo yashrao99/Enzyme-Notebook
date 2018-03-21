@@ -14,6 +14,6 @@ class SearchCell : UITableViewCell {
     
     @IBOutlet weak var urlLabel: UILabel!
     @IBOutlet weak var urlDescription: UITextView!
-    
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
 }
