@@ -70,6 +70,8 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
     }
     
     //IBACTIONS
+    
+    //When Save Data is pressed, upload to firebase and pop viewController
         
     @IBAction func buttonPressed(_ sender: Any) {
         
@@ -83,6 +85,8 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
         self.navigationController?.popViewController(animated: true)
     }
     
+    //Open camera to allow user to take a picture
+    
     @IBAction func openCameraButton(_ sender: AnyObject) {
         
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
@@ -95,6 +99,8 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
             print("No camera")
         }
     }
+    
+    //Allows user to cancel out of detailViewController if they don't want to save this data
 
     @IBAction func cancelPressed(_ sender: Any) {
         
@@ -122,6 +128,8 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
             self.present(cancelAlert, animated: true, completion: nil)
         }
     }
+    
+    //Set notification that can be set as hours, mins, secs
  
     @IBAction func setNotification(_ sender: Any) {
         
@@ -149,6 +157,8 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
             self.present(alertView, animated: true, completion: nil)
         }
     }
+    
+    //Allow privacy restrictions for the notifications
 
     func setUpNotifications() {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { (success, error) in
@@ -160,6 +170,8 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
             }
         }
     }
+    
+    //Sending notification to notification center
     
     func timedNotifications(inTime: TimeInterval, completion: @escaping (_ success: Bool) -> ()) {
         
@@ -185,6 +197,8 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
         })
     }
     
+    //Uploads selected image to firebase, and downloads it for the CollectionView
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String:Any]) {
         
         if let chosenImage = info[UIImagePickerControllerOriginalImage] as? UIImage, let photoData = UIImageJPEGRepresentation(chosenImage, 0.8) {
@@ -200,6 +214,8 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
     func configureStorage() {
         storageRef = Storage.storage().reference()
     }
+    
+    // Upload the picture to firebase
 
     func uploadPhotoToFirebase(photoData: Data) {
     
@@ -227,6 +243,8 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
         }
     }
     
+    //When old cell is revisted, previous images belonging to this event must be downloaded
+    
     func downloadPreviousImages() {
         
         self.arrayURL.removeAll()
@@ -250,6 +268,8 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
             }
         }
     }
+    
+    //When new image is uploaded, wipe the previous images (if there) and add all picutres again to array
 
     func downloadNewImages() {
         self.arrayURL.removeAll()
@@ -282,6 +302,8 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
         }
     }
 
+    //CONVENIENCE FUNCTIONS
+    
     func configureButton() {
         if titleText.text == nil || (titleText.text?.isEmpty)! {
             confirmButton.isEnabled = false
@@ -343,6 +365,8 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
     }
 }
 
+//TEXTVIEW FUNCTIONS
+
 extension DetailViewController : UITextViewDelegate {
     
     func textViewDidBeginEditing(_ textView: UITextView) {
@@ -371,6 +395,8 @@ extension DetailViewController : UITextViewDelegate {
         }
     }
 }
+
+//TEXTFIELD FUNCTIONS
 
 extension DetailViewController: UITextFieldDelegate {
     
@@ -410,6 +436,8 @@ extension DetailViewController: UITextFieldDelegate {
         configureButton()
     }
 }
+
+//COLLECTION VIEW FUNCTIONS
 
 extension DetailViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     

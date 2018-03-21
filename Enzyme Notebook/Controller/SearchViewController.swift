@@ -40,6 +40,8 @@ class SearchViewController: UIViewController {
         backgroundImg.contentMode = .scaleAspectFill
         self.view.insertSubview(backgroundImg, at: 0)
         
+        self.navigationItem.title = "Research"
+        
     }
     
     @IBAction func googleSearch() {

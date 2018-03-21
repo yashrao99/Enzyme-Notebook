@@ -37,11 +37,11 @@
             </objects>
             <point key="canvasLocation" x="-1470" y="67"/>
         </scene>
-        <!--Experiment-->
+        <!--Experiments-->
         <scene sceneID="dy8-0n-Lpa">
             <objects>
                 <navigationController id="HOA-ew-fQp" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Experiment" image="ic_visibility.png" id="P0e-Ap-Iyc"/>
+                    <tabBarItem key="tabBarItem" title="Experiments" image="ic_visibility.png" id="P0e-Ap-Iyc"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="q0F-bq-QVf">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -116,13 +116,13 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Summarize your protocol" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fWV-pN-6KD">
-                                <rect key="frame" x="25" y="220" width="325" height="21"/>
+                                <rect key="frame" x="25" y="230" width="325" height="21"/>
                                 <fontDescription key="fontDescription" name="GetSchwifty-Regular" family="Get Schwifty" pointSize="21"/>
                                 <color key="textColor" red="0.98431372549999996" green="0.78823529410000004" blue="0.30196078430000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="UDD-0p-3YK">
-                                <rect key="frame" x="16" y="266" width="343" height="285"/>
+                                <rect key="frame" x="16" y="286" width="343" height="251"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -141,23 +141,19 @@
                         </subviews>
                         <color key="backgroundColor" red="0.066666666669999999" green="0.25098039220000001" blue="0.050980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="fWV-pN-6KD" firstAttribute="leading" secondItem="sDe-DM-MxO" secondAttribute="leading" constant="25" id="2ip-C8-Vib"/>
                             <constraint firstItem="nGy-lw-V96" firstAttribute="top" secondItem="LtV-cg-dpu" secondAttribute="bottom" constant="21" id="6om-wq-fhu"/>
-                            <constraint firstItem="UDD-0p-3YK" firstAttribute="leading" secondItem="sDe-DM-MxO" secondAttribute="leading" constant="16" id="Bv4-SS-C7H"/>
                             <constraint firstAttribute="trailing" secondItem="nGy-lw-V96" secondAttribute="trailing" constant="16" id="Ebd-h1-iyW"/>
-                            <constraint firstItem="UDD-0p-3YK" firstAttribute="top" secondItem="fWV-pN-6KD" secondAttribute="bottom" constant="25" id="Fer-Lv-IOv"/>
+                            <constraint firstItem="UDD-0p-3YK" firstAttribute="top" secondItem="fWV-pN-6KD" secondAttribute="bottom" constant="35" id="Fer-Lv-IOv"/>
                             <constraint firstItem="UDD-0p-3YK" firstAttribute="leading" secondItem="sDe-DM-MxO" secondAttribute="leading" constant="16" id="GVi-Qb-Bn3"/>
                             <constraint firstItem="vh9-Lc-KH5" firstAttribute="leading" secondItem="sDe-DM-MxO" secondAttribute="leading" constant="25" id="JPS-sb-Zu9"/>
-                            <constraint firstAttribute="trailing" secondItem="UDD-0p-3YK" secondAttribute="trailing" constant="16" id="Kh9-E7-pPp"/>
-                            <constraint firstAttribute="trailing" secondItem="fWV-pN-6KD" secondAttribute="trailing" constant="25" id="Ndz-ih-aQK"/>
                             <constraint firstAttribute="trailing" secondItem="UDD-0p-3YK" secondAttribute="trailing" constant="16" id="PAM-QV-EfU"/>
                             <constraint firstItem="fWV-pN-6KD" firstAttribute="leading" secondItem="sDe-DM-MxO" secondAttribute="leading" constant="25" id="TDj-iz-sA4"/>
                             <constraint firstItem="igh-fD-tc4" firstAttribute="top" secondItem="vh9-Lc-KH5" secondAttribute="bottom" constant="20" id="WxQ-HO-mQL"/>
                             <constraint firstItem="nGy-lw-V96" firstAttribute="leading" secondItem="sDe-DM-MxO" secondAttribute="leading" constant="16" id="kA2-ce-Ym0"/>
                             <constraint firstAttribute="trailing" secondItem="vh9-Lc-KH5" secondAttribute="trailing" constant="25" id="kBG-sI-4fG"/>
-                            <constraint firstItem="fWV-pN-6KD" firstAttribute="top" secondItem="M33-2K-zHc" secondAttribute="bottom" constant="30" id="myt-FX-KAE"/>
+                            <constraint firstItem="fWV-pN-6KD" firstAttribute="top" secondItem="M33-2K-zHc" secondAttribute="bottom" constant="40" id="myt-FX-KAE"/>
                             <constraint firstItem="M33-2K-zHc" firstAttribute="top" secondItem="nGy-lw-V96" secondAttribute="bottom" constant="40" id="rpM-f9-31T"/>
-                            <constraint firstItem="vh9-Lc-KH5" firstAttribute="top" secondItem="UDD-0p-3YK" secondAttribute="bottom" constant="10" id="syO-yO-eVr"/>
+                            <constraint firstItem="vh9-Lc-KH5" firstAttribute="top" secondItem="UDD-0p-3YK" secondAttribute="bottom" constant="24" id="syO-yO-eVr"/>
                             <constraint firstAttribute="trailing" secondItem="M33-2K-zHc" secondAttribute="trailing" constant="16" id="w8B-qs-ROe"/>
                             <constraint firstAttribute="trailing" secondItem="fWV-pN-6KD" secondAttribute="trailing" constant="25" id="wKL-0V-G0c"/>
                             <constraint firstItem="M33-2K-zHc" firstAttribute="leading" secondItem="sDe-DM-MxO" secondAttribute="leading" constant="16" id="wXe-el-5gW"/>
@@ -985,7 +981,7 @@ Reminder</string>
                                 <sections/>
                             </tableView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xbV-C7-xdP">
-                                <rect key="frame" x="16" y="141" width="343" height="40"/>
+                                <rect key="frame" x="16" y="138" width="343" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="SNu-am-2dA"/>
                                 </constraints>
@@ -994,15 +990,15 @@ Reminder</string>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Do Some Research!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O3z-BG-PY5">
-                                <rect key="frame" x="16" y="79" width="343" height="30"/>
-                                <fontDescription key="fontDescription" name="GetSchwifty-Regular" family="Get Schwifty" pointSize="30"/>
+                                <rect key="frame" x="16" y="79" width="343" height="27"/>
+                                <fontDescription key="fontDescription" name="GetSchwifty-Regular" family="Get Schwifty" pointSize="27"/>
                                 <color key="textColor" red="0.94901960780000005" green="0.75686274509999996" blue="0.074509803920000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tkk-st-UV3">
-                                <rect key="frame" x="16" y="201" width="343" height="37"/>
+                                <rect key="frame" x="16" y="198" width="343" height="38"/>
                                 <color key="backgroundColor" red="0.1137254902" green="0.3294117647" blue="0.20784313730000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="18"/>
                                 <state key="normal" title="Search Google">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>

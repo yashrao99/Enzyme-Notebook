@@ -21,10 +21,29 @@ class ImageViewerViewController : UIViewController {
     }
     
     func configureUI() {
+        
+        let shareBarButton = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareImage))
+        self.navigationItem.rightBarButtonItem = shareBarButton
+        
+        self.navigationItem.title = "View Image"
+                
         self.imageView.image = nil
         if urlForPic != nil {
           self.imageView.loadImageUsingCacheWithURLString(urlString: urlForPic)
           self.imageView.contentMode = .scaleAspectFit
         }
+    }
+    
+    //Opens up activityViewIndicator to share images
+    
+    @objc func shareImage() {
+        
+        let image = imageView.image
+        
+        let imageToShare = [image!]
+        let activityViewController = UIActivityViewController(activityItems: imageToShare, applicationActivities: nil)
+        self.present(activityViewController, animated: true, completion: nil)
+        activityViewController.excludedActivityTypes = [ UIActivityType.postToFacebook, UIActivityType.mail ]
+
     }
 }

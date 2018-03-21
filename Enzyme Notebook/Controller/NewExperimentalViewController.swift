@@ -140,9 +140,10 @@ class NewExperimentalViewController: UIViewController {
     }
 }
 
+//TEXTVIEW FUNCTIONS
+
 extension NewExperimentalViewController: UITextViewDelegate {
     
-    //TextView Delegate Methods
     
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.text == Constants.textViewText.protocolTextView {
@@ -165,9 +166,10 @@ extension NewExperimentalViewController: UITextViewDelegate {
     }
 }
 
+//TEXTFIELD FUNCTIONS
+
 extension NewExperimentalViewController: UITextFieldDelegate {
     
-    //Text Field Delegate Methods
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if textField.text == Constants.textViewText.titleText {

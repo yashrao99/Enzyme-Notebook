@@ -94,11 +94,9 @@ class ExperimentHomeViewController: UIViewController, AuthUIDelegate, UINavigati
                     self.displayName = name
                     self.ref.child("users").child(activeUser.uid).setValue(["Display Name": "\(name)", "Email": "\(activeUser.email!)", "Provider" : "\(activeUser.providerID)"])
                     self.loadCalls()
-                    var isSignedIn = true
                 }
             } else {
                 self.loginSession()
-                var isSingedIn = true
             }
         }
     }
@@ -131,8 +129,7 @@ class ExperimentHomeViewController: UIViewController, AuthUIDelegate, UINavigati
         let leftbutton = UIBarButtonItem(title: "Sign Out", style: .plain, target: self, action: #selector(signOut))
         self.navigationItem.leftBarButtonItem = leftbutton
         
-        self.navigationItem.title = "Enzymatic"
-        
+        self.navigationItem.title = "Enzymatiq"
         
         self.tableView.dataSource = self
         self.tableView.delegate = self
@@ -150,6 +147,7 @@ class ExperimentHomeViewController: UIViewController, AuthUIDelegate, UINavigati
     func loadCalls() {
         
         //Pull info from firebase, unwrap, and get it in shape for tableView
+        
         ref = Database.database().reference()
         let userID = Auth.auth().currentUser?.uid
         let pathKey = ref.child("Experiment").child(userID!).childByAutoId()
@@ -181,6 +179,8 @@ class ExperimentHomeViewController: UIViewController, AuthUIDelegate, UINavigati
         performSegue(withIdentifier: "newExperiment", sender: nil)
     }
 }
+
+//TABLE VIEW FUNCTIONS
 
 extension ExperimentHomeViewController : UITableViewDelegate, UITableViewDataSource {
     

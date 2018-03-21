@@ -165,6 +165,9 @@ class EventViewController : UIViewController {
     }
 }
 
+
+//TEXTVIEW FUNCTIONS
+
 extension EventViewController: UITextViewDelegate {
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text != expProtocol {
@@ -174,6 +177,8 @@ extension EventViewController: UITextViewDelegate {
         }
     }
 }
+
+//TABLEVIEW FUNCTIONS
 
 extension EventViewController : UITableViewDelegate, UITableViewDataSource {
     
