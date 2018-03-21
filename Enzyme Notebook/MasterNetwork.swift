@@ -72,9 +72,9 @@ class MasterNetwork : NSObject {
                 for dict in arrayOfDicts {
                    let searchResult =  GoogleSearchStruct(dictionary: dict)
                     structResults.append(searchResult!)
-                    completionHandlerForSearch(true, structResults, nil)
                 }
             }
+            completionHandlerForSearch(true, structResults, nil)
         }
         task.resume()
     }

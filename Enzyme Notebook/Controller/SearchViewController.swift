@@ -50,7 +50,7 @@ class SearchViewController: UIViewController {
     
     @IBAction func googleSearch() {
         
-        var parameters = ["q": self.searchTextField.text!, "key": Constants.GoogleSearchAPI.apiKey, "cx":Constants.GoogleSearchAPI.searchID]
+        let parameters = ["q": self.searchTextField.text!, "key": Constants.GoogleSearchAPI.apiKey, "cx":Constants.GoogleSearchAPI.searchID]
         
         let builtURL =  MasterNetwork.sharedInstance().buildURL(parameters)
         
@@ -73,6 +73,8 @@ class SearchViewController: UIViewController {
                 }
             }
         } else {
+            self.activityIndicator.stopAnimating()
+            self.activityIndicator.isHidden = true
             MasterNetwork.sharedInstance().alertError(self, error: "No internet connection available - Please try again when connected")
         }
 

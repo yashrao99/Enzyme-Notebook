@@ -63,9 +63,12 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
             let vc = segue.destination as! ImageViewerViewController
             let indexPaths = self.photoCollection.indexPathsForSelectedItems
             let indexPath = indexPaths![0] as IndexPath
-            let selectedURL = arrayURL[(indexPath.row)]
-            vc.urlForPic = selectedURL
-
+            if arrayURL.count != 0 {
+                let selectedURL = arrayURL[(indexPath.row)]
+                vc.urlForPic = selectedURL
+            } else {
+                return
+            }
         }
     }
     
@@ -475,7 +478,11 @@ extension DetailViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "viewImage", sender: nil)
+        if self.arrayURL.count != 0 {
+            performSegue(withIdentifier: "viewImage", sender: nil)
+        } else {
+            MasterNetwork.sharedInstance().alertError(self, error: "Please take and select a picture in order to view!")
+        }
         
     }
     
