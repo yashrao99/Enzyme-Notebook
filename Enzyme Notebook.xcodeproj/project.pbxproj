@@ -23,6 +23,7 @@
 		F752FA15204D1C050037B698 /* JTAppleCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F752FA16204D1C050037B698 /* JTAppleCalendar.framework */; };
 		F752FA18204D2B330037B698 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F752FA17204D2B330037B698 /* CustomCell.swift */; };
 		F752FA1A204E5FB90037B698 /* NewExperimentalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F752FA19204E5FB90037B698 /* NewExperimentalViewController.swift */; };
+		F759D352206493290046D993 /* GelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F759D351206493280046D993 /* GelViewController.swift */; };
 		F7AE23CF206078450069D98F /* ImageViewerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7AE23CE206078450069D98F /* ImageViewerViewController.swift */; };
 		F7AE23D120608F080069D98F /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7AE23D020608F080069D98F /* SearchCell.swift */; };
 		F7BA81CC20603C9F006717DB /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7BA81CB20603C9F006717DB /* SearchViewController.swift */; };
@@ -57,6 +58,7 @@
 		F752FA16204D1C050037B698 /* JTAppleCalendar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = JTAppleCalendar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F752FA17204D2B330037B698 /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		F752FA19204E5FB90037B698 /* NewExperimentalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewExperimentalViewController.swift; sourceTree = "<group>"; };
+		F759D351206493280046D993 /* GelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GelViewController.swift; sourceTree = "<group>"; };
 		F7AE23CE206078450069D98F /* ImageViewerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewerViewController.swift; sourceTree = "<group>"; };
 		F7AE23D020608F080069D98F /* SearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
 		F7BA81CB20603C9F006717DB /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 				F7BC7490205123D000F6D135 /* DetailViewController.swift */,
 				F7BA81CB20603C9F006717DB /* SearchViewController.swift */,
 				F7AE23CE206078450069D98F /* ImageViewerViewController.swift */,
+				F759D351206493280046D993 /* GelViewController.swift */,
 				F7BC7488204FABF200F6D135 /* Custom Cells */,
 			);
 			path = Controller;
@@ -362,6 +365,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F7AE23CF206078450069D98F /* ImageViewerViewController.swift in Sources */,
+				F759D352206493290046D993 /* GelViewController.swift in Sources */,
 				F7F915C120561D2A0035BB1E /* CacheExtension.swift in Sources */,
 				F752F9FD204CE91F0037B698 /* ExperimentHomeViewController.swift in Sources */,
 				F7BC74932051EE3D00F6D135 /* Constants.swift in Sources */,
