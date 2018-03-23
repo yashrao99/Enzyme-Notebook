@@ -933,13 +933,36 @@ Reminder</string>
                     <view key="view" contentMode="scaleToFill" id="9L4-eh-5Ta">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EVG-fH-2fE">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Image Selected" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T5v-WJ-8J0">
+                                <rect key="frame" x="91" y="322" width="194" height="24"/>
+                                <fontDescription key="fontDescription" name="GetSchwifty-Regular" family="Get Schwifty" pointSize="24"/>
+                                <color key="textColor" red="0.20784313730000001" green="0.78823529410000004" blue="0.86666666670000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="EVG-fH-2fE" firstAttribute="leading" secondItem="9L4-eh-5Ta" secondAttribute="leading" id="L5g-0o-3lP"/>
+                            <constraint firstItem="EVG-fH-2fE" firstAttribute="top" secondItem="Xto-77-a7C" secondAttribute="bottom" id="u9c-dd-jhi"/>
+                            <constraint firstItem="Rx5-FP-aht" firstAttribute="top" secondItem="EVG-fH-2fE" secondAttribute="bottom" id="vEF-vQ-XwR"/>
+                            <constraint firstItem="T5v-WJ-8J0" firstAttribute="centerY" secondItem="9L4-eh-5Ta" secondAttribute="centerY" id="wj0-Q4-ALj"/>
+                            <constraint firstAttribute="trailing" secondItem="EVG-fH-2fE" secondAttribute="trailing" id="wmo-eJ-YCl"/>
+                            <constraint firstItem="T5v-WJ-8J0" firstAttribute="centerX" secondItem="9L4-eh-5Ta" secondAttribute="centerX" id="xQ3-cC-BvO"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Ia6-lp-4le"/>
+                    <connections>
+                        <outlet property="imageView" destination="EVG-fH-2fE" id="2N2-dD-C65"/>
+                        <outlet property="noPhotoLabel" destination="T5v-WJ-8J0" id="51S-tU-fq2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZiR-1u-3Rj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2399" y="985"/>
+            <point key="canvasLocation" x="-2399.1999999999998" y="984.55772113943033"/>
         </scene>
         <!--Research-->
         <scene sceneID="dUn-GN-l8t">
