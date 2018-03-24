@@ -75,6 +75,16 @@ extension GelViewController : UIImagePickerControllerDelegate, UINavigationContr
         picker.sourceType = .photoLibrary
         present(picker, animated: true, completion: nil)
     }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String:Any]) {
+        
+        self.imageView.image = nil
+        
+        if let chosenImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            self.imageView.image = chosenImage
+        }
+        dismiss(animated: true, completion: nil)
+    }
 }
 
 
