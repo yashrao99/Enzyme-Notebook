@@ -17,13 +17,6 @@ class GelViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        if imageView.image == nil {
-            noPhotoLabel.isHidden = false
-        } else {
-            noPhotoLabel.isHidden = true
-        }
-        
         //let value = UIInterfaceOrientation.landscapeLeft.rawValue
        // UIDevice.current.setValue(value, forKey: "orientation")
     }
@@ -81,7 +74,11 @@ extension GelViewController : UIImagePickerControllerDelegate, UINavigationContr
         self.imageView.image = nil
         
         if let chosenImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            self.imageView.image = chosenImage
+            DispatchQueue.main.async {
+                self.noPhotoLabel.isHidden = true
+                self.imageView.isHidden = false
+                self.imageView.image = chosenImage
+            }
         }
         dismiss(animated: true, completion: nil)
     }
