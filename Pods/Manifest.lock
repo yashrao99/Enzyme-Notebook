@@ -1,4 +1,5 @@
 PODS:
+  - AgoraRtcEngine_iOS (2.1.1)
   - Bolts (1.9.0):
     - Bolts/AppLinks (= 1.9.0)
     - Bolts/Tasks (= 1.9.0)
@@ -15,22 +16,22 @@ PODS:
     - Bolts (~> 1.7)
   - FBSDKLoginKit (4.31.1):
     - FBSDKCoreKit
-  - Firebase/Auth (4.10.1):
+  - Firebase/Auth (4.11.0):
     - Firebase/Core
-    - FirebaseAuth (= 4.4.4)
-  - Firebase/Core (4.10.1):
+    - FirebaseAuth (= 4.5.0)
+  - Firebase/Core (4.11.0):
     - FirebaseAnalytics (= 4.1.0)
-    - FirebaseCore (= 4.0.17)
-  - Firebase/Database (4.10.1):
+    - FirebaseCore (= 4.0.18)
+  - Firebase/Database (4.11.0):
     - Firebase/Core
     - FirebaseDatabase (= 4.1.5)
-  - Firebase/Firestore (4.10.1):
+  - Firebase/Firestore (4.11.0):
     - Firebase/Core
-    - FirebaseFirestore (= 0.10.3)
-  - Firebase/RemoteConfig (4.10.1):
+    - FirebaseFirestore (= 0.10.4)
+  - Firebase/RemoteConfig (4.11.0):
     - Firebase/Core
     - FirebaseRemoteConfig (= 2.1.2)
-  - Firebase/Storage (4.10.1):
+  - Firebase/Storage (4.11.0):
     - Firebase/Core
     - FirebaseStorage (= 2.1.3)
   - FirebaseABTesting (1.0.0):
@@ -41,23 +42,23 @@ PODS:
     - FirebaseInstanceID (~> 2.0)
     - GoogleToolboxForMac/NSData+zlib (~> 2.1)
     - nanopb (~> 0.3)
-  - FirebaseAuth (4.4.4):
+  - FirebaseAuth (4.5.0):
     - FirebaseAnalytics (~> 4.1)
     - GoogleToolboxForMac/NSDictionary+URLArguments (~> 2.1)
     - GTMSessionFetcher/Core (~> 1.1)
-  - FirebaseCore (4.0.17):
+  - FirebaseCore (4.0.18):
     - GoogleToolboxForMac/NSData+zlib (~> 2.1)
   - FirebaseDatabase (4.1.5):
     - FirebaseAnalytics (~> 4.1)
     - FirebaseCore (~> 4.0)
     - leveldb-library (~> 1.18)
-  - FirebaseFirestore (0.10.3):
+  - FirebaseFirestore (0.10.4):
     - FirebaseAnalytics (~> 4.1)
     - FirebaseCore (~> 4.0)
     - gRPC-ProtoRPC (~> 1.0)
     - leveldb-library (~> 1.18)
     - Protobuf (~> 3.5)
-  - FirebaseInstanceID (2.0.9):
+  - FirebaseInstanceID (2.0.10):
     - FirebaseCore (~> 4.0)
   - FirebaseRemoteConfig (2.1.2):
     - FirebaseABTesting (~> 1.0)
@@ -70,9 +71,9 @@ PODS:
     - FirebaseAnalytics (~> 4.1)
     - FirebaseCore (~> 4.0)
     - GTMSessionFetcher/Core (~> 1.1)
-  - FirebaseUI (4.5.3):
-    - FirebaseUI/All (= 4.5.3)
-  - FirebaseUI/All (4.5.3):
+  - FirebaseUI (4.5.5):
+    - FirebaseUI/All (= 4.5.5)
+  - FirebaseUI/All (4.5.5):
     - FirebaseUI/Auth
     - FirebaseUI/Database
     - FirebaseUI/Facebook
@@ -81,24 +82,24 @@ PODS:
     - FirebaseUI/Phone
     - FirebaseUI/Storage
     - FirebaseUI/Twitter
-  - FirebaseUI/Auth (4.5.3):
+  - FirebaseUI/Auth (4.5.5):
     - Firebase/Auth (~> 4.2)
-  - FirebaseUI/Database (4.5.3):
+  - FirebaseUI/Database (4.5.5):
     - Firebase/Database (~> 4.0)
-  - FirebaseUI/Facebook (4.5.3):
+  - FirebaseUI/Facebook (4.5.5):
     - FBSDKLoginKit (~> 4.0)
     - FirebaseUI/Auth
-  - FirebaseUI/Firestore (4.5.3):
+  - FirebaseUI/Firestore (4.5.5):
     - Firebase/Firestore
-  - FirebaseUI/Google (4.5.3):
+  - FirebaseUI/Google (4.5.5):
     - FirebaseUI/Auth
     - GoogleSignIn (~> 4.0)
-  - FirebaseUI/Phone (4.5.3):
+  - FirebaseUI/Phone (4.5.5):
     - FirebaseUI/Auth
-  - FirebaseUI/Storage (4.5.3):
+  - FirebaseUI/Storage (4.5.5):
     - Firebase/Storage (~> 4.0)
     - SDWebImage (~> 4.0)
-  - FirebaseUI/Twitter (4.5.3):
+  - FirebaseUI/Twitter (4.5.5):
     - FirebaseUI/Auth
     - TwitterKit (~> 3.0)
   - GoogleSignIn (4.1.2):
@@ -151,14 +152,15 @@ PODS:
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
   - Protobuf (3.5.0)
-  - SDWebImage (4.3.2):
-    - SDWebImage/Core (= 4.3.2)
-  - SDWebImage/Core (4.3.2)
+  - SDWebImage (4.3.3):
+    - SDWebImage/Core (= 4.3.3)
+  - SDWebImage/Core (4.3.3)
   - TwitterCore (3.1.0)
   - TwitterKit (3.3.0):
     - TwitterCore (>= 3.1.0)
 
 DEPENDENCIES:
+  - AgoraRtcEngine_iOS
   - Firebase/Core
   - Firebase/Database
   - Firebase/RemoteConfig
@@ -168,21 +170,22 @@ DEPENDENCIES:
   - JTAppleCalendar (~> 7.0)
 
 SPEC CHECKSUMS:
+  AgoraRtcEngine_iOS: 92bf85f262f43dec20809fe7d8a35e8f7f02d255
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   BoringSSL: 32764dbaf5f5888cf51fbaa172a010126b41bcd4
   FBSDKCoreKit: e08ccfcefa7bc1347a07c276dac9bf6c7fe57024
   FBSDKLoginKit: 99797ac39252fef6f72600b886f6ee60b4b29cab
-  Firebase: 92c6ba593e32db0defde464a9adc981d5cb49f97
+  Firebase: cc13dfab1038c8b45d7903e01fc690451d6d0b24
   FirebaseABTesting: d07d0ee833b842d5153549e4c7e2e2cb1c23a3f9
   FirebaseAnalytics: 3dfae28d4a5e06f86c4fae830efc2ad3fadb19bc
-  FirebaseAuth: d040bb7a9db6dfc29d0e7ec82d48be51352b2581
-  FirebaseCore: 872307b001bbefda1dfa0dbfffa50a6919023d4a
+  FirebaseAuth: 147bf340a0706b44ca1753d6b41ebafd9687cfe6
+  FirebaseCore: b981f47e5254cbcfdeb483355300d743f6fcab2c
   FirebaseDatabase: 5f0bc6134c5c237cf55f9e1249d406770a75eafd
-  FirebaseFirestore: 41d1ec1f37963b63f8bbbcdb94d8545d4c6c1b42
-  FirebaseInstanceID: d2058a35e9bebda1b6dd42486b84917bde552a9d
+  FirebaseFirestore: 796df79c29cf8ecf806564f4d347665bdafa6ef0
+  FirebaseInstanceID: 8d20d890d65c917f9f7d9950b6e10a760ad34321
   FirebaseRemoteConfig: df64ce784a45e9b9d4988030a59da6baede8bdb0
   FirebaseStorage: 9a863a2bb96c406958eeff7c2f1dfa9f44c44a13
-  FirebaseUI: 7edccd19081e3ee57cd031abaa0a98d3b2ad8e58
+  FirebaseUI: 7f149d40db1a67c459df16540256b66d8f8e8c70
   GoogleSignIn: d9ef55b10f0aa401a5de2747f59b725e4b9732ac
   GoogleToolboxForMac: 2501e2ad72a52eb3dfe7bd9aee7dad11b858bd20
   gRPC: f54f0e6d603052b4562447da442ce2ff30bcdacc
@@ -196,10 +199,10 @@ SPEC CHECKSUMS:
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   Protobuf: 8a9838fba8dae3389230e1b7f8c104aa32389c03
-  SDWebImage: 29bd3c0bc1f01e5eb59720847c64ad4c4ca1af5d
+  SDWebImage: de4d90b5bff3571eae7bd16202b1f43135409fa5
   TwitterCore: 644d59e75abccb26cf0a9050d2c4dea0e5412241
   TwitterKit: a2e60ddcedbf54091eac6f27685ca7a87681e1d7
 
-PODFILE CHECKSUM: c6b48d348a21492b6c2bd1ff6e02af2110394e7d
+PODFILE CHECKSUM: f2182cd99d078b0ef0361093a83f22e178bf0adf
 
 COCOAPODS: 1.4.0

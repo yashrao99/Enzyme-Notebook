@@ -19,10 +19,159 @@
         </array>
     </customFonts>
     <scenes>
+        <!--Video Call View Controller-->
+        <scene sceneID="nOR-fg-GEz">
+            <objects>
+                <viewController id="80u-4Q-CeA" customClass="VideoCallViewController" customModule="Enzyme_Notebook" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Oij-cC-QmJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="9w9-AQ-3ta"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" restorationIdentifier="Remote Video" id="iA8-lD-Uhc" userLabel="Remote Video">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V8v-wI-L2c" userLabel="Local Video">
+                                <rect key="frame" x="233" y="28" width="126" height="196"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="196" id="Y6e-qV-yFD"/>
+                                    <constraint firstAttribute="width" constant="126" id="y5a-X6-B42"/>
+                                </constraints>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="videoMutedIndicator" translatesAutoresizingMaskIntoConstraints="NO" id="7kM-ih-DMW">
+                                <rect key="frame" x="110.5" y="269" width="153" height="129"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="localVideoMutedBg" translatesAutoresizingMaskIntoConstraints="NO" id="Upz-q5-mZm">
+                                <rect key="frame" x="233" y="28" width="126" height="196"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="196" id="c3s-zA-4jC"/>
+                                    <constraint firstAttribute="width" constant="126" id="oh7-VU-4VI"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eVg-dG-1Js" userLabel="pauseVideoButton">
+                                <rect key="frame" x="7" y="559" width="80" height="88"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="88" id="Yv3-Wb-iDN"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="videoMuteButton"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mWS-1h-QzJ" userLabel="muteButton">
+                                <rect key="frame" x="95" y="559" width="87" height="88"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="88" id="vQS-3M-pWR"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="muteButton"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="865-3W-2gz" userLabel="switchCameraButton">
+                                <rect key="frame" x="190" y="559" width="86" height="88"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="88" id="WkE-fF-N4C"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="switchCameraButton"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qZY-bT-Lba" userLabel="endCallButton">
+                                <rect key="frame" x="284" y="560" width="86" height="86"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="86" id="e8j-sM-J1S"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="hangUpButton"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Upz-q5-mZm" firstAttribute="trailing" secondItem="iA8-lD-Uhc" secondAttribute="trailingMargin" id="7jJ-eJ-Mbu"/>
+                            <constraint firstItem="7kM-ih-DMW" firstAttribute="centerY" secondItem="iA8-lD-Uhc" secondAttribute="centerY" id="9JR-nr-q96"/>
+                            <constraint firstItem="V8v-wI-L2c" firstAttribute="leading" secondItem="iA8-lD-Uhc" secondAttribute="leadingMargin" constant="217" id="Awu-tE-zTD"/>
+                            <constraint firstItem="Upz-q5-mZm" firstAttribute="leading" secondItem="iA8-lD-Uhc" secondAttribute="leadingMargin" constant="217" id="MZ3-JI-Fd1"/>
+                            <constraint firstItem="Upz-q5-mZm" firstAttribute="top" secondItem="Oij-cC-QmJ" secondAttribute="bottom" constant="8" id="Rb1-z8-TyM"/>
+                            <constraint firstItem="7kM-ih-DMW" firstAttribute="centerX" secondItem="iA8-lD-Uhc" secondAttribute="centerX" id="Zcm-YL-2jx"/>
+                            <constraint firstItem="7kM-ih-DMW" firstAttribute="top" secondItem="Upz-q5-mZm" secondAttribute="bottom" constant="45" id="ekY-2T-wvS"/>
+                            <constraint firstItem="7kM-ih-DMW" firstAttribute="top" secondItem="V8v-wI-L2c" secondAttribute="bottom" constant="45" id="jXH-4a-bT1"/>
+                            <constraint firstItem="V8v-wI-L2c" firstAttribute="trailing" secondItem="iA8-lD-Uhc" secondAttribute="trailingMargin" id="qlF-sX-JRV"/>
+                            <constraint firstItem="V8v-wI-L2c" firstAttribute="top" secondItem="Oij-cC-QmJ" secondAttribute="bottom" constant="8" id="xRe-ol-IID"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="hangUpButton" destination="qZY-bT-Lba" id="bhU-nA-oeQ"/>
+                        <outlet property="localMute" destination="Upz-q5-mZm" id="VdE-9Q-7be"/>
+                        <outlet property="localVideo" destination="V8v-wI-L2c" id="xnf-6I-NmK"/>
+                        <outlet property="muteButton" destination="mWS-1h-QzJ" id="a5c-fg-rbx"/>
+                        <outlet property="pauseButton" destination="eVg-dG-1Js" id="5pB-34-jUs"/>
+                        <outlet property="switchButton" destination="865-3W-2gz" id="aDx-bA-wEQ"/>
+                        <outlet property="videoMute" destination="7kM-ih-DMW" id="Chv-iK-ZAB"/>
+                        <segue destination="orG-c3-RDq" kind="show" identifier="exitCall" id="gb0-au-h4e"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zwV-ZN-yzs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-4242.3999999999996" y="-520.38980509745136"/>
+        </scene>
+        <!--Set Meeting View Controller-->
+        <scene sceneID="GxR-Lv-myn">
+            <objects>
+                <viewController id="orG-c3-RDq" customClass="SetMeetingViewController" customModule="Enzyme_Notebook" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="28t-h8-PCx"/>
+                        <viewControllerLayoutGuide type="bottom" id="u0L-Hp-rnl"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="QoB-4M-GRZ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Channel Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UAw-18-trv">
+                                <rect key="frame" x="47" y="40" width="280" height="56"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nEA-Pw-fWB" userLabel="Channel Name">
+                                <rect key="frame" x="47" y="97" width="280" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0h6-DF-dR8">
+                                <rect key="frame" x="106" y="148" width="162" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Start Call"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="i0W-WA-ffd"/>
+                    <connections>
+                        <segue destination="80u-4Q-CeA" kind="show" identifier="startCall" id="LaT-KK-hWH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9qI-h4-rJb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3367.1999999999998" y="-520.38980509745136"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="7oq-N7-esH">
+            <objects>
+                <navigationController id="G7j-4I-v7g" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="Tqk-Oe-mu8"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="dYm-ec-Vdc">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="orG-c3-RDq" kind="relationship" relationship="rootViewController" id="p10-JO-yO3"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aO7-Kt-Wn9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2460" y="-518"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Y3V-qn-KqV">
             <objects>
                 <tabBarController id="UBy-zD-Xep" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="fgv-Nh-Dr8"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="e2W-a4-shi">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -32,6 +181,7 @@
                         <segue destination="HOA-ew-fQp" kind="relationship" relationship="viewControllers" id="MCR-gS-5Yd"/>
                         <segue destination="Jar-Hn-R8Q" kind="relationship" relationship="viewControllers" id="fiU-Vu-rnV"/>
                         <segue destination="Gu6-lJ-qzE" kind="relationship" relationship="viewControllers" id="9pu-QU-sSb"/>
+                        <segue destination="G7j-4I-v7g" kind="relationship" relationship="viewControllers" id="kZl-7Y-5bb"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f1w-Kg-IeW" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -908,7 +1058,6 @@ Reminder</string>
         <!--Item-->
         <scene sceneID="iCj-b8-CGn">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Spa-2e-CnJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="Gu6-lJ-qzE" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="ecf-6Z-3uy"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="RcI-hA-9Xh">
@@ -919,6 +1068,7 @@ Reminder</string>
                         <segue destination="RmZ-EX-MIz" kind="relationship" relationship="rootViewController" id="w0t-4n-crR"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Spa-2e-CnJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1471" y="969"/>
         </scene>
@@ -1109,10 +1259,17 @@ Reminder</string>
     </scenes>
     <resources>
         <image name="google.png" width="18" height="18"/>
+        <image name="hangUpButton" width="372" height="372"/>
         <image name="ic_visibility.png" width="24" height="24"/>
+        <image name="localVideoMutedBg" width="90" height="120"/>
+        <image name="muteButton" width="372" height="372"/>
+        <image name="switchCameraButton" width="372" height="372"/>
+        <image name="videoMuteButton" width="372" height="372"/>
+        <image name="videoMutedIndicator" width="153" height="129"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="BfK-Ik-Xyb"/>
         <segue reference="O3G-25-SME"/>
+        <segue reference="gb0-au-h4e"/>
     </inferredMetricsTieBreakers>
 </document>

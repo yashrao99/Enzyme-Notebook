@@ -14,5 +14,6 @@ target 'Enzyme Notebook' do
   pod 'FirebaseUI'
   pod 'JTAppleCalendar', '~> 7.0'
   pod 'IQKeyboardManagerSwift', '5.0.0'
+  pod 'AgoraRtcEngine_iOS'
 
 end

@@ -25,6 +25,9 @@
 		F752FA1A204E5FB90037B698 /* NewExperimentalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F752FA19204E5FB90037B698 /* NewExperimentalViewController.swift */; };
 		F759D352206493290046D993 /* GelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F759D351206493280046D993 /* GelViewController.swift */; };
 		F759D3542065CE260046D993 /* PixelReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F759D3532065CE260046D993 /* PixelReader.swift */; };
+		F759D3562068B4260046D993 /* AppID.swift in Sources */ = {isa = PBXBuildFile; fileRef = F759D3552068B4260046D993 /* AppID.swift */; };
+		F759D35A2069CAC20046D993 /* VideoCallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F759D3592069CAC20046D993 /* VideoCallViewController.swift */; };
+		F759D35C2069CB4D0046D993 /* SetMeetingChannelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F759D35B2069CB4D0046D993 /* SetMeetingChannelViewController.swift */; };
 		F7AE23CF206078450069D98F /* ImageViewerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7AE23CE206078450069D98F /* ImageViewerViewController.swift */; };
 		F7AE23D120608F080069D98F /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7AE23D020608F080069D98F /* SearchCell.swift */; };
 		F7BA81CC20603C9F006717DB /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7BA81CB20603C9F006717DB /* SearchViewController.swift */; };
@@ -61,6 +64,9 @@
 		F752FA19204E5FB90037B698 /* NewExperimentalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewExperimentalViewController.swift; sourceTree = "<group>"; };
 		F759D351206493280046D993 /* GelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GelViewController.swift; sourceTree = "<group>"; };
 		F759D3532065CE260046D993 /* PixelReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixelReader.swift; sourceTree = "<group>"; };
+		F759D3552068B4260046D993 /* AppID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppID.swift; sourceTree = "<group>"; };
+		F759D3592069CAC20046D993 /* VideoCallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCallViewController.swift; sourceTree = "<group>"; };
+		F759D35B2069CB4D0046D993 /* SetMeetingChannelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetMeetingChannelViewController.swift; sourceTree = "<group>"; };
 		F7AE23CE206078450069D98F /* ImageViewerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewerViewController.swift; sourceTree = "<group>"; };
 		F7AE23D020608F080069D98F /* SearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
 		F7BA81CB20603C9F006717DB /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -161,6 +167,7 @@
 				F74A8A7E20601704009870DB /* MasterNetwork.swift */,
 				F7BC74922051EE3D00F6D135 /* Constants.swift */,
 				F7F915C020561D2A0035BB1E /* CacheExtension.swift */,
+				F759D3552068B4260046D993 /* AppID.swift */,
 				F759D3532065CE260046D993 /* PixelReader.swift */,
 			);
 			path = Model;
@@ -178,6 +185,8 @@
 				F7BA81CB20603C9F006717DB /* SearchViewController.swift */,
 				F7AE23CE206078450069D98F /* ImageViewerViewController.swift */,
 				F759D351206493280046D993 /* GelViewController.swift */,
+				F759D3592069CAC20046D993 /* VideoCallViewController.swift */,
+				F759D35B2069CB4D0046D993 /* SetMeetingChannelViewController.swift */,
 				F7BC7488204FABF200F6D135 /* Custom Cells */,
 			);
 			path = Controller;
@@ -219,6 +228,11 @@
 					F752F9F6204CE91F0037B698 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -371,6 +385,7 @@
 				F759D352206493290046D993 /* GelViewController.swift in Sources */,
 				F7F915C120561D2A0035BB1E /* CacheExtension.swift in Sources */,
 				F759D3542065CE260046D993 /* PixelReader.swift in Sources */,
+				F759D3562068B4260046D993 /* AppID.swift in Sources */,
 				F752F9FD204CE91F0037B698 /* ExperimentHomeViewController.swift in Sources */,
 				F7BC74932051EE3D00F6D135 /* Constants.swift in Sources */,
 				F7AE23D120608F080069D98F /* SearchCell.swift in Sources */,
@@ -379,6 +394,8 @@
 				F74A8A7F20601705009870DB /* MasterNetwork.swift in Sources */,
 				F752FA1A204E5FB90037B698 /* NewExperimentalViewController.swift in Sources */,
 				F752FA14204D06A00037B698 /* CalendarNewExperimentViewController.swift in Sources */,
+				F759D35C2069CB4D0046D993 /* SetMeetingChannelViewController.swift in Sources */,
+				F759D35A2069CAC20046D993 /* VideoCallViewController.swift in Sources */,
 				F752FA12204CEE450037B698 /* CustomAuthViewController.swift in Sources */,
 				F74A8A7B2058737A009870DB /* EventCell.swift in Sources */,
 				F752FA03204CE91F0037B698 /* Enzyme_Notebook.xcdatamodeld in Sources */,
