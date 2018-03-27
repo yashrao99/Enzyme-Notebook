@@ -544,6 +544,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = L3WCZURK57;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "Enzyme Notebook/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.YashasRao99.Enzyme-Notebook";
@@ -560,6 +561,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = L3WCZURK57;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "Enzyme Notebook/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.YashasRao99.Enzyme-Notebook";

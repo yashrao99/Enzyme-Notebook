@@ -11,7 +11,24 @@ import UIKit
 
 class SetMeetingViewController: UIViewController {
     
+    @IBOutlet weak var channelName: UITextField!
+    @IBOutlet weak var startCall: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    @IBAction func startCall(_ sender: UIButton) {
+        if !(channelName.text?.isEmpty)! {
+            self.performSegue(withIdentifier: "startCall", sender: self)
+        } else {
+            print("Enter Channel Name")
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? VideoCallViewController {
+            vc.channel = channelName.text!
+        }
     }
 }

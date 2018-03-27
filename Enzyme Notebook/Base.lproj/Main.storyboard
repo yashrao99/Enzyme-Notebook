@@ -40,7 +40,7 @@
                                 </constraints>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="videoMutedIndicator" translatesAutoresizingMaskIntoConstraints="NO" id="7kM-ih-DMW">
-                                <rect key="frame" x="110.5" y="269" width="153" height="129"/>
+                                <rect key="frame" x="111" y="269" width="153" height="129"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="localVideoMutedBg" translatesAutoresizingMaskIntoConstraints="NO" id="Upz-q5-mZm">
                                 <rect key="frame" x="233" y="28" width="126" height="196"/>
@@ -49,43 +49,51 @@
                                     <constraint firstAttribute="width" constant="126" id="oh7-VU-4VI"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eVg-dG-1Js" userLabel="pauseVideoButton">
-                                <rect key="frame" x="7" y="559" width="80" height="88"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="88" id="Yv3-Wb-iDN"/>
-                                </constraints>
-                                <state key="normal" title="Button" image="videoMuteButton"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mWS-1h-QzJ" userLabel="muteButton">
-                                <rect key="frame" x="95" y="559" width="87" height="88"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="88" id="vQS-3M-pWR"/>
-                                </constraints>
-                                <state key="normal" title="Button" image="muteButton"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="865-3W-2gz" userLabel="switchCameraButton">
-                                <rect key="frame" x="190" y="559" width="86" height="88"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="88" id="WkE-fF-N4C"/>
-                                </constraints>
-                                <state key="normal" title="Button" image="switchCameraButton"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qZY-bT-Lba" userLabel="endCallButton">
-                                <rect key="frame" x="284" y="560" width="86" height="86"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="86" id="e8j-sM-J1S"/>
-                                </constraints>
-                                <state key="normal" title="Button" image="hangUpButton"/>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="aAf-TO-Ysr">
+                                <rect key="frame" x="16" y="587" width="343" height="60"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aWV-t9-CxV">
+                                        <rect key="frame" x="0.0" y="0.0" width="86" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="hhr-we-sj6"/>
+                                        </constraints>
+                                        <state key="normal" title="Button" image="hangUpButton"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="puQ-Ij-dmj">
+                                        <rect key="frame" x="86" y="0.0" width="85.5" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="vOx-BN-n1m"/>
+                                        </constraints>
+                                        <state key="normal" title="Button" image="videoMuteButton"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7dz-rg-cwy">
+                                        <rect key="frame" x="171.5" y="0.0" width="86" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="8tp-Sr-yGm"/>
+                                        </constraints>
+                                        <state key="normal" title="Button" image="muteButton"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aus-gz-5hy">
+                                        <rect key="frame" x="257.5" y="0.0" width="85.5" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="QrW-Wr-lrz"/>
+                                        </constraints>
+                                        <state key="normal" title="Button" image="switchCameraButton"/>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="aAf-TO-Ysr" firstAttribute="leading" secondItem="iA8-lD-Uhc" secondAttribute="leadingMargin" id="0d9-XP-1Pc"/>
                             <constraint firstItem="Upz-q5-mZm" firstAttribute="trailing" secondItem="iA8-lD-Uhc" secondAttribute="trailingMargin" id="7jJ-eJ-Mbu"/>
                             <constraint firstItem="7kM-ih-DMW" firstAttribute="centerY" secondItem="iA8-lD-Uhc" secondAttribute="centerY" id="9JR-nr-q96"/>
                             <constraint firstItem="V8v-wI-L2c" firstAttribute="leading" secondItem="iA8-lD-Uhc" secondAttribute="leadingMargin" constant="217" id="Awu-tE-zTD"/>
                             <constraint firstItem="Upz-q5-mZm" firstAttribute="leading" secondItem="iA8-lD-Uhc" secondAttribute="leadingMargin" constant="217" id="MZ3-JI-Fd1"/>
                             <constraint firstItem="Upz-q5-mZm" firstAttribute="top" secondItem="Oij-cC-QmJ" secondAttribute="bottom" constant="8" id="Rb1-z8-TyM"/>
                             <constraint firstItem="7kM-ih-DMW" firstAttribute="centerX" secondItem="iA8-lD-Uhc" secondAttribute="centerX" id="Zcm-YL-2jx"/>
+                            <constraint firstAttribute="bottom" secondItem="aAf-TO-Ysr" secondAttribute="bottom" constant="20" symbolic="YES" id="ZpI-NZ-8wU"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="aAf-TO-Ysr" secondAttribute="trailing" id="b4e-KF-8vV"/>
                             <constraint firstItem="7kM-ih-DMW" firstAttribute="top" secondItem="Upz-q5-mZm" secondAttribute="bottom" constant="45" id="ekY-2T-wvS"/>
                             <constraint firstItem="7kM-ih-DMW" firstAttribute="top" secondItem="V8v-wI-L2c" secondAttribute="bottom" constant="45" id="jXH-4a-bT1"/>
                             <constraint firstItem="V8v-wI-L2c" firstAttribute="trailing" secondItem="iA8-lD-Uhc" secondAttribute="trailingMargin" id="qlF-sX-JRV"/>
@@ -93,12 +101,13 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="hangUpButton" destination="qZY-bT-Lba" id="bhU-nA-oeQ"/>
+                        <outlet property="hangUpButton" destination="aWV-t9-CxV" id="grS-C1-Edn"/>
                         <outlet property="localMute" destination="Upz-q5-mZm" id="VdE-9Q-7be"/>
                         <outlet property="localVideo" destination="V8v-wI-L2c" id="xnf-6I-NmK"/>
-                        <outlet property="muteButton" destination="mWS-1h-QzJ" id="a5c-fg-rbx"/>
-                        <outlet property="pauseButton" destination="eVg-dG-1Js" id="5pB-34-jUs"/>
-                        <outlet property="switchButton" destination="865-3W-2gz" id="aDx-bA-wEQ"/>
+                        <outlet property="muteButton" destination="7dz-rg-cwy" id="qYj-UO-kLj"/>
+                        <outlet property="pauseButton" destination="puQ-Ij-dmj" id="qrR-QD-c2C"/>
+                        <outlet property="remoteVideo" destination="iA8-lD-Uhc" id="Gxl-l0-EIK"/>
+                        <outlet property="switchButton" destination="Aus-gz-5hy" id="BJF-xb-dYi"/>
                         <outlet property="videoMute" destination="7kM-ih-DMW" id="Chv-iK-ZAB"/>
                         <segue destination="orG-c3-RDq" kind="show" identifier="exitCall" id="gb0-au-h4e"/>
                     </connections>
@@ -119,30 +128,43 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Channel Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UAw-18-trv">
-                                <rect key="frame" x="47" y="40" width="280" height="56"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Channel Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UAw-18-trv">
+                                <rect key="frame" x="47" y="120" width="280" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nEA-Pw-fWB" userLabel="Channel Name">
-                                <rect key="frame" x="47" y="97" width="280" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nEA-Pw-fWB" userLabel="Channel Name">
+                                <rect key="frame" x="47" y="170" width="280" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0h6-DF-dR8">
-                                <rect key="frame" x="106" y="148" width="162" height="36"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0h6-DF-dR8">
+                                <rect key="frame" x="106" y="251" width="162" height="30"/>
                                 <state key="normal" title="Start Call"/>
+                                <connections>
+                                    <action selector="startCall:" destination="orG-c3-RDq" eventType="touchUpInside" id="MAe-b2-1hL"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="nEA-Pw-fWB" firstAttribute="top" secondItem="UAw-18-trv" secondAttribute="bottom" constant="29.5" id="D3D-yy-6Ie"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="nEA-Pw-fWB" secondAttribute="trailing" constant="32" id="Iwh-j1-7AN"/>
+                            <constraint firstItem="UAw-18-trv" firstAttribute="top" secondItem="28t-h8-PCx" secondAttribute="bottom" constant="100" id="Luu-Vd-rzc"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="UAw-18-trv" secondAttribute="trailing" constant="32" id="QAK-f6-vIw"/>
+                            <constraint firstItem="UAw-18-trv" firstAttribute="leading" secondItem="QoB-4M-GRZ" secondAttribute="leadingMargin" constant="31" id="TlL-dH-aqO"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="0h6-DF-dR8" secondAttribute="trailing" constant="91" id="cwK-WC-dlg"/>
+                            <constraint firstItem="0h6-DF-dR8" firstAttribute="leading" secondItem="QoB-4M-GRZ" secondAttribute="leadingMargin" constant="90" id="qu2-3l-iWc"/>
+                            <constraint firstItem="nEA-Pw-fWB" firstAttribute="leading" secondItem="QoB-4M-GRZ" secondAttribute="leadingMargin" constant="31" id="r9b-of-R1R"/>
+                            <constraint firstItem="0h6-DF-dR8" firstAttribute="top" secondItem="nEA-Pw-fWB" secondAttribute="bottom" constant="51" id="yNR-r9-tqD"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="i0W-WA-ffd"/>
                     <connections>
+                        <outlet property="channelName" destination="nEA-Pw-fWB" id="a57-pt-cXs"/>
+                        <outlet property="startCall" destination="0h6-DF-dR8" id="uK6-R6-D8n"/>
                         <segue destination="80u-4Q-CeA" kind="show" identifier="startCall" id="LaT-KK-hWH"/>
                     </connections>
                 </viewController>
