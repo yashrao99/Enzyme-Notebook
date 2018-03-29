@@ -157,6 +157,10 @@ class ExperimentHomeViewController: UIViewController, AuthUIDelegate, UINavigati
             self.arrayForDeletion.append(snapshot)
             self.arrayOfAutoKeys.append(snapshot.key)
             let expDict = snapshot.value as! [String:AnyObject]
+            let title = expDict["Title"] as? String
+            if title == "" || title == nil {
+                return
+            }
             let experiment = ExperimentStruct(dictionary: expDict)
             self.experiments.append(experiment!)
             self.tableView.insertRows(at: [IndexPath(row: self.experiments.count-1, section: 0)], with: .automatic)
@@ -168,6 +172,7 @@ class ExperimentHomeViewController: UIViewController, AuthUIDelegate, UINavigati
     }
     
     @objc func signOut() {
+        self.arrayOfAutoKeys.removeAll()
         do {
             try Auth.auth().signOut()
         } catch {

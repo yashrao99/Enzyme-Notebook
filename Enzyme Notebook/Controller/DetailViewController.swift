@@ -56,6 +56,8 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
         configureCollectionView()
         configureButton()
         downloadPreviousImages()
+        
+        print(self.autoKey)
         }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

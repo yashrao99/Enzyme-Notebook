@@ -24,6 +24,7 @@ class VideoCallViewController: UIViewController {
     @IBOutlet weak var switchButton: UIButton!
     @IBOutlet weak var hangUpButton: UIButton!
     @IBOutlet var remoteVideo: UIView!
+    @IBOutlet weak var stackButtons: UIStackView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,11 +33,9 @@ class VideoCallViewController: UIViewController {
         setupVideo()
         joinChannel()
         setupLocalVideo()
+        hideVideoMuted()
     }
-}
 
-extension VideoCallViewController {
-    
     func initializeAgoraEngine() {
         agoraKit = AgoraRtcEngineKit.sharedEngine(withAppId: AppID, delegate: self as? AgoraRtcEngineDelegate)
     }
@@ -54,16 +53,54 @@ extension VideoCallViewController {
             }
         }
     }
-    
+
     func setupLocalVideo() {
         let videoCanvas = AgoraRtcVideoCanvas()
         videoCanvas.uid = 0
         videoCanvas.view = localVideo
-        videoCanvas.renderMode = .fit
+        videoCanvas.renderMode = .adaptive
         agoraKit.setupLocalVideo(videoCanvas)
     }
+    
+    func leaveChannel() {
+        agoraKit.leaveChannel(nil)
+        hideButtons()
+        UIApplication.shared.isIdleTimerDisabled = false
+        remoteVideo.removeFromSuperview()
+        localVideo.removeFromSuperview()
+        agoraKit = nil
+    }
+    
+    func hideButtons() {
+        stackButtons.isHidden = true
+    }
+    
+    @IBAction func didClickHangUpButton(_ sender: UIButton) {
+        leaveChannel()
+    }
+    
+    @IBAction func didClickMuteButton(_ sender: UIButton) {
+        sender.isSelected = !sender.isSelected
+        agoraKit.muteLocalAudioStream(sender.isSelected)
+    }
+    
+    @IBAction func didClickVideoMuteButton(_ sender: UIButton) {
+        sender.isSelected = !sender.isSelected
+        agoraKit.muteLocalVideoStream(sender.isSelected)
+        localVideo.isHidden = sender.isSelected
+        localMute.isHidden = !sender.isSelected
+    }
+    
+    @IBAction func didClickSwitchCameraButton(_ sender: UIButton) {
+        sender.isSelected = !sender.isSelected
+        agoraKit.switchCamera()
+    }
+    
+    func hideVideoMuted() {
+        videoMute.isHidden = true
+        localMute.isHidden = true
+    }
 }
-
 extension VideoCallViewController: AgoraRtcEngineDelegate {
     
     func rtcEngine(_ engine: AgoraRtcEngineKit, firstRemoteVideoDecodedOfUid uid: UInt, size: CGSize, elapsed: Int) {

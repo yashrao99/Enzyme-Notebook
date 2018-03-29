@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		AC7A08388784232BD55EEB7E /* Pods_Enzyme_Notebook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAA3E72A12F82558B5C923CE /* Pods_Enzyme_Notebook.framework */; };
+		F72335A2206C4C0300ADBEFA /* InviteCollabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72335A1206C4C0300ADBEFA /* InviteCollabViewController.swift */; };
+		F72335A4206C5AD500ADBEFA /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72335A3206C5AD500ADBEFA /* UserCell.swift */; };
 		F74A8A7B2058737A009870DB /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74A8A7A2058737A009870DB /* EventCell.swift */; };
 		F74A8A7D205A3A19009870DB /* get_schwifty__a_rick_and_morty_font_by_jonizaak-dajw4u8.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F74A8A7C205A3A15009870DB /* get_schwifty__a_rick_and_morty_font_by_jonizaak-dajw4u8.ttf */; };
 		F74A8A7F20601705009870DB /* MasterNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74A8A7E20601704009870DB /* MasterNetwork.swift */; };
@@ -45,6 +47,8 @@
 		4BDA9443337F9BAFC109CA5D /* Pods-Enzyme Notebook.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Enzyme Notebook.release.xcconfig"; path = "Pods/Target Support Files/Pods-Enzyme Notebook/Pods-Enzyme Notebook.release.xcconfig"; sourceTree = "<group>"; };
 		73A1D40CEBD5DD07EB50AAF3 /* Pods-Enzyme Notebook.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Enzyme Notebook.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Enzyme Notebook/Pods-Enzyme Notebook.debug.xcconfig"; sourceTree = "<group>"; };
 		BAA3E72A12F82558B5C923CE /* Pods_Enzyme_Notebook.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Enzyme_Notebook.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F72335A1206C4C0300ADBEFA /* InviteCollabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteCollabViewController.swift; sourceTree = "<group>"; };
+		F72335A3206C5AD500ADBEFA /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		F74A8A7A2058737A009870DB /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
 		F74A8A7C205A3A15009870DB /* get_schwifty__a_rick_and_morty_font_by_jonizaak-dajw4u8.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "get_schwifty__a_rick_and_morty_font_by_jonizaak-dajw4u8.ttf"; sourceTree = "<group>"; };
 		F74A8A7E20601704009870DB /* MasterNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterNetwork.swift; sourceTree = "<group>"; };
@@ -156,6 +160,7 @@
 				F7F915C32057A2A20035BB1E /* ExperimentHomeCell.swift */,
 				F7AE23D020608F080069D98F /* SearchCell.swift */,
 				F74A8A7A2058737A009870DB /* EventCell.swift */,
+				F72335A3206C5AD500ADBEFA /* UserCell.swift */,
 			);
 			path = "Custom Cells";
 			sourceTree = "<group>";
@@ -186,6 +191,7 @@
 				F7AE23CE206078450069D98F /* ImageViewerViewController.swift */,
 				F759D351206493280046D993 /* GelViewController.swift */,
 				F759D3592069CAC20046D993 /* VideoCallViewController.swift */,
+				F72335A1206C4C0300ADBEFA /* InviteCollabViewController.swift */,
 				F759D35B2069CB4D0046D993 /* SetMeetingChannelViewController.swift */,
 				F7BC7488204FABF200F6D135 /* Custom Cells */,
 			);
@@ -395,12 +401,14 @@
 				F752FA1A204E5FB90037B698 /* NewExperimentalViewController.swift in Sources */,
 				F752FA14204D06A00037B698 /* CalendarNewExperimentViewController.swift in Sources */,
 				F759D35C2069CB4D0046D993 /* SetMeetingChannelViewController.swift in Sources */,
+				F72335A4206C5AD500ADBEFA /* UserCell.swift in Sources */,
 				F759D35A2069CAC20046D993 /* VideoCallViewController.swift in Sources */,
 				F752FA12204CEE450037B698 /* CustomAuthViewController.swift in Sources */,
 				F74A8A7B2058737A009870DB /* EventCell.swift in Sources */,
 				F752FA03204CE91F0037B698 /* Enzyme_Notebook.xcdatamodeld in Sources */,
 				F7BC748F2050D41100F6D135 /* EventViewController.swift in Sources */,
 				F752FA18204D2B330037B698 /* CustomCell.swift in Sources */,
+				F72335A2206C4C0300ADBEFA /* InviteCollabViewController.swift in Sources */,
 				F7F915C42057A2A20035BB1E /* ExperimentHomeCell.swift in Sources */,
 				F7BC7491205123D000F6D135 /* DetailViewController.swift in Sources */,
 				F752F9FB204CE91F0037B698 /* AppDelegate.swift in Sources */,

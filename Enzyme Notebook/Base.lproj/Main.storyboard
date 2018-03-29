@@ -58,6 +58,9 @@
                                             <constraint firstAttribute="height" constant="60" id="hhr-we-sj6"/>
                                         </constraints>
                                         <state key="normal" title="Button" image="hangUpButton"/>
+                                        <connections>
+                                            <action selector="didClickHangUpButton:" destination="80u-4Q-CeA" eventType="touchUpInside" id="3YO-oM-6FO"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="puQ-Ij-dmj">
                                         <rect key="frame" x="86" y="0.0" width="85.5" height="60"/>
@@ -65,6 +68,9 @@
                                             <constraint firstAttribute="height" constant="60" id="vOx-BN-n1m"/>
                                         </constraints>
                                         <state key="normal" title="Button" image="videoMuteButton"/>
+                                        <connections>
+                                            <action selector="didClickVideoMuteButton:" destination="80u-4Q-CeA" eventType="touchUpInside" id="QOU-e4-QYS"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7dz-rg-cwy">
                                         <rect key="frame" x="171.5" y="0.0" width="86" height="60"/>
@@ -72,6 +78,9 @@
                                             <constraint firstAttribute="height" constant="60" id="8tp-Sr-yGm"/>
                                         </constraints>
                                         <state key="normal" title="Button" image="muteButton"/>
+                                        <connections>
+                                            <action selector="didClickMuteButton:" destination="80u-4Q-CeA" eventType="touchUpInside" id="u4y-WL-s5S"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aus-gz-5hy">
                                         <rect key="frame" x="257.5" y="0.0" width="85.5" height="60"/>
@@ -79,6 +88,9 @@
                                             <constraint firstAttribute="height" constant="60" id="QrW-Wr-lrz"/>
                                         </constraints>
                                         <state key="normal" title="Button" image="switchCameraButton"/>
+                                        <connections>
+                                            <action selector="didClickSwitchCameraButton:" destination="80u-4Q-CeA" eventType="touchUpInside" id="OIh-Ey-1vH"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -107,6 +119,7 @@
                         <outlet property="muteButton" destination="7dz-rg-cwy" id="qYj-UO-kLj"/>
                         <outlet property="pauseButton" destination="puQ-Ij-dmj" id="qrR-QD-c2C"/>
                         <outlet property="remoteVideo" destination="iA8-lD-Uhc" id="Gxl-l0-EIK"/>
+                        <outlet property="stackButtons" destination="aAf-TO-Ysr" id="NCi-11-r1S"/>
                         <outlet property="switchButton" destination="Aus-gz-5hy" id="BJF-xb-dYi"/>
                         <outlet property="videoMute" destination="7kM-ih-DMW" id="Chv-iK-ZAB"/>
                         <segue destination="orG-c3-RDq" kind="show" identifier="exitCall" id="gb0-au-h4e"/>
@@ -226,6 +239,93 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="16H-ws-gTh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-674" y="-265"/>
+        </scene>
+        <!--Invite Collab View Controller-->
+        <scene sceneID="Fi1-Fp-9oP">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="29n-ga-Al4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="4uq-J7-v6H" customClass="InviteCollabViewController" customModule="Enzyme_Notebook" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xrD-lF-ceR"/>
+                        <viewControllerLayoutGuide type="bottom" id="3iH-Kl-ERN"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="MxL-Cl-gA9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VmE-7G-07G">
+                                <rect key="frame" x="10" y="628" width="355" height="29"/>
+                                <color key="backgroundColor" red="0.1137254902" green="0.3294117647" blue="0.20784313730000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="GetSchwifty-Regular" family="Get Schwifty" pointSize="17"/>
+                                <state key="normal" title="Invite Collaborators!">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="D2P-R9-aBG">
+                                <rect key="frame" x="0.0" y="64" width="375" height="556"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="userCell" rowHeight="73" id="13t-px-hZH" customClass="UserCell" customModule="Enzyme_Notebook" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="73"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="13t-px-hZH" id="65s-Zr-R7D">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="72.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1y7-M5-8Ll">
+                                                    <rect key="frame" x="10" y="26" width="200" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="200" id="ufT-ju-rG7"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3hq-yd-Mh7">
+                                                    <rect key="frame" x="236" y="26" width="124" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="3hq-yd-Mh7" firstAttribute="trailing" secondItem="65s-Zr-R7D" secondAttribute="trailingMargin" id="B6P-mH-bxq"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="3hq-yd-Mh7" secondAttribute="bottom" constant="15" id="KX2-NN-hnf"/>
+                                                <constraint firstItem="3hq-yd-Mh7" firstAttribute="leading" secondItem="1y7-M5-8Ll" secondAttribute="trailing" constant="26" id="Nfk-5O-xNL"/>
+                                                <constraint firstItem="1y7-M5-8Ll" firstAttribute="top" secondItem="65s-Zr-R7D" secondAttribute="top" constant="26" id="b1V-a3-etI"/>
+                                                <constraint firstItem="3hq-yd-Mh7" firstAttribute="top" secondItem="65s-Zr-R7D" secondAttribute="topMargin" constant="15" id="bOk-mq-adn"/>
+                                                <constraint firstItem="1y7-M5-8Ll" firstAttribute="leading" secondItem="65s-Zr-R7D" secondAttribute="leading" constant="10" id="llE-fQ-Kqm"/>
+                                                <constraint firstAttribute="bottom" secondItem="1y7-M5-8Ll" secondAttribute="bottom" constant="25.5" id="tDG-KH-9Qv"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="diplayLabel" destination="3hq-yd-Mh7" id="8v2-Ns-onG"/>
+                                            <outlet property="emailLabel" destination="1y7-M5-8Ll" id="JkF-Kk-kQD"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="D2P-R9-aBG" secondAttribute="trailing" id="3z4-sp-uaY"/>
+                            <constraint firstAttribute="trailing" secondItem="VmE-7G-07G" secondAttribute="trailing" constant="10" id="4u3-G3-mXq"/>
+                            <constraint firstItem="VmE-7G-07G" firstAttribute="leading" secondItem="MxL-Cl-gA9" secondAttribute="leading" constant="10" id="Qfc-bp-4zp"/>
+                            <constraint firstItem="VmE-7G-07G" firstAttribute="leading" secondItem="MxL-Cl-gA9" secondAttribute="leading" constant="10" id="YyN-52-CR7"/>
+                            <constraint firstAttribute="bottom" secondItem="VmE-7G-07G" secondAttribute="bottom" constant="10" id="ZWb-hc-MUT"/>
+                            <constraint firstAttribute="trailing" secondItem="VmE-7G-07G" secondAttribute="trailing" constant="10" id="f8w-bO-69e"/>
+                            <constraint firstItem="D2P-R9-aBG" firstAttribute="top" secondItem="xrD-lF-ceR" secondAttribute="bottom" id="n7Q-yq-iwI"/>
+                            <constraint firstItem="VmE-7G-07G" firstAttribute="top" secondItem="D2P-R9-aBG" secondAttribute="bottom" constant="8" id="sn9-dH-OYF"/>
+                            <constraint firstItem="D2P-R9-aBG" firstAttribute="leading" secondItem="MxL-Cl-gA9" secondAttribute="leading" id="x3B-fQ-jwM"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="confirmButton" destination="VmE-7G-07G" id="ae8-iA-hGq"/>
+                        <outlet property="resultTableView" destination="D2P-R9-aBG" id="84w-K4-jhS"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="1453.5999999999999" y="464.6176911544228"/>
         </scene>
         <!--New Experimental View Controller-->
         <scene sceneID="r4z-MA-uxo">
@@ -476,6 +576,7 @@
                         <outlet property="startLabel" destination="5u0-cI-bsv" id="036-cc-ldq"/>
                         <segue destination="Oac-L4-ZdS" kind="show" identifier="toDetailVC" id="217-vD-ULE"/>
                         <segue destination="Oac-L4-ZdS" kind="show" identifier="resendDetail" id="BfK-Ik-Xyb"/>
+                        <segue destination="4uq-J7-v6H" kind="show" identifier="toInvite" id="WSG-JD-D7R"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="12V-N4-ZcC" userLabel="First Responder" sceneMemberID="firstResponder"/>

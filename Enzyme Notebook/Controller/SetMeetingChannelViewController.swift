@@ -16,7 +16,13 @@ class SetMeetingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.tabBarController?.tabBar.isHidden = false
     }
+    
     
     @IBAction func startCall(_ sender: UIButton) {
         if !(channelName.text?.isEmpty)! {

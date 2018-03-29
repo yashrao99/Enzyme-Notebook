@@ -89,7 +89,12 @@ class EventViewController : UIViewController {
         
         let addBarButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(segueToDetail))
         addBarButton.tintColor = UIColor(red:0.07, green:0.25, blue:0.05, alpha:1.0)
-        self.navigationItem.rightBarButtonItem = addBarButton
+        
+        
+        let invBarButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(segueToInvite))
+        invBarButton.tintColor = UIColor(red:0.07, green:0.25, blue:0.05, alpha:1.0)
+        
+        self.navigationItem.rightBarButtonItems = [invBarButton, addBarButton]
         
         let backgroundImg = UIImageView(frame: UIScreen.main.bounds)
         backgroundImg.image = UIImage(named: "rm5")
@@ -99,6 +104,10 @@ class EventViewController : UIViewController {
     
     @ objc func segueToDetail() {
         performSegue(withIdentifier: "toDetailVC", sender: nil)
+    }
+    
+    @objc func segueToInvite() {
+        performSegue(withIdentifier: "toInvite", sender: self)
     }
     
     func configureDatabase() {
@@ -133,6 +142,10 @@ class EventViewController : UIViewController {
             _refHandle2 = dbRef.child("Experiment").child(user.uid).child(self.autoKey).observe(.childChanged, with: {(snapshot) in
                 
                 if let snapVal = snapshot.value as? [String:AnyObject] {
+                    let title = snapVal["Title"] as? String
+                    if title == "" || title == nil {
+                        return
+                    }
                     let event = EventStruct(dictionary: snapVal)
                     for item in self.eventArray {
                         if event?.taskTitle == item.taskTitle {
@@ -149,6 +162,26 @@ class EventViewController : UIViewController {
                 }
             })
         }
+    }
+    
+    func loadUsers() {
+        
+       // let test = Database.database().reference().child("users").copy()
+       // print(test)
+        
+        let userRef = Database.database().reference().child("users")
+        userRef.observe(.childAdded, with: {(snapshot) in
+            
+
+            var userID : [String] = []
+            
+            userID.append(snapshot.key)
+            
+            if let snapVal = snapshot.value as? [String:AnyObject] {
+                //print(snapVal)
+            }
+        })
+        
     }
 
     deinit {

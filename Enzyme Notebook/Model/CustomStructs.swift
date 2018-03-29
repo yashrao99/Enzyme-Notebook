@@ -65,3 +65,14 @@ struct GoogleSearchStruct {
         return htmlRemoved
     }
 }
+
+struct UsersStruct {
+    var email: String = ""
+    var name: String = ""
+    
+    init?(dictionary: [String:AnyObject]) {
+        
+        self.email = dictionary["Email"] as? String ?? ""
+        self.name = dictionary["Display Name"] as? String ?? ""
+    }
+}
