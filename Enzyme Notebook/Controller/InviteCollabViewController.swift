@@ -25,18 +25,18 @@ class InviteCollabViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var confirmButton: UIButton!
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadUsers()
+    }
+    
+    func configureUI() {
         self.tabBarController?.tabBar.isHidden = true
         resultTableView.delegate = self
         resultTableView.dataSource = self
         resultTableView.allowsMultipleSelection = true
         self.tabBarController?.tabBar.isHidden = true
-        loadUsers()
     }
     
     func loadUsers() {
@@ -60,6 +60,38 @@ class InviteCollabViewController: UIViewController {
     }
     
     @IBAction func buttonPressed( _ sender: Any?) {
+        
+        let ref = Database.database().reference()
+        if let user = Auth.auth().currentUser {
+            var pathToExp = ref.child("Experiment").child(user.uid).child(self.baseID)
+            pathToExp.observe(.value, with: { (snapshot) in
+                if let data = snapshot.value as? [String:AnyObject] {
+                    let selectedRows = self.resultTableView.indexPathsForSelectedRows
+                    let collabPath = ref.child("Shared").childByAutoId()
+                    collabPath.setValue(data)
+                    collabPath.updateChildValues([user.uid:user.displayName])
+                    let autoID = collabPath.key
+                    self.mainAutoKey = autoID
+                    //print(self.mainAutoKey)
+                    
+                    for index in selectedRows! {
+                        let specUID = self.uid[index.row]
+                        ref.child("Shared").child(self.mainAutoKey).updateChildValues([specUID: self.users[index.row].name])
+                    }
+                }
+                
+                //                let newVC = self.storyboard?.instantiateViewController(withIdentifier: "home") as! ExperimentHomeViewController
+                //                self.present(newVC, animated: false, completion: nil)
+                //let previousVC = self.navigationController?.viewControllers.first as! ExperimentHomeViewController
+                //previousVC.collabAutoKey = self.mainAutoKey
+                //print(self.mainAutoKey)
+                let test = self.navigationController?.viewControllers[0]
+                self.navigationController?.popToViewController(test!, animated: true)
+                //self.navigationController?.popToRootViewController(animated: true)
+            })
+            
+            pathToExp.removeValue()
+        }
         
     }
 }
