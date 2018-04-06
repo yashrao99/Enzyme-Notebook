@@ -26,7 +26,6 @@ class EventViewController : UIViewController {
     var endDate: String!
     var expTitle: String!
     var autoKey: String!
-    var autoKeyForPics: String!
     var dbRef: DatabaseReference!
     fileprivate var _refHandle: DatabaseHandle!
     fileprivate var _refHandle2: DatabaseHandle!
@@ -34,13 +33,21 @@ class EventViewController : UIViewController {
     var pbTitle: String!
     var pbWhatUDid: String!
     var pbObsv: String!
+    var sentHome: Bool = false
+    var sentCollab: Bool = false
+    var collabAutoKey: String!
     
     //OVERRIDE FUNCTIONS
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
         configureDatabase()
-        loadCalls()
+        if sentHome {
+            loadHomeCalls()
+        }
+        if sentCollab {
+            loadCollabCalls()
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -50,9 +57,18 @@ class EventViewController : UIViewController {
             vc.tabBarController?.tabBar.isHidden = true
             vc.autoKey = self.autoKey
             vc.test = "ABCD"
+            vc.sentHome = true
         }
         
-        if segue.identifier == "resendDetail" {
+        if segue.identifier == "collabToDetail" {
+            let vc = segue.destination as! DetailViewController
+            vc.sentCollab = true
+            vc.experimentTitle = self.expTitle
+            vc.collabAutoKey = self.collabAutoKey
+            vc.tabBarController?.tabBar.isHidden = true
+        }
+        
+        if segue.identifier == "resendHomeDetail" {
             if let indexPath = eventTableView.indexPathForSelectedRow {
                 let vc = segue.destination as! DetailViewController
                 let selectedRow = indexPath.row
@@ -63,7 +79,27 @@ class EventViewController : UIViewController {
                 vc.autoKey = self.autoKey
                 vc.experimentTitle = self.expTitle
                 vc.navigationItem.leftBarButtonItem?.isEnabled = false
+                vc.sentHome = true
             }
+        }
+        
+        if segue.identifier == "resendCollabDetail" {
+            if let indexPath = eventTableView.indexPathForSelectedRow {
+                let vc = segue.destination as! DetailViewController
+                let selectedRow = indexPath.row
+                let info = eventArray[indexPath.row]
+                vc.cellWhatUDid = info.whatUDid
+                vc.cellObservations = info.observations
+                vc.cellTitle = info.taskTitle
+                vc.collabAutoKey = self.collabAutoKey
+                vc.experimentTitle = self.expTitle
+                vc.navigationItem.leftBarButtonItem?.isEnabled = false
+                vc.sentCollab = true
+            }
+        }
+        if segue.identifier == "toInvite" {
+            let vc = segue.destination as! InviteCollabViewController
+            vc.baseID = self.autoKey
         }
     }
     
@@ -93,17 +129,30 @@ class EventViewController : UIViewController {
         
         let invBarButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(segueToInvite))
         invBarButton.tintColor = UIColor(red:0.07, green:0.25, blue:0.05, alpha:1.0)
+        if sentCollab {
+            invBarButton.isEnabled = false
+        }
         
         self.navigationItem.rightBarButtonItems = [invBarButton, addBarButton]
         
         let backgroundImg = UIImageView(frame: UIScreen.main.bounds)
-        backgroundImg.image = UIImage(named: "rm5")
+        if sentHome {
+            backgroundImg.image = UIImage(named: "rm5")
+        }
+        if sentCollab {
+           backgroundImg.image = UIImage(named: "portalBG")
+        }
         backgroundImg.contentMode = .scaleAspectFill
         self.view.insertSubview(backgroundImg, at: 0)
     }
     
     @ objc func segueToDetail() {
-        performSegue(withIdentifier: "toDetailVC", sender: nil)
+        if sentHome {
+            performSegue(withIdentifier: "toDetailVC", sender: nil)
+        }
+        if sentCollab {
+            performSegue(withIdentifier: "collabToDetail", sender: nil)
+        }
     }
     
     @objc func segueToInvite() {
@@ -114,7 +163,7 @@ class EventViewController : UIViewController {
         dbRef = Database.database().reference()
     }
     
-   func loadCalls() {
+   func loadHomeCalls() {
     
     //The first handle takes care of detailVCs without any images
     
@@ -164,29 +213,65 @@ class EventViewController : UIViewController {
         }
     }
     
-    func loadUsers() {
+    func loadCollabCalls() {
         
-       // let test = Database.database().reference().child("users").copy()
-       // print(test)
+        //The first handle takes care of detailVCs without any images
         
-        let userRef = Database.database().reference().child("users")
-        userRef.observe(.childAdded, with: {(snapshot) in
+        self.eventArray.removeAll()
+        if let user = Auth.auth().currentUser {
+            _refHandle = dbRef.child("Shared").child(collabAutoKey).observe(.childAdded, with: {(snapshot) in
+                
+                if let snapVal = snapshot.value as? [String:AnyObject] {
+                    let title = snapVal["Title"] as? String
+                    if title == "" || title == nil {
+                        return
+                    } else {
+                        let event = EventStruct(dictionary: snapVal)
+                        self.eventArray.insert(event!, at: 0)
+                        
+                        DispatchQueue.main.async {
+                            self.eventTableView.reloadData()
+                        }
+                    }
+                }
+            })
             
-
-            var userID : [String] = []
+            //This second handle takes care of detailVCs with images, since the child gets created with the image and requires the new cell to have proper info
             
-            userID.append(snapshot.key)
-            
-            if let snapVal = snapshot.value as? [String:AnyObject] {
-                //print(snapVal)
-            }
-        })
-        
+            _refHandle2 = dbRef.child("Shared").child(collabAutoKey).observe(.childChanged, with: {(snapshot) in
+                
+                if let snapVal = snapshot.value as? [String:AnyObject] {
+                    let title = snapVal["Title"] as? String
+                    if title == "" || title == nil {
+                        return
+                    }
+                    let event = EventStruct(dictionary: snapVal)
+                    for item in self.eventArray {
+                        if event?.taskTitle == item.taskTitle {
+                            let index = self.eventArray.index(where: {_ in event?.taskTitle == item.taskTitle})
+                            self.eventArray.remove(at: index!)
+                        }
+                    }
+                    self.eventArray.insert(event!, at: 0)
+                    //self.eventTableView.insertRows(at: [IndexPath(row: self.eventArray.count-1, section: 0)], with: .automatic)
+                    
+                    DispatchQueue.main.async {
+                        self.eventTableView.reloadData()
+                    }
+                }
+            })
+        }
     }
-
+    
+    
     deinit {
         if let user = Auth.auth().currentUser{
-            dbRef.child("Experiment").child(user.uid).child(self.autoKey).removeAllObservers()
+            if sentHome {
+             dbRef.child("Experiment").child(user.uid).child(self.autoKey).removeAllObservers()
+            }
+            if sentCollab {
+                dbRef.child("Shared").child(self.collabAutoKey).removeAllObservers()
+            }
         }
     }
     
@@ -205,7 +290,15 @@ extension EventViewController: UITextViewDelegate {
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text != expProtocol {
             if let user = Auth.auth().currentUser {
-                Database.database().reference().child("Experiment").child(user.uid).child(autoKey).updateChildValues(["Protocol":textView.text])
+                if sentHome {
+                    Database.database().reference().child("Experiment").child(user.uid).child(autoKey).updateChildValues(["Protocol":textView.text])
+                }
+                if sentCollab {
+                    Database.database().reference().child("Shared").child(collabAutoKey).updateChildValues(["Protocol":textView.text])
+                }
+                DispatchQueue.main.async {
+                    self.expProtocol = textView.text
+                }
             }
         }
     }
@@ -231,8 +324,15 @@ extension EventViewController : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "resendDetail", sender: indexPath.row)
-        tableView.deselectRow(at: indexPath, animated: true)
+        if sentHome {
+            performSegue(withIdentifier: "resendHomeDetail", sender: indexPath.row)
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
+        if sentCollab {
+           performSegue(withIdentifier: "resendCollabDetail", sender: indexPath.row)
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {

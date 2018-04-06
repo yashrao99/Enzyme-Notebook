@@ -22,6 +22,7 @@ class ExperimentHomeViewController: UIViewController, AuthUIDelegate, UINavigati
     
     fileprivate var _authHandle: AuthStateDidChangeListenerHandle!
     fileprivate var _refHandle: DatabaseHandle!
+    fileprivate var _deleteHandle: DatabaseHandle!
     var user: User?
     var displayName: String? = ""
     var ref: DatabaseReference!
@@ -45,8 +46,10 @@ class ExperimentHomeViewController: UIViewController, AuthUIDelegate, UINavigati
         super.viewWillAppear(animated)
         configureUI()
         configureDatabase()
+        print("Am being calleD")
         if self.isSingedIn {
             loadCalls()
+            deleteSharedCell()
         }
     }
     
@@ -61,6 +64,7 @@ class ExperimentHomeViewController: UIViewController, AuthUIDelegate, UINavigati
         }
         
         if segue.identifier == "toEvents" {
+            print("Main Segue being used")
             let vc = segue.destination as! EventViewController
             let row = (sender as! IndexPath).row
             let expSnap = experiments[row]
@@ -71,6 +75,7 @@ class ExperimentHomeViewController: UIViewController, AuthUIDelegate, UINavigati
             vc.tabBarController?.tabBar.isHidden = true
             vc.expTitle = expSnap.title
             vc.autoKey = arrayOfAutoKeys[row]
+            vc.sentHome = true
         }
     }
     
@@ -129,7 +134,7 @@ class ExperimentHomeViewController: UIViewController, AuthUIDelegate, UINavigati
         let leftbutton = UIBarButtonItem(title: "Sign Out", style: .plain, target: self, action: #selector(signOut))
         self.navigationItem.leftBarButtonItem = leftbutton
         
-        self.navigationItem.title = "Enzymatiq"
+        self.navigationItem.title = "Personal"
         
         self.tableView.dataSource = self
         self.tableView.delegate = self
@@ -169,6 +174,15 @@ class ExperimentHomeViewController: UIViewController, AuthUIDelegate, UINavigati
                 self.tableView.reloadData()
             }
         })
+    }
+    
+    func deleteSharedCell() {
+        
+        if let user = Auth.auth().currentUser {
+            _deleteHandle = ref.child("Experiment").child(user.uid).observe(.childRemoved, with: { (snapshot) in
+                print(snapshot)
+            })
+        }
     }
     
     @objc func signOut() {

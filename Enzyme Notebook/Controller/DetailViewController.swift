@@ -37,8 +37,12 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
     var arrayURL: [String] = []
     fileprivate var _refHandle: DatabaseHandle!
     var autoKey: String!
+    var collabAutoKey: String!
     var imageCache = NSCache<NSString,UIImage>()
     var test: String!
+    var sentHome: Bool = false
+    var sentCollab: Bool = false
+
     
     //DATA PASSED FROM SPECIFIC CELL
     
@@ -56,10 +60,9 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
         configureCollectionView()
         configureButton()
         downloadPreviousImages()
-        
-        print(self.autoKey)
+        print(self.arrayURL.count)
         }
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "viewImage" {
             let vc = segue.destination as! ImageViewerViewController
@@ -84,8 +87,15 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
         let newDate = creationDate.string(with: "MMM dd, yyyy")
         
         if let user = Auth.auth().currentUser {
-            let keyPath = Database.database().reference().child("Experiment").child((user.uid)).child(self.autoKey).child(self.titleText.text!)
-            keyPath.updateChildValues(["Title": self.titleText.text, "Experimental" : self.whatDidUDoText.text, "Observations" : self.observationTextView.text, "creationDate" : "\(newDate)"])
+            if sentHome {
+                let keyPath = Database.database().reference().child("Experiment").child((user.uid)).child(self.autoKey).child(self.titleText.text!)
+                keyPath.updateChildValues(["Title": self.titleText.text, "Experimental" : self.whatDidUDoText.text, "Observations" : self.observationTextView.text, "creationDate" : "\(newDate)"])
+            }
+            if sentCollab {
+                let keyPath = Database.database().reference().child("Shared").child(self.collabAutoKey).child(self.titleText.text!)
+                keyPath.updateChildValues(["Title": self.titleText.text, "Experimental" : self.whatDidUDoText.text, "Observations" : self.observationTextView.text, "creationDate" : "\(newDate)"])
+            }
+
         }        
         self.navigationController?.popViewController(animated: true)
     }
@@ -119,10 +129,17 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
             cancelAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action:UIAlertAction!) in
                 
                 if let user = Auth.auth().currentUser {
-                    
-                    let databaseRef = Database.database().reference().child("Experiment").child(user.uid).child(self.autoKey)
-                    if let title = self.titleText.text {
-                        databaseRef.child(title).removeValue()
+                    if self.sentHome {
+                        let databaseRef = Database.database().reference().child("Experiment").child(user.uid).child(self.autoKey)
+                        if let title = self.titleText.text {
+                            databaseRef.child(title).removeValue()
+                        }
+                    }
+                    if self.sentCollab {
+                        let databaseRef = Database.database().reference().child("Shared").child(self.collabAutoKey)
+                        if let title = self.titleText.text {
+                            databaseRef.child(title).removeValue()
+                        }
                     }
                 }
                 self.navigationController?.popViewController(animated: true)
@@ -208,6 +225,7 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
         
         if let chosenImage = info[UIImagePickerControllerOriginalImage] as? UIImage, let photoData = UIImageJPEGRepresentation(chosenImage, 0.8) {
             uploadPhotoToFirebase(photoData: photoData)
+            print(arrayURL.count)
         }
         
         if arrayURL.count == 0 {
@@ -235,14 +253,27 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
                 return
             }
             let downloadURL = metadata?.downloadURL()?.absoluteString
-                let databaseRef = Database.database().reference().child("Experiment").child(user.uid).child(self.autoKey).child(self.titleText.text!).childByAutoId()
-                databaseRef.setValue(["photoURL":downloadURL], withCompletionBlock: { (error, snapshot) in
-                    if error != nil {
-                        print("Error :\(error)")
-                    } else {
-                        print("Completed")
+                if self.sentHome {
+                    let databaseRef = Database.database().reference().child("Experiment").child(user.uid).child(self.autoKey).child(self.titleText.text!).childByAutoId()
+                    databaseRef.setValue(["photoURL":downloadURL], withCompletionBlock: { (error, snapshot) in
+                        if error != nil {
+                            print("Error :\(error)")
+                        } else {
+                            print("Completed")
+                        }
+                    })
                 }
-            })
+                if self.sentCollab {
+                    let databaseRef = Database.database().reference().child("Shared").child(self.collabAutoKey).child(self.titleText.text!).childByAutoId()
+                    databaseRef.setValue(["photoURL":downloadURL], withCompletionBlock: { (error, snapshot) in
+                        if error != nil {
+                            print("Error :\(error)")
+                        } else {
+                            print("Completed")
+                        }
+                    })
+                }
+
             self.confirmButton.isEnabled = true
             }
         }
@@ -255,23 +286,43 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
         self.arrayURL.removeAll()
         
         if let user = Auth.auth().currentUser {
-            
+            print(self.cellTitle)
             if self.cellTitle != nil {
-                Database.database().reference().child("Experiment").child(user.uid).child(self.autoKey).child(self.titleText.text!).observe(.childAdded, with: { (snapshot) in
-                    if snapshot.exists() {
-                        if let snapDict = snapshot.value as? [String:AnyObject] {
-                            let photoUrl = snapDict["photoURL"] as! String
-                            
-                            DispatchQueue.main.async {
-                                self.arrayURL.append(photoUrl)
-                                print("DOWNLOAD PREVIOUS IMAGES: ", self.arrayURL.count)
-                                self.photoCollection.reloadData()
+                if sentHome {
+                    Database.database().reference().child("Experiment").child(user.uid).child(self.autoKey).child(self.titleText.text!).observe(.childAdded, with: { (snapshot) in
+                        if snapshot.exists() {
+                            if let snapDict = snapshot.value as? [String:AnyObject] {
+                                let photoUrl = snapDict["photoURL"] as! String
+                                
+                                DispatchQueue.main.async {
+                                    self.arrayURL.append(photoUrl)
+                                    print("DOWNLOAD PREVIOUS IMAGES: ", self.arrayURL.count)
+                                    self.photoCollection.reloadData()
+                                }
                             }
                         }
+                    })
+                }
+                    if sentCollab {
+                        print("I am running")
+                        Database.database().reference().child("Shared").child(self.collabAutoKey).child(self.titleText.text!).observe(.childAdded, with: { (snapshot) in
+                            print(snapshot)
+                            if snapshot.exists() {
+                                if let snapDict = snapshot.value as? [String:AnyObject] {
+                                    let photoUrl = snapDict["photoURL"] as! String
+                                    
+                                    DispatchQueue.main.async {
+                                        self.arrayURL.append(photoUrl)
+                                        print("DOWNLOAD PREVIOUS IMAGES: ", self.arrayURL.count)
+                                        self.photoCollection.reloadData()
+                                    }
+                                }
+                            }
+                        })
                     }
-                })
+                }
+
             }
-        }
     }
     
     //When new image is uploaded, wipe the previous images (if there) and add all picutres again to array
@@ -279,31 +330,53 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
     func downloadNewImages() {
         self.arrayURL.removeAll()
         if let user = Auth.auth().currentUser{
-        
             if self.titleText.text != "" {
-                Database.database().reference().child("Experiment").child(user.uid).child(self.autoKey).child(self.titleText.text!).observe(.childAdded, with: { (snapshot) in
-                    if snapshot.exists() {
-                        if let snapVal = snapshot.value as? [String:AnyObject] {
-                            let url = snapVal["photoURL"] as! String
-                            
-                            DispatchQueue.main.async {
-                                self.arrayURL.append(url)
-                                print("DOWNLOAD NEW IMAGES: ", self.arrayURL.count)
-                                self.photoCollection.reloadData()
+                if sentHome {
+                    Database.database().reference().child("Experiment").child(user.uid).child(self.autoKey).child(self.titleText.text!).observe(.childAdded, with: { (snapshot) in
+                        if snapshot.exists() {
+                            if let snapVal = snapshot.value as? [String:AnyObject] {
+                                let url = snapVal["photoURL"] as! String
+                                
+                                DispatchQueue.main.async {
+                                    self.arrayURL.append(url)
+                                    print("DOWNLOAD NEW IMAGES: ", self.arrayURL.count)
+                                    self.photoCollection.reloadData()
+                                }
                             }
+                        } else {
+                            print("No images")
                         }
-                    } else {
-                        print("No images")
-                    }
-                })
-                
+                    })
+                }
+                if sentCollab {
+                    Database.database().reference().child("Shared").child(self.collabAutoKey).child(self.titleText.text!).observe(.childAdded, with: { (snapshot) in
+                        if snapshot.exists() {
+                            if let snapVal = snapshot.value as? [String:AnyObject] {
+                                let url = snapVal["photoURL"] as! String
+                                
+                                DispatchQueue.main.async {
+                                    self.arrayURL.append(url)
+                                    print("DOWNLOAD NEW IMAGES: ", self.arrayURL.count)
+                                    self.photoCollection.reloadData()
+                                }
+                            }
+                        } else {
+                            print("No images")
+                        }
+                    })
+                }
             }
         }
     }
     
     deinit {
         if let user = Auth.auth().currentUser {
-            Database.database().reference().child("Experiment").child(user.uid).child(self.autoKey).child(self.titleText.text!).removeAllObservers()
+            if sentHome {
+                Database.database().reference().child("Experiment").child(user.uid).child(self.autoKey).child(self.titleText.text!).removeAllObservers()
+            }
+            if sentCollab {
+                Database.database().reference().child("Shared").child(self.collabAutoKey).child(self.titleText.text!).removeAllObservers()
+            }
         }
     }
 

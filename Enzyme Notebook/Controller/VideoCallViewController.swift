@@ -77,6 +77,7 @@ class VideoCallViewController: UIViewController {
     
     @IBAction func didClickHangUpButton(_ sender: UIButton) {
         leaveChannel()
+        self.performSegue(withIdentifier: "exitCall", sender: self)
     }
     
     @IBAction func didClickMuteButton(_ sender: UIButton) {

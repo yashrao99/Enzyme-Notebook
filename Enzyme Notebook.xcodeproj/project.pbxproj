@@ -38,6 +38,8 @@
 		F7BC7491205123D000F6D135 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7BC7490205123D000F6D135 /* DetailViewController.swift */; };
 		F7BC74932051EE3D00F6D135 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7BC74922051EE3D00F6D135 /* Constants.swift */; };
 		F7BC74952053154300F6D135 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7BC74942053154300F6D135 /* CollectionViewCell.swift */; };
+		F7C93C072074494F004A458F /* CollabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C93C062074494F004A458F /* CollabViewController.swift */; };
+		F7C93C0A20760236004A458F /* CollabCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C93C0920760236004A458F /* CollabCell.swift */; };
 		F7F915BE205612340035BB1E /* IQKeyboardManagerSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7F915BF205612340035BB1E /* IQKeyboardManagerSwift.framework */; };
 		F7F915C120561D2A0035BB1E /* CacheExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F915C020561D2A0035BB1E /* CacheExtension.swift */; };
 		F7F915C42057A2A20035BB1E /* ExperimentHomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F915C32057A2A20035BB1E /* ExperimentHomeCell.swift */; };
@@ -79,6 +81,8 @@
 		F7BC7490205123D000F6D135 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		F7BC74922051EE3D00F6D135 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		F7BC74942053154300F6D135 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		F7C93C062074494F004A458F /* CollabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollabViewController.swift; sourceTree = "<group>"; };
+		F7C93C0920760236004A458F /* CollabCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollabCell.swift; sourceTree = "<group>"; };
 		F7F915BF205612340035BB1E /* IQKeyboardManagerSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = IQKeyboardManagerSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7F915C020561D2A0035BB1E /* CacheExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheExtension.swift; sourceTree = "<group>"; };
 		F7F915C32057A2A20035BB1E /* ExperimentHomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperimentHomeCell.swift; sourceTree = "<group>"; };
@@ -159,6 +163,7 @@
 				F752FA17204D2B330037B698 /* CustomCell.swift */,
 				F7F915C32057A2A20035BB1E /* ExperimentHomeCell.swift */,
 				F7AE23D020608F080069D98F /* SearchCell.swift */,
+				F7C93C0920760236004A458F /* CollabCell.swift */,
 				F74A8A7A2058737A009870DB /* EventCell.swift */,
 				F72335A3206C5AD500ADBEFA /* UserCell.swift */,
 			);
@@ -191,6 +196,7 @@
 				F7AE23CE206078450069D98F /* ImageViewerViewController.swift */,
 				F759D351206493280046D993 /* GelViewController.swift */,
 				F759D3592069CAC20046D993 /* VideoCallViewController.swift */,
+				F7C93C062074494F004A458F /* CollabViewController.swift */,
 				F72335A1206C4C0300ADBEFA /* InviteCollabViewController.swift */,
 				F759D35B2069CB4D0046D993 /* SetMeetingChannelViewController.swift */,
 				F7BC7488204FABF200F6D135 /* Custom Cells */,
@@ -393,11 +399,13 @@
 				F759D3542065CE260046D993 /* PixelReader.swift in Sources */,
 				F759D3562068B4260046D993 /* AppID.swift in Sources */,
 				F752F9FD204CE91F0037B698 /* ExperimentHomeViewController.swift in Sources */,
+				F7C93C072074494F004A458F /* CollabViewController.swift in Sources */,
 				F7BC74932051EE3D00F6D135 /* Constants.swift in Sources */,
 				F7AE23D120608F080069D98F /* SearchCell.swift in Sources */,
 				F7BA81CC20603C9F006717DB /* SearchViewController.swift in Sources */,
 				F7BC74952053154300F6D135 /* CollectionViewCell.swift in Sources */,
 				F74A8A7F20601705009870DB /* MasterNetwork.swift in Sources */,
+				F7C93C0A20760236004A458F /* CollabCell.swift in Sources */,
 				F752FA1A204E5FB90037B698 /* NewExperimentalViewController.swift in Sources */,
 				F752FA14204D06A00037B698 /* CalendarNewExperimentViewController.swift in Sources */,
 				F759D35C2069CB4D0046D993 /* SetMeetingChannelViewController.swift in Sources */,

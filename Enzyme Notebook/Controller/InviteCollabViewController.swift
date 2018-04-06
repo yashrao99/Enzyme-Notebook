@@ -11,7 +11,7 @@ import UIKit
 import Firebase
 
 
-class InviteCollabViewController: UIViewController {
+class InviteCollabViewController: UIViewController, UINavigationControllerDelegate {
     
     var listOfNames:[String] = []
     var listEmails:[String] = []
@@ -19,24 +19,39 @@ class InviteCollabViewController: UIViewController {
     var users: [UsersStruct] = []
     var uid : [String] = []
     var selectedRows: [UsersStruct] = []
-
+    var baseID: String!
+    var mainAutoKey: String!
+    
     
     @IBOutlet weak var resultTableView: UITableView!
-    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var confirmButton: UIButton!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureUI()
         loadUsers()
     }
     
     func configureUI() {
+        
         self.tabBarController?.tabBar.isHidden = true
         resultTableView.delegate = self
         resultTableView.dataSource = self
         resultTableView.allowsMultipleSelection = true
         self.tabBarController?.tabBar.isHidden = true
+        //self.navigationController?.title = "Invite Collaborators!"
+        self.confirmButton.isHidden = true
+        self.activityIndicator.isHidden = true
+        
+        let backgroundImg = UIImageView(frame: UIScreen.main.bounds)
+        backgroundImg.image = UIImage(named: "universe")
+        backgroundImg.contentMode = .scaleAspectFill
+        self.view.insertSubview(backgroundImg, at: 0)
     }
     
     func loadUsers() {
@@ -60,7 +75,9 @@ class InviteCollabViewController: UIViewController {
     }
     
     @IBAction func buttonPressed( _ sender: Any?) {
-        
+        self.confirmButton.isEnabled = false
+        self.activityIndicator.isHidden = false
+        self.activityIndicator.startAnimating()
         let ref = Database.database().reference()
         if let user = Auth.auth().currentUser {
             var pathToExp = ref.child("Experiment").child(user.uid).child(self.baseID)
@@ -72,25 +89,22 @@ class InviteCollabViewController: UIViewController {
                     collabPath.updateChildValues([user.uid:user.displayName])
                     let autoID = collabPath.key
                     self.mainAutoKey = autoID
-                    //print(self.mainAutoKey)
-                    
+                    pathToExp.removeValue(completionBlock: { (error, dbRef) in
+                        guard (error == nil) else {
+                            print("Error removing")
+                            return
+                        }
+                        print(dbRef)
+                    })
                     for index in selectedRows! {
                         let specUID = self.uid[index.row]
                         ref.child("Shared").child(self.mainAutoKey).updateChildValues([specUID: self.users[index.row].name])
+                            }
                     }
-                }
-                
-                //                let newVC = self.storyboard?.instantiateViewController(withIdentifier: "home") as! ExperimentHomeViewController
-                //                self.present(newVC, animated: false, completion: nil)
-                //let previousVC = self.navigationController?.viewControllers.first as! ExperimentHomeViewController
-                //previousVC.collabAutoKey = self.mainAutoKey
-                //print(self.mainAutoKey)
-                let test = self.navigationController?.viewControllers[0]
-                self.navigationController?.popToViewController(test!, animated: true)
-                //self.navigationController?.popToRootViewController(animated: true)
+                self.activityIndicator.stopAnimating()
+                self.activityIndicator.isHidden = true
+                self.navigationController?.popToRootViewController(animated: true)
             })
-            
-            pathToExp.removeValue()
         }
         
     }
@@ -137,7 +151,16 @@ extension InviteCollabViewController: UITableViewDelegate, UITableViewDataSource
         return cell
     }
     
+    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        if let indexPathForSelectedTo = tableView.indexPathForSelectedRow, indexPathForSelectedTo == indexPath {
+            tableView.deselectRow(at: indexPath, animated: false)
+            return nil
+        }
+        return indexPath
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedRows.append(users[indexPath.row])
+        self.confirmButton.isHidden = false
     }
 }
+
