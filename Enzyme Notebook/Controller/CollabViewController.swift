@@ -17,6 +17,8 @@ class CollabViewController: UIViewController {
     var collaborations: [ExperimentStruct] = []
     var collabKeys: [String] = []
     fileprivate var _collabHandle: DatabaseHandle!
+    var arrayForDeletion : [DataSnapshot]! = []
+    var ref: DatabaseReference!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,6 +60,7 @@ class CollabViewController: UIViewController {
         
         self.tabBarController?.tabBar.isHidden = false
         self.navigationItem.title = "Collaborations"
+        
     }
     
     func loadCalls() {
@@ -65,7 +68,7 @@ class CollabViewController: UIViewController {
         let ref = Database.database().reference()
         let userID = Auth.auth().currentUser?.uid
         _collabHandle = ref.child("Shared").observe(.childAdded, with: { (snapshot) in
-            
+            self.arrayForDeletion.append(snapshot)
             if let snapVal =  snapshot.value as? [String:AnyObject] {
                 if snapVal[userID!] != nil {
                     self.collabKeys.append((snapshot.key))
@@ -105,7 +108,7 @@ extension CollabViewController : UITableViewDelegate, UITableViewDataSource {
         cell.backgroundColor = UIColor.clear
         cell.layer.backgroundColor = UIColor.clear.cgColor
         
-        cell.imgView.image = UIImage(named: "orange_portal")
+        cell.imgView.image = UIImage(named: "portalbox")
         cell.imgView.contentMode = .scaleAspectFit
         
         let collabSnap = collaborations[indexPath.row]
@@ -114,6 +117,24 @@ extension CollabViewController : UITableViewDelegate, UITableViewDataSource {
         
         return cell
         }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            
+            //Delete from Firebase
+            ref = Database.database().reference()
+            let userID = Auth.auth().currentUser?.uid
+            let fbRef = arrayForDeletion[indexPath.row]
+            let deletionKey = (fbRef.key)
+            let fbDbRef = ref.child("Shared")
+            fbDbRef.child(deletionKey).removeValue()
+            
+            //Delete from tableView
+            self.collaborations.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            
+        }
+    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.tableView.deselectRow(at: indexPath, animated: true)

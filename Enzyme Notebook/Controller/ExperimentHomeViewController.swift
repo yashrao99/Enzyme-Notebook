@@ -46,7 +46,6 @@ class ExperimentHomeViewController: UIViewController, AuthUIDelegate, UINavigati
         super.viewWillAppear(animated)
         configureUI()
         configureDatabase()
-        print("Am being calleD")
         if self.isSingedIn {
             loadCalls()
             deleteSharedCell()
@@ -179,7 +178,7 @@ class ExperimentHomeViewController: UIViewController, AuthUIDelegate, UINavigati
     func deleteSharedCell() {
         
         if let user = Auth.auth().currentUser {
-            _deleteHandle = ref.child("Experiment").child(user.uid).observe(.childRemoved, with: { (snapshot) in
+            _deleteHandle = ref.child("Experiment").child(user.uid).observe(.childChanged, with: { (snapshot) in
                 print(snapshot)
             })
         }
@@ -222,6 +221,8 @@ extension ExperimentHomeViewController : UITableViewDelegate, UITableViewDataSou
         let randomIndex = Int(arc4random_uniform(UInt32(imageArray.count)))
         
         //Fill in TableView cell with info
+        print(experiments)
+        print(indexPath.row)
         let expSnapshot = experiments[indexPath.row]
         cell.titleLabel.text = "Experiment: " + expSnapshot.title
         cell.creationLabel.text = "Created on: " + expSnapshot.creationDate

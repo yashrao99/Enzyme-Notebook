@@ -106,7 +106,6 @@ class InviteCollabViewController: UIViewController, UINavigationControllerDelega
                 self.navigationController?.popToRootViewController(animated: true)
             })
         }
-        
     }
 }
 
