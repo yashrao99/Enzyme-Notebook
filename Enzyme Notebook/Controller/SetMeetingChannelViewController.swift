@@ -16,6 +16,7 @@ class SetMeetingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.title = "Join Meeting"
         }
     
     override func viewDidAppear(_ animated: Bool) {
