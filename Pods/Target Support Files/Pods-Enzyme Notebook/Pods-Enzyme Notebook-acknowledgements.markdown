@@ -281,10 +281,6 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 Copyright 2018 Google
 
-## FirebaseABTesting
-
-Copyright 2017 Google
-
 ## FirebaseAnalytics
 
 Copyright 2018 Google
@@ -306,10 +302,6 @@ Copyright 2018 Google
 Copyright 2018 Google
 
 ## FirebaseInstanceID
-
-Copyright 2018 Google
-
-## FirebaseRemoteConfig
 
 Copyright 2018 Google
 

@@ -10,7 +10,6 @@ target 'Enzyme Notebook' do
   pod 'Firebase/Storage'
   pod 'Firebase/Core'
   pod 'Firebase/Database'
-  pod 'Firebase/RemoteConfig'
   pod 'FirebaseUI'
   pod 'JTAppleCalendar', '~> 7.0'
   pod 'IQKeyboardManagerSwift', '5.0.0'

@@ -32,9 +32,11 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string>use camera to start video call</string>
+	<string>Use camera to start video call</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>use microphone to start video call</string>
+	<string>Use microphone to start video call</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Save image to Photo Library</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>get_schwifty__a_rick_and_morty_font_by_jonizaak-dajw4u8.ttf</string>

@@ -28,15 +28,9 @@ PODS:
   - Firebase/Firestore (4.11.0):
     - Firebase/Core
     - FirebaseFirestore (= 0.10.4)
-  - Firebase/RemoteConfig (4.11.0):
-    - Firebase/Core
-    - FirebaseRemoteConfig (= 2.1.2)
   - Firebase/Storage (4.11.0):
     - Firebase/Core
     - FirebaseStorage (= 2.1.3)
-  - FirebaseABTesting (1.0.0):
-    - FirebaseCore (~> 4.0)
-    - Protobuf (~> 3.1)
   - FirebaseAnalytics (4.1.0):
     - FirebaseCore (~> 4.0)
     - FirebaseInstanceID (~> 2.0)
@@ -60,13 +54,6 @@ PODS:
     - Protobuf (~> 3.5)
   - FirebaseInstanceID (2.0.10):
     - FirebaseCore (~> 4.0)
-  - FirebaseRemoteConfig (2.1.2):
-    - FirebaseABTesting (~> 1.0)
-    - FirebaseAnalytics (~> 4.0)
-    - FirebaseCore (~> 4.0)
-    - FirebaseInstanceID (~> 2.0)
-    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
-    - Protobuf (~> 3.1)
   - FirebaseStorage (2.1.3):
     - FirebaseAnalytics (~> 4.1)
     - FirebaseCore (~> 4.0)
@@ -163,7 +150,6 @@ DEPENDENCIES:
   - AgoraRtcEngine_iOS
   - Firebase/Core
   - Firebase/Database
-  - Firebase/RemoteConfig
   - Firebase/Storage
   - FirebaseUI
   - IQKeyboardManagerSwift (= 5.0.0)
@@ -176,14 +162,12 @@ SPEC CHECKSUMS:
   FBSDKCoreKit: e08ccfcefa7bc1347a07c276dac9bf6c7fe57024
   FBSDKLoginKit: 99797ac39252fef6f72600b886f6ee60b4b29cab
   Firebase: cc13dfab1038c8b45d7903e01fc690451d6d0b24
-  FirebaseABTesting: d07d0ee833b842d5153549e4c7e2e2cb1c23a3f9
   FirebaseAnalytics: 3dfae28d4a5e06f86c4fae830efc2ad3fadb19bc
   FirebaseAuth: 147bf340a0706b44ca1753d6b41ebafd9687cfe6
   FirebaseCore: b981f47e5254cbcfdeb483355300d743f6fcab2c
   FirebaseDatabase: 5f0bc6134c5c237cf55f9e1249d406770a75eafd
   FirebaseFirestore: 796df79c29cf8ecf806564f4d347665bdafa6ef0
   FirebaseInstanceID: 8d20d890d65c917f9f7d9950b6e10a760ad34321
-  FirebaseRemoteConfig: df64ce784a45e9b9d4988030a59da6baede8bdb0
   FirebaseStorage: 9a863a2bb96c406958eeff7c2f1dfa9f44c44a13
   FirebaseUI: 7f149d40db1a67c459df16540256b66d8f8e8c70
   GoogleSignIn: d9ef55b10f0aa401a5de2747f59b725e4b9732ac
@@ -203,6 +187,6 @@ SPEC CHECKSUMS:
   TwitterCore: 644d59e75abccb26cf0a9050d2c4dea0e5412241
   TwitterKit: a2e60ddcedbf54091eac6f27685ca7a87681e1d7
 
-PODFILE CHECKSUM: f2182cd99d078b0ef0361093a83f22e178bf0adf
+PODFILE CHECKSUM: cc45c83b38fc2c2274f0de5bd70fa53fdde0b72a
 
 COCOAPODS: 1.4.0
