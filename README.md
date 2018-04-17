@@ -114,6 +114,17 @@ This view Controller is the last tab of the main tabBar Controller. The tab is c
 
 In this view, users can enter a specific string into the textField. This textField should be the name of the channel. Each video meeting that is hosted on this app requires all users to join the same channel. Therefore, a meeting between me and my collaborator would require us to both join the channel 'My Experiment'. Once the channel is properly typed into the textField, the Start Call button should be pressed.
 
+## Video Call View Controller
+
+![agora_github](https://user-images.githubusercontent.com/32831099/38890490-709e422e-4236-11e8-84aa-4ce48cd77587.jpg)
+
+This is an example of what the video chat looks like. It has fully supported video and audio, thanks to the Agora.io SDK. This is an early iteration, as you can see there is room for improvement.
+
+The stackView and the bottom contains buttons with different uses such as:
+- Disconnect from call
+- Switch camera view
+- Mute remote Video (your connection)
+- Hide Video (in case you only want audio from the meeting)
 
 ## FIREBASE
 
@@ -138,6 +149,14 @@ The pictures are stored separately in Firebase storage, since it is recommended 
 
 This is a detailed description of the collaboration experiment structure.
 
-<img width="543" alt="screen shot 2018-04-17 at 12 26 59 am" src="https://user-images.githubusercontent.com/32831099/38854675-1a161658-41d6-11e8-816f-bf932ce45802.png">
+<img width="703" alt="screen shot 2018-04-17 at 11 56 23 am" src="https://user-images.githubusercontent.com/32831099/38890827-5d0e7aca-4237-11e8-9f84-bbaa8076477b.png">
 
 child('Shared') - holds all the keys for the shared experiments
+
+child(collabAutoKey) - passed between all viewControllers once the tableCell on CollabViewController is selected
+This child contains the info such as the userIDs of the collaborators, the name of the experiment, the dates to be conducted, etc.
+
+child(self.titleText.text) - the name of the detail created in detailVC
+This child will contain all the information about the created detail, such as name of title, the observations, etc.
+
+child(photoURL) - This child will contain the mediaURL to download any images that belong to a specific detail. 
