@@ -347,5 +347,9 @@ extension EventViewController : UITableViewDelegate, UITableViewDataSource {
         //Delete from tableView
         self.eventArray.remove(at: indexPath.row)
         tableView.deleteRows(at: [indexPath], with: .fade)
+        
+        DispatchQueue.main.async {
+            tableView.reloadData()
+        }
     }
 }

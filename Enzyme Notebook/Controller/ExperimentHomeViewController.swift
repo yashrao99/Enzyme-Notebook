@@ -177,10 +177,17 @@ class ExperimentHomeViewController: UIViewController, AuthUIDelegate, UINavigati
     
     func deleteSharedCell() {
         
-        if let user = Auth.auth().currentUser {
-            _deleteHandle = ref.child("Experiment").child(user.uid).observe(.childChanged, with: { (snapshot) in
-                print(snapshot)
-            })
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(5)) {
+            
+            self.tableView.reloadData()
+            print("tableView reloaded")
+            
+            if let user = Auth.auth().currentUser {
+                self._deleteHandle = self.ref.child("Experiment").child(user.uid).observe(.childChanged, with: { (snapshot) in
+                    print("Delete Listener active")
+                    print(snapshot)
+                })
+            }
         }
     }
     

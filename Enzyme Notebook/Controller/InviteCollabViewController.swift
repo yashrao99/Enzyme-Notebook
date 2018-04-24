@@ -146,7 +146,7 @@ extension InviteCollabViewController: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "userCell", for: indexPath) as! UserCell
         cell.emailLabel.text = users[indexPath.row].email
-        cell.diplayLabel.text = users[indexPath.row].name
+        //cell.diplayLabel.text = users[indexPath.row].name
         return cell
     }
     
