@@ -16,6 +16,8 @@ The main features of this app include:
 
 As a plus, the theme of this app is Rick and Morty, since Rick is a genius scientist. (If you've never seen the show, hopefully you will be slightly more inclined after using this app!)
 
+![rm](https://user-images.githubusercontent.com/32831099/42426601-fbd0fbce-82dd-11e8-82f7-a578ec63b411.jpg)
+
 A valid email address/Google account is required in order to access this app
 
 ## Experiment Home View Controller
